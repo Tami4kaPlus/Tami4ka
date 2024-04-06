@@ -273,23 +273,15 @@ function Kavo.CreateLib(kavName, themeList)
 	title.TextSize = 16.000
 	title.TextXAlignment = Enum.TextXAlignment.Left
 
-	local frame = Instance.new("Frame")
+	local frame = Instance.new("ImageLabel")
+	frame.Parent = frame
+	frame.Size = UDim2.new(1,0,1,0)
+	frame.Image = "http://www.roblox.com/asset/?id=16132619292"
 
 	local i = Instance.new("UIStroke", frame)
 	i.Thickness = 4
 	i.Color = Color3.new(1, 1, 1)
 	Instance.new("UICorner", frame)
-	
-	local q = Instance.new("ImageLabel")
-	q.Parent = frame
-	q.Size = UDim2.new(1,0,1,0)
-	q.Image = "http://www.roblox.com/asset/?id=16132619292"
-
-	frame.BackgroundTransparency = 1
-	frame.Name = "OpenGui"
-	frame.Active = true
-	frame.Parent = ScreenGui
-	frame.Size = UDim2.new(0, 0, 0, 0)
 
 	frame.TouchTap:Connect(function()
 		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
