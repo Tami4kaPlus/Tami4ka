@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://pastebin.com/raw/nrGknci2"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
  
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "LightTheme")
  
@@ -286,5 +286,5 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-S
 end)
 
 local CreatorTab = Window:NewTab("ℹ️Infoℹ️")
-local CreatorSection = CreatorTab:NewSection("Credits to Avtor1zaTion")
-local CreatorSection = CreatorTab:NewSection("Version 1.7")
+local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
+local CreatorSection = CreatorTab:NewSection("Version 1.0")
