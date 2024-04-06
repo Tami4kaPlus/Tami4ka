@@ -296,7 +296,7 @@ function Kavo.CreateLib(kavName, themeList)
 			Size = UDim2.new(0, 525, 0, 318),
 			Position = UDim2.new(0, frame.AbsolutePosition.X, 0, frame.AbsolutePosition.Y)
 		}):Play()
-		wait()
+		--wait()
 		game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 			Size = UDim2.new(0,0,0,0),
 		}):Play()
@@ -322,7 +322,7 @@ function Kavo.CreateLib(kavName, themeList)
 		game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 			Position = UDim2.new(0, Main.AbsolutePosition.X, 0, Main.AbsolutePosition.Y)
 		}):Play()
-		wait(0.2)
+		--wait(0.2)
 		frame.Visible = true
 		game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 			Size = UDim2.new(0,60,0,60),
