@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
  
-local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "GrapeTheme")
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "Synapse")
  
  
 local PlrTab = Window:NewTab("Main")
@@ -31,7 +31,7 @@ PlrSection:NewButton("💢 Telekinesis FE 💢", "Telekinesis (cars and other),"
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/SAZXHUB/Control-update/main/README.md'),true))()
 end)
 
-PlrSection:NewButton("Invisibility FE", "📴 Invisibility 📴", function()
+PlrSection:NewButton("📴 Invisibility FE 📴", " Invisibility ", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Invisible%20Gui'))()
 end)
 
