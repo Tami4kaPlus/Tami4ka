@@ -265,7 +265,7 @@ OthersSection:NewButton("🏢 Brookhaven 🏢", "🏢Brookhaven🏢", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()   
 end)
 
-OthersSection:NewButton("🪝 Prison Life 🪝", "🪝Prison Life🪝", function()
+OthersSection:NewButton("🚓 Prison Life 🚓", "🪝Prison Life🪝", function()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ySixxNz/Prison-Life/Prison-Life/Prison%20Life%20-%20Six%20Hub"))() 
 end)
