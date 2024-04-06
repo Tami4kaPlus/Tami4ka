@@ -282,7 +282,6 @@ function Kavo.CreateLib(kavName, themeList)
 
 	local i = Instance.new("UIStroke", q)
 	i.Thickness = 4
-	i.Color = Color3.new(1,1,1)
 	Instance.new("UICorner", q)
 
 	frame.BackgroundTransparency = 1
