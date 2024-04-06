@@ -283,7 +283,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local q = Instance.new("ImageLabel")
 	q.Parent = frame
 	q.Size = UDim2.new(1,0,1,0)
-	q.Image = "rbxassetid://16805845233"
+	q.Image = "http://www.roblox.com/asset/?id=16132619292"
 
 	frame.BackgroundTransparency = 1
 	frame.Name = "OpenGui"
