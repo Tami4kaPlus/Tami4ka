@@ -208,7 +208,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local coverup_2 = Instance.new("Frame")
 	local tabFrames = Instance.new("Frame")
 	local tabListing = Instance.new("UIListLayout")
-	local pages = Instance.new("ImageLabel")
+	local pages = Instance.new("Frame")
 	local Pages = Instance.new("Folder")
 	local infoContainer = Instance.new("Frame")
 	
