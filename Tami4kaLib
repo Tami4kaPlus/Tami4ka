@@ -278,7 +278,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local q = Instance.new("ImageLabel")
 	q.Parent = frame
 	q.Size = UDim2.new(1,0,1,0)
-	q.Image = ""http://www.roblox.com/asset/?id=16132619292""
+	q.Image = "rbxassetid://16805845233"
 
 	local i = Instance.new("UIStroke", q)
 	i.Thickness = 4
@@ -383,9 +383,11 @@ function Kavo.CreateLib(kavName, themeList)
 	pages.Name = "pages"
 	pages.Parent = Main
 	pages.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	pages.BackgroundTransparency = 1.000
 	pages.BorderSizePixel = 0
 	pages.Position = UDim2.new(0.299047589, 0, 0.122641519, 0)
 	pages.Size = UDim2.new(0, 360, 0, 269)
+	pages.Image = "rbxassetid://16805845233"
 
 	Pages.Name = "Pages"
 	Pages.Parent = pages
