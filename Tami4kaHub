@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
  
-local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "LightTheme")
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "GrapeTheme")
  
  
 local PlrTab = Window:NewTab("Main")
@@ -285,6 +285,6 @@ OthersSection:NewButton("🐵Adopt Me🐵", "🐵Adopt Me🐵", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
 end)
 
-local CreatorTab = Window:NewTab("ℹ️Infoℹ️")
+local CreatorTab = Window:NewTab("ℹ️ Info ℹ️")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
 local CreatorSection = CreatorTab:NewSection("Version 1.0")
