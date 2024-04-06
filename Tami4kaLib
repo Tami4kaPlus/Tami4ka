@@ -274,7 +274,7 @@ function Kavo.CreateLib(kavName, themeList)
 	title.TextXAlignment = Enum.TextXAlignment.Left
 
 	local frame = Instance.new("ImageLabel")
-	frame.Parent = frame
+	frame.Parent = ScreenGui
 	frame.Size = UDim2.new(1,0,1,0)
 	frame.Image = "http://www.roblox.com/asset/?id=16132619292"
 
