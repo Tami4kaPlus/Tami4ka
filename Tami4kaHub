@@ -74,7 +74,7 @@ OthersSection:NewButton("🧊 System Broken V2 🧊", "🧊System broken🧊", f
    loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
 end)
 
-OthersSection:NewButton("🌫Fling Gui🌫", "🌫Fling Gui🌫", function()
+OthersSection:NewButton("🌫 Fling Gui 🌫", "🌫Fling Gui🌫", function()
  loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/Fling%20GUI"))()
 end)
 OthersSection:NewButton("👤 Animation Hub 👤", "👤Animation Hub👤", function()
@@ -166,7 +166,7 @@ OthersSection:NewButton("❄ SnowFlake ❄", "❄SnowFlake❄", function()
 end)
 
 
-OthersSection:NewButton("🫂 Universall Colizium 🫂", "🫂Universall Colizium🫂", function()
+OthersSection:NewButton("🧱 Universall Colizium 🧱", "🫂Universall Colizium🫂", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/TJRmVqE3'),true))()
 end)
 
@@ -178,7 +178,7 @@ OthersSection:NewButton("👀 Universall Spectate 👀", "👀Universall Spectat
    loadstring(game:HttpGet(('https://pastebin.com/raw/htJNjYXw'),true))()
 end)
 
-OthersSection:NewButton("🌠 Ping+FPS 🌠", "🌠Ping+FPS🌠", function()
+OthersSection:NewButton("🌠 Ping + FPS 🌠", "🌠Ping+FPS🌠", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/a0uXyDSE'),true))()
 end)
 
