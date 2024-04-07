@@ -1,6 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
  
-local Window = Library.CreateLib("🍇 Tami4ka Hub 🍒", "GrapeTheme")
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme")
  
  
 local PlrTab = Window:NewTab("Main")
@@ -60,12 +60,20 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewTextBox("🔝 Растяг 🔝", "Растяг", F, function(s)
-    workspace.CurrentCamera.CFrame = workspace.CurrentCamera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
-end)
-
 OthersSection:NewButton("📱 Растяг экрана 📱", "📱 Растяг экрана📱", function()
-   loadstring(game:HttpGetAsync("https://pastefy.app/xpZROojp/raw"))()
+   getgenv().Resolution = {
+    [".gg/scripters"] = 0.90
+}
+
+local Camera = workspace.CurrentCamera
+if getgenv().gg_scripters == nil then
+    game:GetService("RunService").RenderStepped:Connect(
+        function()
+            Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution[".gg/scripters"], 0, 0, 0, 1)
+        end
+    )
+end
+getgenv().gg_scripters = "Aori0001"
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
@@ -183,7 +191,7 @@ OthersSection:NewButton("👀 Universall Spectate 👀", "👀Universall Spectat
 end)
 
 OthersSection:NewButton("🌠 Ping + FPS 🌠", "🌠Ping+FPS🌠", function()
-   loadstring(game:HttpGet(('https://pastebin.com/raw/a0uXyDSE'),true))()
+   loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Visual%20Info%20Fps%20Ping'),true))()
 end)
 
 OthersSection:NewButton("🈶 Universall Delta Translate 🈶", "🈶Universall Delta Translate🈶", function()
@@ -289,6 +297,7 @@ OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵Adopt Me🐵", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
 end)
 
-local CreatorTab = Window:NewTab("ℹ️ Info ℹ️")
+local CreatorTab = Window:NewTab("ℹ️ Credits ℹ️")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
-local CreatorSection = CreatorTab:NewSection("Version 1.0")
+local CreatorSection = CreatorTab:NewSection("CopyPaste Avtor1zaTion")
+local CreatorSection = CreatorTab:NewSection("Version 1.1")
