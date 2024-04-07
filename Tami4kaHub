@@ -60,8 +60,8 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewSlider("🔝 Растяг 🔝", "Set you JumpPower", 1, 0.4, function(s)
-    Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
+OthersSection:NewSlider("🔝 Растяг 🔝", "Set you JumpPower", 0.4, 1, function(s)
+    workspace.CurrentCamera.CFrame = workspace.CurrentCamera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
 end)
 
 OthersSection:NewButton("📱 Растяг экрана 📱", "📱 Растяг экрана📱", function()
