@@ -1,0 +1,43 @@
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Information = Instance.new("TextLabel")
+local FrameCorner = Instance.new("UICorner")
+local FrameStroke = Instance.new("UIStroke")
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BorderSizePixel = 0
+Frame.AnchorPoint = Vector2.new(0.5,0.5)
+Frame.Position = UDim2.new(0,175,0,25)
+Frame.Size = UDim2.new(0,325,0,30)
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+
+Information.Parent = Frame
+Information.BorderSizePixel = 0
+Information.LineHeight = 3
+Information.Size = UDim2.new(0.97,0,1,0)
+Information.Position = UDim2.new(0.5,0,0,0)
+Information.AnchorPoint = Vector2.new(0.5,0)
+Information.BackgroundTransparency = 1
+Information.TextScaled = true
+Information.TextColor3 = Color3.new(1, 1, 1)
+Information.Font = Enum.Font.Gotham
+
+FrameCorner.Parent = Frame
+FrameCorner.CornerRadius = UDim.new(0,5)
+
+FrameStroke.Parent = Frame
+FrameStroke.Thickness = 2
+
+local ping = 0
+local call_time = time()
+
+while wait() do
+  local hue = tick() % 15 / 15
+  local color = Color3.fromHSV(hue,1,1) 
+  FrameStroke.Color = color
+  
+  local currentFPS = workspace:GetRealPhysicsFPS()
+  Information.Text = "Name: " .. game.Players.LocalPlayer.DisplayName .. " | FPS: "..math.floor(currentFPS).." | Ping: "..game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString(math.round(2/ping))
+end
