@@ -100,6 +100,10 @@ OthersSection:NewButton("☀️ Sun Controll ☀️", "☀️Sun Controll☀️"
    loadstring(game:HttpGet(('https://pastefy.app/oi4CGDzs/raw'),true))()
 end)
 
+OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
+   loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/SpinPlayer'),true))()
+end)
+
 OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
    loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
 end)
