@@ -177,6 +177,10 @@ OthersSection:NewButton("🅰 FE Fake WallHop V2 🅰", "🅰FE Fake WallHop V2�
    loadstring(game:HttpGet("https://pastefy.app/Tqe0KlAP/raw", true))()
 end)
 
+OthersSection:NewButton("💢 FE Fake WallHop V2.5 💢", "FE Fake WallHop V2.5", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Wallhop_V2.5", true))()
+end)
+
 OthersSection:NewButton("❄ SnowFlake ❄", "❄SnowFlake❄", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/9AxRXEvJ'),true))()
 end)
