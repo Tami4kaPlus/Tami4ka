@@ -17,7 +17,7 @@ local Toggle = false
 local Open = false
 local SelectXYZ = 0
 
-ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
+ScreenGui.Parent = game.CoreGui
 ScreenGui.Name = "SpinPlayerGUI"
 
 Frame.Parent = ScreenGui
