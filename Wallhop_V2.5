@@ -1,0 +1,93 @@
+local TweenService = game:GetService("TweenService")
+local plr = game.Players.LocalPlayer
+local toggle = false
+
+local menu = Instance.new("Frame")
+local button = Instance.new("TextButton", menu)
+
+menu.Size = UDim2.new(0.125,0,0.075,0)
+menu.BackgroundTransparency = 0.85
+menu.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+
+button.Size = UDim2.new(0.90,0,0.75,0)
+button.Position = UDim2.new(0.5,0,0.5,0)
+button.BackgroundTransparency = 0.85
+button.AnchorPoint = Vector2.new(0.5,0.5)
+button.Text = "Walking"
+button.TextScaled = true
+button.Font = Enum.Font.Gotham
+button.TextColor3 = Color3.fromRGB(0, 0, 0)
+button.BorderSizePixel = 0
+button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+
+Instance.new("UICorner", menu)
+Instance.new("UICorner", button)
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = menu
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+		
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+button.MouseButton1Click:Connect(function()
+	if toggle == false then
+		toggle = true
+		button.Text = "WallHop"
+	else
+		toggle = false
+		button.Text = "Walking"
+	end
+end)
+
+local InfiniteJumpEnabled = true
+plr.Character.Humanoid:GetPropertyChangedSignal("Jump"):Connect(function()
+	if toggle == true then
+		if InfiniteJumpEnabled == true then    game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+			InfiniteJumpEnabled = false
+			plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ(0,-1,0)
+			wait(0.2)
+			plr.Character.HumanoidRootPart.CFrame = plr.Character.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ(0,1,0)
+			InfiniteJumpEnabled = true
+		end
+	end
+end)
+
+local guiyy = Instance.new("ScreenGui")
+guiyy.Name = "WallHopGui"
+guiyy.Parent = game.CoreGui
+
+menu.Parent = guiyy	
