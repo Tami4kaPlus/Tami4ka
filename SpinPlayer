@@ -212,6 +212,10 @@ while wait() do
 			Player.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ(1,1,0)
 		elseif SelectXYZ == "YZ" then
 			Player.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ(0,1,1)
+		elseif SelectXYZ == "XYZ" then
+			Player.Character.HumanoidRootPart.CFrame = Player.Character.HumanoidRootPart.CFrame * CFrame.fromEulerAnglesXYZ(1,1,1)
+		elseif SelectXYZ == "Del" then
+			ScreenGui:Destroy()
 		end
 	end
 	
