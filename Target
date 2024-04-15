@@ -98,6 +98,6 @@ end
 
 Box.FocusLost:Connect(onFocusLost)
 
-while Target ~= nil do
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame wait()
+while wait(0.1) do
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
 end
