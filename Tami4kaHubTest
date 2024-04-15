@@ -83,9 +83,6 @@ end)
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
 end)
 
-OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
-end)
-
 OthersSection:NewButton("🧊 System Broken V2 🧊", "🧊System broken🧊", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/script"))()
 end)
@@ -106,10 +103,6 @@ end)
 
 OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/SpinPlayer'),true))()
-end)
-
-OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
-   loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
 end)
 
 OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon🔳", function()
@@ -160,10 +153,6 @@ end)
 
 OthersSection:NewButton("⌨️ Keyboard ⌨️", "⌨️Keyboard⌨️", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
-end)
-
-OthersSection:NewButton("❤️‍🔥 RTX ❤️‍🔥", "❤️‍🔥RTX❤️‍🔥", function()
-   loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
 end)
 
 OthersSection:NewButton("💊 Realistic First Person 💊", "💊Realistic First PReson💊", function()
@@ -238,10 +227,6 @@ OthersSection:NewButton("🔰 Anti Virus Script 🔰", "🔰Anti Virus Script�
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fortnitemodder/Https-Spy/main/Enhanced"))()
 end)
 
-OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Насыщенная графика💫", function()
-   loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
-end)
-
 OthersSection:NewButton("🟥 Universall дальний AimBot 🟥", "🟥Universall дальний аимбот🟥", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/fsfeceqn'),true))()
 end)
@@ -254,6 +239,24 @@ OthersSection:NewButton("💠Universall NameTag💠", "💠Universall WallHack�
    loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
 end)
 
+local OthersTab = Window:NewTab("RTX Shaders")
+local OthersSection = OthersTab:NewSection("RTX Shaders")
+
+OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Насыщенная графика💫", function()
+   loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
+end)
+
+OthersSection:NewButton("❤️‍🔥 RTX ❤️‍🔥", "❤️‍🔥RTX❤️‍🔥", function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
+end)
+
+OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() 
+   loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
+end)
+
+OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
+   loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
+end)
 
 local OthersTab = Window:NewTab("Target")
 local OthersSection = OthersTab:NewSection("Target")
