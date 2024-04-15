@@ -227,6 +227,5 @@ while wait() do
 
 	if Toggle == true then
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 10)
-		wait()
 	end
 end
