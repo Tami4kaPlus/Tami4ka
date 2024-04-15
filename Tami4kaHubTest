@@ -267,7 +267,7 @@ local OthersSection = OthersTab:NewSection("Target")
 
 OthersSection:NewButton("❌ Target (NO WORK!) ❌", "❌Target(Beta, NO WORK!)❌", function()
 
-loadstring(game:HttpGet("https://pastebin.com/raw/p0g7yUk3"))()   
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Target"))()   
 end)
 
 local OthersTab = Window:NewTab("NO FE Scripts")
