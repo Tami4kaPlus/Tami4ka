@@ -56,6 +56,10 @@ end)
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
  
+OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
+loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
+end)
+
 OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
@@ -113,6 +117,17 @@ OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon�
 game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://14890616326"
 game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)  
 end)
+
+OthersSection:NewButton("💢 Change Codex Icon 💢", "💢Change Codex Icon💢", function()
+local Codex = game.CoreGui.Codex.gui.navbar.floatingIcon
+Codex.codexIcon2.Image = "rbxassetid://16132619292"
+Codex.UIPadding:Destroy()
+Codex.corner:Destroy()
+Instance.new("UICorner", Codex)
+Instance.new("UICorner", Codex.codexIcon2)
+Codex.Parent.main.title.Text = "Tami4ka Codex"
+end)
+
 OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "🌐Universall ShiftLock🌐", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/gSrbeNsB'))();
 end)
@@ -184,7 +199,6 @@ end)
 OthersSection:NewButton("❄ SnowFlake ❄", "❄SnowFlake❄", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/9AxRXEvJ'),true))()
 end)
-
 
 OthersSection:NewButton("🧱 Universall Colizium 🧱", "🫂Universall Colizium🫂", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/TJRmVqE3'),true))()
@@ -309,4 +323,3 @@ local CreatorTab = Window:NewTab("ℹ️ Credits ℹ️")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
 local CreatorSection = CreatorTab:NewSection("CopyPaste Avtor1zaTion")
 local CreatorSection = CreatorTab:NewSection("Version 1.1")
-local CreatorSection = CreatorTab:NewSection("Nickname: " + game.Players.LocalPlayer.Name)
