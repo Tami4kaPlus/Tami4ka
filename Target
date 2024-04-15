@@ -1,0 +1,103 @@
+local nill = game.Players.LocalPlayer.PlayerGui
+
+local ScreanGui = Instance.new("ScreenGui", nill)
+local Frame = Instance.new("Frame", ScreanGui)
+local Box = Instance.new("TextBox", Frame)
+local Text = Instance.new("TextLabel", Frame)
+
+local Stroke = Instance.new("UIStroke", Frame)
+local Corner = Instance.new("UICorner", Frame)
+Stroke.Thickness = 3
+
+Frame.Size = UDim2.new(0.15,0,0.15,0)
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame.BackgroundTransparency = 0.75
+
+Box.Size = UDim2.new(1,0,0.5,0)
+Box.BackgroundColor3 = Color3.new(0, 0, 0)
+Box.BackgroundTransparency = 0.75
+Box.Text = ""
+Box.PlaceholderText = "Введите ник..."
+Box.TextScaled = true
+Box.Position = UDim2.new(0,0,0.25,0)
+
+Text.Size = UDim2.new(1,0,0.25,0)
+Text.BackgroundTransparency = 1
+Text.Text = "Name: AvtorScript"
+Text.TextScaled = true
+Text.TextColor3 = Color3.new(0, 0, 0)
+Text.Position = UDim2.new(0,0,0,0)
+
+local UserInputService = game:GetService("UserInputService")
+
+local gui = Frame
+
+local dragging
+local dragInput
+local dragStart
+local startPos
+
+local function update(input)
+	local delta = input.Position - dragStart
+	gui.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+end
+
+gui.InputBegan:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+		dragging = true
+		dragStart = input.Position
+		startPos = gui.Position
+
+		input.Changed:Connect(function()
+			if input.UserInputState == Enum.UserInputState.End then
+				dragging = false
+			end
+		end)
+	end
+end)
+
+gui.InputChanged:Connect(function(input)
+	if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+		dragInput = input
+	end
+end)
+
+UserInputService.InputChanged:Connect(function(input)
+	if input == dragInput and dragging then
+		update(input)
+	end
+end)
+
+local function findPlayer(playerName)
+	local players = game.Players:GetPlayers()
+
+	for _, player in pairs(players) do
+		if string.find(string.lower(player.Name), string.lower(playerName), 1, true) then
+			return player
+		end
+	end
+
+	return nil
+end
+
+local playerName
+local Target
+
+local function onFocusLost(enterPressed)
+	if enterPressed then
+		playerName = Box.Text
+		local similarPlayer = findPlayer(playerName)
+		if similarPlayer then
+			Text.Text = "Name: " .. similarPlayer.Name
+			Target = similarPlayer.Name
+		else
+			Text.Text = "Name: Invaild"
+		end
+	end
+end
+
+Box.FocusLost:Connect(onFocusLost)
+
+while Target ~= nil do
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame wait()
+end
