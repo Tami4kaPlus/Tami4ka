@@ -56,6 +56,10 @@ end)
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
  
+OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
+loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
+end)
+
 OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
@@ -77,9 +81,6 @@ getgenv().gg_scripters = "Aori0001"
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
-end)
-
-OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
 end)
 
 OthersSection:NewButton("🧊 System Broken V2 🧊", "🧊System broken🧊", function()
@@ -104,15 +105,22 @@ OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/SpinPlayer'),true))()
 end)
 
-OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
-   loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
-end)
-
 OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon🔳", function()
 
 game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://14890616326"
 game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)  
 end)
+
+OthersSection:NewButton("💢 Change Codex Icon 💢", "💢Change Codex Icon💢", function()
+local Codex = game.CoreGui.Codex.gui.navbar.floatingIcon
+Codex.codexIcon2.Image = "rbxassetid://16132619292"
+Codex.UIPadding:Destroy()
+Codex.corner:Destroy()
+Instance.new("UICorner", Codex)
+Instance.new("UICorner", Codex.codexIcon2)
+Codex.Parent.main.title.Text = "Tami4ka Codex"
+end)
+
 OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "🌐Universall ShiftLock🌐", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/gSrbeNsB'))();
 end)
@@ -145,10 +153,6 @@ end)
 
 OthersSection:NewButton("⌨️ Keyboard ⌨️", "⌨️Keyboard⌨️", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
-end)
-
-OthersSection:NewButton("❤️‍🔥 RTX ❤️‍🔥", "❤️‍🔥RTX❤️‍🔥", function()
-   loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
 end)
 
 OthersSection:NewButton("💊 Realistic First Person 💊", "💊Realistic First PReson💊", function()
@@ -184,7 +188,6 @@ end)
 OthersSection:NewButton("❄ SnowFlake ❄", "❄SnowFlake❄", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/9AxRXEvJ'),true))()
 end)
-
 
 OthersSection:NewButton("🧱 Universall Colizium 🧱", "🫂Universall Colizium🫂", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/TJRmVqE3'),true))()
@@ -224,10 +227,6 @@ OthersSection:NewButton("🔰 Anti Virus Script 🔰", "🔰Anti Virus Script�
 loadstring(game:HttpGet("https://raw.githubusercontent.com/fortnitemodder/Https-Spy/main/Enhanced"))()
 end)
 
-OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Насыщенная графика💫", function()
-   loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
-end)
-
 OthersSection:NewButton("🟥 Universall дальний AimBot 🟥", "🟥Universall дальний аимбот🟥", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/fsfeceqn'),true))()
 end)
@@ -240,13 +239,35 @@ OthersSection:NewButton("💠Universall NameTag💠", "💠Universall WallHack�
    loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
 end)
 
+local OthersTab = Window:NewTab("RTX Shaders")
+local OthersSection = OthersTab:NewSection("RTX Shaders")
+
+OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Насыщенная графика💫", function()
+   loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
+end)
+
+OthersSection:NewButton("✨ RTX Pack ✨", "❤️‍🔥RTX❤️‍🔥", function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
+end)
+
+OthersSection:NewButton("🌆 Evening RTX 🌆", "RTX", function()
+   loadstring(game:HttpGet(('https://pastebin.com/raw/uqD7VqQU'),true))()
+end)
+
+OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() 
+   loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
+end)
+
+OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
+   loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
+end)
 
 local OthersTab = Window:NewTab("Target")
 local OthersSection = OthersTab:NewSection("Target")
 
 OthersSection:NewButton("❌ Target (NO WORK!) ❌", "❌Target(Beta, NO WORK!)❌", function()
 
-loadstring(game:HttpGet("https://pastebin.com/raw/p0g7yUk3"))()   
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Target"))()   
 end)
 
 local OthersTab = Window:NewTab("NO FE Scripts")
