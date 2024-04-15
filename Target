@@ -226,6 +226,8 @@ while wait() do
 	i.Color = color
 	
 	if Toggle == true then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
+		pcall(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame(0, 10, 0)
+		end)
 	end
 end
