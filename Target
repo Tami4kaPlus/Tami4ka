@@ -90,6 +90,7 @@ local function onFocusLost(enterPressed)
 		if similarPlayer then
 			Text.Text = "Name: " .. similarPlayer.Name
 			Target = similarPlayer.Name
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
 		else
 			Text.Text = "Name: Invaild"
 		end
@@ -97,7 +98,3 @@ local function onFocusLost(enterPressed)
 end
 
 Box.FocusLost:Connect(onFocusLost)
-
-while wait(0.1) do
-	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame
-end
