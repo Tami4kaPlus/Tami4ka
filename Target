@@ -224,10 +224,10 @@ while wait() do
 	FrameStroke.Color = color
 	Text.TextColor3 = color
 	i.Color = color
-	
+
 	if Toggle == true then
 		pcall(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame(0, 10, 0)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 10, 0)
 		end)
 	end
 end
