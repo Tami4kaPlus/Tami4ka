@@ -1,4 +1,3 @@
-
 local TweenService = game:GetService("TweenService")
 local Player = game:GetService("Players").LocalPlayer
 
@@ -8,7 +7,8 @@ local FrameCorner = Instance.new("UICorner")
 local ButtonCorner = Instance.new("UICorner")
 local FrameStroke = Instance.new("UIStroke")
 local Text = Instance.new("TextLabel")
-local TextX = Instance.new("TextLabel")
+local ImageTarget = Instance.new("ImageLabel")
+local ImageTargetCorner = Instance.new("UICorner")
 local Box = Instance.new("TextBox")
 local BoxCorner = Instance.new("UICorner")
 local FrameButton = Instance.new("Frame")
@@ -18,45 +18,42 @@ local Toggle = false
 local Open = false
 
 ScreenGui.Parent = game.Players.LocalPlayer.PlayerGui
-ScreenGui.Name = "SpinPlayerGUI"
+ScreenGui.Name = "TargetGUI"
 
 Frame.Parent = ScreenGui
 Frame.Name = "Main"
 Frame.BorderSizePixel = 0
 Frame.AnchorPoint = Vector2.new(0.5,0.5)
 Frame.Position = UDim2.new(0.5,0,0.5,0)
-Frame.Size = UDim2.new(0,335,0,335)
+Frame.Size = UDim2.new(0,450,0,400)
 Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 
-TextX.Parent = Frame 
-TextX.Name = "Label"
-TextX.AnchorPoint = Vector2.new(0.5,0.5)
-TextX.Position = UDim2.new(0.5,0,0.1,0)
-TextX.Size = UDim2.new(0.9,0,0.2,0)
-TextX.BorderSizePixel = 0
-TextX.BackgroundTransparency = 1
-TextX.TextScaled = true
-TextX.TextColor3 = Color3.new(1, 1, 1)
-TextX.Text = "🧨 Target 🧨"
-TextX.Font = Enum.Font.Gotham
+ImageTarget.Parent = Frame 
+ImageTarget.Name = "ImageTarget"
+ImageTarget.AnchorPoint = Vector2.new(0.5,0.5)
+ImageTarget.Position = UDim2.new(0.14,0,0.15,0)
+ImageTarget.Size = UDim2.new(0,100,0,100)
+ImageTarget.BorderSizePixel = 0
+ImageTarget.BackgroundTransparency = 0
+ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.CharacterAppearanceId.."&w=100&h=100"
 
 Text.Parent = Frame 
-Text.Name = "Text"
+Text.Name = "Name"
 Text.AnchorPoint = Vector2.new(0.5,0.5)
-Text.Position = UDim2.new(0.5,0,0.3,0)
-Text.Size = UDim2.new(0.9,0,0.15,0)
+Text.Position = UDim2.new(0.63,0,0.1,0)
+Text.Size = UDim2.new(0.7,0,0.15,0)
 Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
 Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "Name: Tami4ka"
+Text.Text = "Name: "..Player.Name
 Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
 Box.Name = "Box"
 Box.AnchorPoint = Vector2.new(0.5,0.5)
-Box.Position = UDim2.new(0.5,0,0.55,0)
-Box.Size = UDim2.new(0.8,0,0.2,0)
+Box.Position = UDim2.new(0.5,0,0.35,0)
+Box.Size = UDim2.new(0.95,0,0.1,0)
 Box.BorderSizePixel = 0
 Box.BackgroundColor3 = Color3.new(0.176471, 0.176471, 0.176471)
 Box.BackgroundTransparency = 0.3
@@ -94,6 +91,9 @@ ButtonCorner.CornerRadius = UDim.new(0,5)
 
 BoxCorner.Parent = Box
 BoxCorner.CornerRadius = UDim.new(0,5)
+
+ImageTargetCorner.Parent = ImageTarget
+ImageTargetCorner.CornerRadius = UDim.new(0,5)
 
 FrameStroke.Parent = Frame
 FrameStroke.Thickness = 4
@@ -210,6 +210,7 @@ local function onFocusLost(enterPressed)
 		if similarPlayer then
 			Text.Text = "Name: " .. similarPlayer.Name
 			Target = similarPlayer.Name
+			ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.Parent[Target].CharacterAppearanceId.."&w=100&h=100"
 		else
 			Text.Text = "Name: Invaild"
 		end
@@ -224,8 +225,9 @@ while wait() do
 	FrameStroke.Color = color
 	Text.TextColor3 = color
 	i.Color = color
-
+	ImageTarget.BackgroundColor3 = color
+	
 	if Toggle == true then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 5, 10)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
 	end
 end
