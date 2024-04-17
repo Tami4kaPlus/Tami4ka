@@ -274,15 +274,7 @@ end
 Button.MouseButton1Click:Connect(function()
 	click(FrameButton)
 	print(Toggle)
-	if Toggle == true then
-		PlayAnim(13823324057,4,0)	
-		repeat 
-			pcall(function()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
-				wait()
-			end)
-		until Toggle == false or game.Players[Target] ~= nil
-	end
+
 end)
 
 Box.FocusLost:Connect(onFocusLost)
@@ -292,5 +284,15 @@ while wait() do
 	local color = Color3.fromHSV(hue,1,1) 
 	FrameStroke.Color = color
 	Text.TextColor3 = color
-	i.Color = color
+	i.Color = color	
+	
+	if Toggle == true then
+		PlayAnim(13823324057,4,0)	
+		repeat 
+			pcall(function()
+				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+				wait()
+			end)
+		until Toggle == false or game.Players[Target] ~= nil
+	end
 end
