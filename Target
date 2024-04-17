@@ -272,14 +272,14 @@ local function onFocusLost(enterPressed)
 end
 
 Button.MouseButton1Click:Connect(function()
-	click(FrameButton)	
+	click(FrameButton)
+	PlayAnim(13823324057,4,0)	
 	repeat 
 		pcall(function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
-			PlayAnim(13823324057,4,0)
 			wait()
 		end)
-	until Toggle ~= true or game.Players[Target].Character
+	until Toggle == false or game.Players[Target] ~= nil
 end)
 
 Box.FocusLost:Connect(onFocusLost)
