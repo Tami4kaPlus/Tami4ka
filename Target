@@ -128,9 +128,7 @@ function click(button)
 	TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
 end
 
-Button.MouseButton1Click:Connect(function()
-	click(FrameButton)
-end)
+
 
 local frame = Instance.new("Frame")
 
@@ -239,11 +237,16 @@ local function onFocusLost(enterPressed)
 		end
 	end
 end
-	repeat 
+
+Button.MouseButton1Click:Connect(function()
+	click(FrameButton)	
+	while Toggle == true or game.Players[Target].Character ~= nil do
 		pcall(function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
 		end)
-	until Toggle == true or game.Players[Target].Character ~= nil 
+	end
+end)
+
 Box.FocusLost:Connect(onFocusLost)
 
 while wait() do
