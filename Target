@@ -239,7 +239,11 @@ local function onFocusLost(enterPressed)
 		end
 	end
 end
-
+	repeat 
+		pcall(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+		end)
+	until Toggle == true or game.Players[Target].Character ~= nil 
 Box.FocusLost:Connect(onFocusLost)
 
 while wait() do
@@ -249,9 +253,5 @@ while wait() do
 	Text.TextColor3 = color
 	i.Color = color
 	
-	repeat 
-		pcall(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
-		end)
-	until Toggle == true or game.Players[Target].Character ~= nil 
+
 end
