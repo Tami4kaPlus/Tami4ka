@@ -253,5 +253,5 @@ while wait() do
 		pcall(function()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
 		end)
-	until Toggle == true or game.Players[Target].Character ~= nil
+	until Toggle ~= true or game.Players[Target].Character
 end
