@@ -3,6 +3,8 @@ local Player = game:GetService("Players").LocalPlayer
 
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local ListScrolling = Instance.new("UIListLayout")
 local FrameCorner = Instance.new("UICorner")
 local ButtonCorner = Instance.new("UICorner")
 local FrameStroke = Instance.new("UIStroke")
@@ -25,23 +27,24 @@ Frame.Name = "Main"
 Frame.BorderSizePixel = 0
 Frame.AnchorPoint = Vector2.new(0.5,0.5)
 Frame.Position = UDim2.new(0.5,0,0.5,0)
-Frame.Size = UDim2.new(0,450,0,400)
+Frame.Size = UDim2.new(0,340,0,340)
 Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 
 ImageTarget.Parent = Frame 
 ImageTarget.Name = "ImageTarget"
 ImageTarget.AnchorPoint = Vector2.new(0.5,0.5)
 ImageTarget.Position = UDim2.new(0.14,0,0.15,0)
-ImageTarget.Size = UDim2.new(0,100,0,100)
+ImageTarget.Size = UDim2.new(0,80,0,80)
 ImageTarget.BorderSizePixel = 0
 ImageTarget.BackgroundTransparency = 0
+ImageTarget.BackgroundColor3 = Color3.new(0.627451, 0.627451, 0.627451)
 ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.CharacterAppearanceId.."&w=100&h=100"
 
 Text.Parent = Frame 
 Text.Name = "Name"
 Text.AnchorPoint = Vector2.new(0.5,0.5)
-Text.Position = UDim2.new(0.63,0,0.1,0)
-Text.Size = UDim2.new(0.7,0,0.15,0)
+Text.Position = UDim2.new(0.63,0,0.08,0)
+Text.Size = UDim2.new(0.7,0,0.1,0)
 Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
@@ -63,7 +66,7 @@ Box.TextColor3 = Color3.new(1, 1, 1)
 Box.Text = ""
 Box.Font = Enum.Font.Gotham
 
-FrameButton.Parent = Frame
+FrameButton.Parent = ScrollingFrame
 FrameButton.Name = "ButtonToggle"
 FrameButton.BorderSizePixel = 0
 FrameButton.AnchorPoint = Vector2.new(0.5,0.5)
@@ -98,15 +101,35 @@ ImageTargetCorner.CornerRadius = UDim.new(0,5)
 FrameStroke.Parent = Frame
 FrameStroke.Thickness = 4
 
-Button.MouseButton1Click:Connect(function()
-	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
+ScrollingFrame.Parent = Frame
+ScrollingFrame.Name = "ScrollingFunction"
+ScrollingFrame.BorderSizePixel = 0
+ScrollingFrame.AnchorPoint = Vector2.new(0.5,0.5)
+ScrollingFrame.Position = UDim2.new(0.5,0,0.7,0)
+ScrollingFrame.Size = UDim2.new(0.95,0,0.55,0)
+ScrollingFrame.BackgroundTransparency = 1
+ScrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+ScrollingFrame.ScrollBarImageColor3 = Color3.new(1, 1, 1)
+ScrollingFrame.ScrollBarThickness = 9
+
+ListScrolling.Parent = ScrollingFrame
+ListScrolling.Name = "UIList"
+ListScrolling.Padding = UDim.new(0,5)
+ListScrolling.HorizontalAlignment = Enum.HorizontalAlignment.Center
+
+function click(button)
+	TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
 	if Toggle == false then
 		Button.Text = "Disabled" Toggle = true
 	else
 		Button.Text = "Enabled" Toggle = false
 	end
 	wait()
-	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+	TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+end
+
+Button.MouseButton1Click:Connect(function()
+	click(FrameButton)
 end)
 
 local frame = Instance.new("Frame")
@@ -225,9 +248,10 @@ while wait() do
 	FrameStroke.Color = color
 	Text.TextColor3 = color
 	i.Color = color
-	ImageTarget.BackgroundColor3 = color
 	
 	if Toggle == true then
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+		pcall(function()
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+		end)
 	end
 end
