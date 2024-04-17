@@ -242,7 +242,7 @@ Button.MouseButton1Click:Connect(function()
 	click(FrameButton)	
 	while Toggle == true or game.Players[Target].Character ~= nil do
 		pcall(function()
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0) wait()
 		end)
 	end
 end)
