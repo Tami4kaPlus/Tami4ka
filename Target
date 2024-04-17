@@ -279,7 +279,7 @@ Button.MouseButton1Click:Connect(function()
 			PlayAnim(13823324057,4,0)
 			wait()
 		end)
-	until Toggle == true or game.Players[Target].Character ~= nil
+	until Toggle ~= true or game.Players[Target].Character
 end)
 
 Box.FocusLost:Connect(onFocusLost)
