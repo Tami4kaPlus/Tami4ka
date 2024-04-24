@@ -13,7 +13,11 @@ PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, funct
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
-PlrSection:NewButton("✔ Tp to click ✔", "Teleport", function()
+PlrSection:NewSlider("👀 FieldOfView 👀", "Set you FOV", 120, 70, function(s)
+    game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
     mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
 tool.RequiresHandle = false
