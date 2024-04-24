@@ -2,7 +2,6 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4
  
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme")
  
- 
 local PlrTab = Window:NewTab("Main")
 local PlrSection = PlrTab:NewSection("Main")
  
@@ -65,10 +64,7 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
 end)
 
 OthersSection:NewTextBox("📱 Растяг экрана 📱", "Растяг экрана", s, function()
-local Camera = workspace.CurrentCamera
-game:GetService("RunService").RenderStepped:Connect(function()
-   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
-end)
+    screen = s
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
@@ -318,6 +314,11 @@ end)
 
 OthersSection:NewButton("🎱 Blade Ball | Only AutoParty 🎱", "🎱 Blade Ball 🎱", function()
    loadstring(game:HttpGet("https://scriptblox.com/raw/UPD-Blade-Ball-op-autoparry-with-visualizer-8652"))()
+end)
+
+local Camera = workspace.CurrentCamera
+game:GetService("RunService").RenderStepped:Connect(function()
+   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, screen, 0, 0, 0, 1)
 end)
 
 local CreatorTab = Window:NewTab("Credits")
