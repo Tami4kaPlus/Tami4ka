@@ -64,7 +64,7 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewButton("📱 Растяг экрана 📱", "📱 Растяг экрана📱", function()
+OthersSection:NewTextBox("📱 Растяг экрана 📱", "Растяг экрана", s, function()
 local Camera = workspace.CurrentCamera
 game:GetService("RunService").RenderStepped:Connect(function()
    Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
@@ -126,7 +126,7 @@ OthersSection:NewButton("🌀 Flashback 🌀", "🌀 Flashback 🌀", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/L"))()
 end)
 
-OthersSection:NewButton("⬛ Ghost Hub ⬛", "⬛Ghost Hub⬛", function()
+OthersSection:NewButton("⬛ Ghost Hub ⬛", "Ghost Hub", function()
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))()
 end)
