@@ -63,11 +63,20 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewButton("📱 Растяг экрана 📱", "Растяг экрана", function()
+OthersSection:NewButton("📱 Растяжение экрана 📱", "Растягивает экран", function()
+   getgenv().Resolution = {
+    [".gg/scripters"] = 0.80
+}
+
 local Camera = workspace.CurrentCamera
-game:GetService("RunService").RenderStepped:Connect(function()
-   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0, 0, 1)
-end)
+if getgenv().gg_scripters == nil then
+    game:GetService("RunService").RenderStepped:Connect(
+        function()
+            Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution[".gg/scripters"], 0, 0, 0, 1)
+        end
+    )
+end
+getgenv().gg_scripters = "Aori0001"
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
@@ -96,7 +105,6 @@ OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
 end)
 
 OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon🔳", function()
-
 game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://16132619292"
 game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)  
 end)
@@ -164,16 +172,16 @@ OthersSection:NewButton("⏰ Stop Time ⏰", "⏰Stop Time⏰", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/djAd7g2W'))()
 end)
 
-OthersSection:NewButton("⬜ FE Fake WallHop V1 ⬜", "⬜FE Fake WallHop V1⬜", function()
+OthersSection:NewButton("⬜ FE Fake WallHop V1 ⬜", "FE Fake WallHop V1", function()
 
 loadstring(game:HttpGet("https://pastebin.com/raw/mZ1g6F6E"))()
 end)
 
-OthersSection:NewButton("🅰 FE Fake WallHop V2 🅰", "🅰FE Fake WallHop V2🅰", function()
+OthersSection:NewButton("⬛ FE Fake WallHop V2 ⬛", "FE Fake WallHop V2", function()
    loadstring(game:HttpGet("https://pastefy.app/Tqe0KlAP/raw", true))()
 end)
 
-OthersSection:NewButton("💢 FE Fake WallHop V2.5 💢", "FE Fake WallHop V2.5", function()
+OthersSection:NewButton("🟥 FE Fake WallHop V2.5 🟥", "FE Fake WallHop V2.5", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Wallhop_V2.5", true))()
 end)
 
@@ -227,7 +235,7 @@ OthersSection:NewButton("🟦 Universall ближний AimBot 🟦", "", functi
    loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/PlayerLock/main/Script",true))()
 end)
 
-OthersSection:NewButton("💠Universall NameTag💠", "💠Universall WallHack💠", function()
+OthersSection:NewButton("💠 Universall NameTag 💠", "Показывает ники игроков сквозь стену", function()
    loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
 end)
 
@@ -238,7 +246,7 @@ OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Н
    loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
 end)
 
-OthersSection:NewButton("✨ RTX Pack ✨", "❤️‍🔥RTX❤️‍🔥", function()
+OthersSection:NewButton("✨ RTX Pack ✨", "✨ RTX Pack ✨", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
 end)
 
@@ -246,11 +254,11 @@ OthersSection:NewButton("🌆 Evening RTX 🌆", "RTX", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/uqD7VqQU'),true))()
 end)
 
-OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() 
+OthersSection:NewButton("🟨 RTX Yellow 🟨", "RTX", function() 
    loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
 end)
 
-OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
+OthersSection:NewButton("🟪 Pink RTX 🟪", "RTX", function()
    loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
 end)
 
@@ -279,13 +287,11 @@ end)
 
 
 OthersSection:NewButton("📏 NO FE Baldi 📏", "📏NO FE Baldi📏", function()
-
-loadstring(game:HttpGet(('https://pastefy.app/GcSUxGF4/raw'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Baldi'),true))()
 end)
 
 
 OthersSection:NewButton("🔫 NO FE Suicide 🔫", "🔫NO FE Suicide🔫", function()
-
 loadstring(game:HttpGet(('https://pastebin.com/raw/eziEnqs2'),true))()
 end)
 
@@ -317,11 +323,6 @@ end)
 
 OthersSection:NewButton("🎱 Blade Ball | Only AutoParty 🎱", "🎱 Blade Ball 🎱", function()
    loadstring(game:HttpGet("https://scriptblox.com/raw/UPD-Blade-Ball-op-autoparry-with-visualizer-8652"))()
-end)
-
-local Camera = workspace.CurrentCamera
-game:GetService("RunService").RenderStepped:Connect(function()
-   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, screen, 0, 0, 0, 1)
 end)
 
 local CreatorTab = Window:NewTab("Credits")
