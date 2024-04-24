@@ -63,7 +63,7 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewTextBox("📱 Растяг экрана 📱", "Растяг экрана", s, function()
+OthersSection:NewButton("📱 Растяг экрана 📱", "Растяг экрана", function()
 local Camera = workspace.CurrentCamera
 game:GetService("RunService").RenderStepped:Connect(function()
    Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0, 0, 1)
