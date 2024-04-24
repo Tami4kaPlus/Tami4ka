@@ -1,0 +1,125 @@
+plr = game.Players.LocalPlayer
+repeat wait() until plr.Character
+char = plr.Character
+
+wait(1/60)
+
+print("Baldi V2 By Theamazingnater")
+
+char.Humanoid.JumpPower = 0
+char.Humanoid.Animator:Destroy()
+char.Animate:Destroy()
+char.Head.face.Transparency = 1
+local sweep = Instance.new("Part")
+local slap = Instance.new("Sound",char)
+slap.SoundId = "rbxassetid://1841427728"
+slap.Volume = 10
+local congrats = Instance.new("Sound",char)
+congrats.SoundId = "rbxassetid://1846448410"
+congrats.Volume = 10
+local death = Instance.new("Sound",char)
+death.SoundId = "rbxassetid://1846449729"
+death.Volume = 10
+local schoolhouse = Instance.new("Sound",char)
+schoolhouse.SoundId = "rbxassetid://1865627207"
+schoolhouse.Volume = 10
+local doors = Instance.new("Sound",char)
+doors.SoundId = "rbxassetid://1846426159"
+doors.Volume = 10
+local sweepdecal1 = Instance.new("Decal",sweep)
+local sweepdecal2 = Instance.new("Decal",sweep)
+local weld = Instance.new("Weld",sweep)
+sweepdecal1.Face = "Back"
+sweepdecal1.Texture = "rbxassetid://1814499405"
+sweepdecal2.Face = "Front"
+sweepdecal2.Texture = "rbxassetid://1814499405"
+sweep.Name = "gotta sweep sweep sweep"
+sweep.Size = Vector3.new(4.2, 8.4, 0.114)
+sweep.Transparency = 1
+sweep.CanCollide = false
+weld.Part0 = char.Torso
+weld.Part1 = sweep
+weld.C0 = CFrame.new(-0.466694832, 1.18746996, -0.594377518, -0.999195099, 0, 0.0401160046, 0, 1, 0, -0.0401160046, 0, -0.999195099)
+sweep.Parent = char
+local vel = Instance.new("BodyVelocity",sweep)
+vel.MaxForce = Vector3.new(math.huge,math.huge,math.huge)
+vel.Velocity = Vector3.new(0,0,0)
+for i,v in pairs(char:GetChildren()) do
+	if v.ClassName == "Part" then
+		v.Transparency = 1
+
+	elseif v.ClassName == "Accessory" then
+		v.Handle.Transparency = 1
+	end
+end
+mouse = plr:GetMouse()
+SpeedofBaldi = 40
+using = false
+char.Torso.Touched:connect(function(part)
+	local human = part.Parent:FindFirstChildOfClass("Humanoid")
+	if human and using then
+		human.Health = 0
+		death:Play()
+	end
+end)
+function Taunt()
+	local rd = math.random(1,3)
+	if rd == 1 then
+		congrats:Play()
+	end
+	if rd == 2 then
+		schoolhouse:Play()
+	end
+	if rd == 3 then
+		doors:Play()
+	end
+end
+function Teleport()
+	char.Torso.CFrame = mouse.Hit + Vector3.new(0,3,0)
+	slap:Play()
+	using = true
+	sweepdecal1.Texture = "http://www.roblox.com/asset/?id=1814500416"
+	sweepdecal2.Texture = "http://www.roblox.com/asset/?id=1814500416"
+	wait(0.4)
+	using = false
+	sweepdecal1.Face = "Back"
+	sweepdecal1.Texture = "rbxassetid://1814499405"
+	sweepdecal2.Face = "Front"
+	sweepdecal2.Texture = "rbxassetid://1814499405"
+end
+mouse.KeyDown:connect(function(k)
+	if k == "v" then
+		Taunt()
+	end
+	if k == "f" then
+		Teleport()
+	end
+end)
+
+function move()
+	vel.Velocity = char.Torso.CFrame.lookVector * SpeedofBaldi
+	sweepdecal1.Texture = "http://www.roblox.com/asset/?id=1814500416"
+	sweepdecal2.Texture = "http://www.roblox.com/asset/?id=1814500416"
+	using = true
+	slap:Play()
+	wait(0.4)
+	using = false
+	vel.Velocity = Vector3.new(0,0,0)
+	sweepdecal1.Face = "Back"
+	sweepdecal1.Texture = "rbxassetid://1814499405"
+	sweepdecal2.Face = "Front"
+	sweepdecal2.Texture = "rbxassetid://1814499405"
+end
+
+local screen = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+local button = Instance.new("TextButton")
+button.Parent = screen
+button.Size = UDim2.new(0.2, 0, 0.1, 0)
+button.Position = UDim2.new(0.4, 0, 0.7,0)
+button.TextScaled = true
+button.Text = "Slap!"
+button.Font = Enum.Font.Code
+
+button.MouseButton1Click:connect(function()
+	move()
+end)
