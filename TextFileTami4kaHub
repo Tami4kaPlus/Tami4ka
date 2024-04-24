@@ -56,12 +56,6 @@ end)
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
 
-OthersSection:NewButton("Codex console", "destroy", function() --Удалить 🧨🧨
-local Codex = game.CoreGui.Codex
-Codex.gui.tabs.console:Destroy()
-Codex.gui.navbar.main.container.console:Destroy()
-end)
-
 OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
 end)
@@ -71,19 +65,10 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
 end)
 
 OthersSection:NewButton("📱 Растяг экрана 📱", "📱 Растяг экрана📱", function()
-   getgenv().Resolution = {
-    [".gg/scripters"] = 0.90
-}
-
 local Camera = workspace.CurrentCamera
-if getgenv().gg_scripters == nil then
-    game:GetService("RunService").RenderStepped:Connect(
-        function()
-            Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution[".gg/scripters"], 0, 0, 0, 1)
-        end
-    )
-end
-getgenv().gg_scripters = "Aori0001"
+game:GetService("RunService").RenderStepped:Connect(function()
+   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, s, 0, 0, 0, 1)
+end)
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
@@ -117,7 +102,7 @@ game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://16132619292"
 game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)  
 end)
 
-OthersSection:NewButton("💢 Codex Custom 💢", "💢Change Codex Icon💢", function()
+OthersSection:NewButton("💢 Codex Custom 💢", "by Tami4ka", function()
 local Codex = game.CoreGui.Codex.gui.navbar.floatingIcon
 Codex.Parent.Parent.DisplayOrder = 2147483646
 Codex.Parent.Parent.Parent.popups.DisplayOrder = 2147483647
