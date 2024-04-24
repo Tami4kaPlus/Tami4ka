@@ -64,7 +64,10 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
 end)
 
 OthersSection:NewTextBox("📱 Растяг экрана 📱", "Растяг экрана", s, function()
-    screen = s
+local Camera = workspace.CurrentCamera
+game:GetService("RunService").RenderStepped:Connect(function()
+   Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.75, 0, 0, 0, 1)
+end)
 end)
 
 OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
