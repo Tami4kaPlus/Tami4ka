@@ -13,7 +13,7 @@ PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, funct
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
-PlrSection:NewSlider("👀 FieldOfView 👀", "Set you FOV", 120, 70, function(s)
+PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
     game.Workspace.CurrentCamera.FieldOfView = s
 end)
 
