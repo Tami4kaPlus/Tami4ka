@@ -55,7 +55,13 @@ end)
 
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
- 
+
+OthersSection:NewButton("Codex console", "destroy", function()
+local Codex = game.CoreGui.Codex
+Codex.gui.tabs.console:Destroy()
+Codex.gui.navbar.main.container.console:Destroy()
+end)
+
 OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
 end)
