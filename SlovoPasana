@@ -1,0 +1,102 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
+ 
+local Window = Library.CreateLib("💩 Слово Пацана | By Tami4ka ☠", "GrapeTheme")
+ 
+local PlrTab = Window:NewTab("Main")
+local PlrSection = PlrTab:NewSection("Main")
+ 
+PlrSection:NewSlider("⚡ Speed ⚡", "Set you speed", 150, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+ 
+PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
+    game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
+    mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+PlrSection:NewButton("🌌 FullBrightness 🌌", "Делает освищение ярким", function()
+    local Light = game:GetService("Lighting")
+ 
+function dofullbright()
+Light.Ambient = Color3.new(1, 1, 1)
+Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+Light.ColorShift_Top = Color3.new(1, 1, 1)
+end
+ 
+dofullbright()
+ 
+Light.LightingChanged:Connect(dofullbright)
+end)
+
+local OthersTab = Window:NewTab("Other")
+local OthersSection = OthersTab:NewSection("Other")
+local OthersSection = OthersTab:NewSection("❗ Чтобы фармилка работала нужно купить балончик и зайти в команду чайников ❗")
+OthersSection:NewToggle("🤑 Фармилка Денег 🤑", "Телепортирует к графитти и закрашивает", s, function()
+    print(s)
+end)
+
+OthersSection:NewButton("📱 Растяжение экрана 📱", "Растягивает экран", function()
+   getgenv().Resolution = {
+    [".gg/scripters"] = 0.80
+}
+
+local Camera = workspace.CurrentCamera
+if getgenv().gg_scripters == nil then
+    game:GetService("RunService").RenderStepped:Connect(
+        function()
+            Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, getgenv().Resolution[".gg/scripters"], 0, 0, 0, 1)
+        end
+    )
+end
+getgenv().gg_scripters = "Aori0001"
+end)
+
+OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
+end)
+
+OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "Universall ShiftLock", function()
+   loadstring(game:HttpGet('https://pastebin.com/raw/gSrbeNsB'))();
+end)
+
+OthersSection:NewButton("⬛ Ghost Hub ⬛", "Ghost Hub", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))()
+end)
+
+OthersSection:NewButton("🌫 Custom Fly Gui 🌫", "🌫System Fly Gui🌫", function()
+   loadstring(game:HttpGet("https://pastefy.app/M0N30XXG/raw"))("t.me/arceusxscripts");
+end)
+
+OthersSection:NewButton("⌨️ Keyboard ⌨️", "⌨️Keyboard⌨️", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/advxzivhsjjdhxhsidifvsh/mobkeyboard/main/main.txt", true))()
+end)
+
+OthersSection:NewButton("🟥 Universall дальний AimBot 🟥", "🟥Universall дальний аимбот🟥", function()
+   loadstring(game:HttpGet(('https://pastebin.com/raw/fsfeceqn'),true))()
+end)
+
+OthersSection:NewButton("🟦 Universall ближний AimBot 🟦", "", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/PlayerLock/main/Script",true))()
+end)
+
+OthersSection:NewButton("💠 Universall NameTag 💠", "Показывает ники игроков сквозь стену", function()
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+end)
+
+local CreatorTab = Window:NewTab("Credits")
+local CreatorSection = CreatorTab:NewSection("Telegram: t.me/Tami4ka_TG")
