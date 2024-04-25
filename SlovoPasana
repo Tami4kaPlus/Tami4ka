@@ -48,11 +48,6 @@ local function teleportToRandomGraffiti()
   end
 end
 
-player.Character.Humanoid.Health.Changed:Connect(function()
-  player.Character.HumanoidRootPart.CFrame = CFrame.new(-959.004456, 35.8922272, 407.683228, -0.980147243, -1.33410571e-08, -0.198271021, -1.11783534e-08, 1, -1.20270993e-08, 0.198271021, -9.57198498e-09, -0.980147243)
-  wait(5)
-end)
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 local toggle = false 
 local Window = Library.CreateLib("💩 Слово Пацана | By Tami4ka ☠", "GrapeTheme")
