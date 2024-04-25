@@ -1,5 +1,60 @@
+-- Получаем папку с граффити
+local player = game.Players.LocalPlayer
+local graffitiFolder = game.Workspace.Graffiti
+
+function fireproximityprompt(ProximityPrompt, Amount, Skip)
+  assert(ProximityPrompt, "Argument #1 Missing or nil")
+  assert(typeof(ProximityPrompt) == "Instance" and ProximityPrompt:IsA("ProximityPrompt"), "Attempted to fire a Value that is not a ProximityPrompt")
+
+  local HoldDuration = ProximityPrompt.HoldDuration
+  if Skip then
+    ProximityPrompt.HoldDuration = 0
+  end
+
+  for i = 1, Amount or 1 do
+    ProximityPrompt:InputHoldBegin()
+    if Skip then
+      local RunService = game:GetService("RunService")
+      local Start = time()
+      repeat
+        RunService.Heartbeat:Wait(0.1)
+      until time() - Start > HoldDuration
+    end
+    ProximityPrompt:InputHoldEnd()
+  end
+  ProximityPrompt.HoldDuration = HoldDuration
+end
+
+-- Функция для телепортации к случайному граффити
+local function teleportToRandomGraffiti()
+  -- Получаем список всех граффити
+  local graffitiList = graffitiFolder:GetChildren()
+
+  -- Проверяем, есть ли граффити в папке
+  if #graffitiList > 0 then
+    -- Выбираем случайное граффити
+    local randomGraffiti = graffitiList[math.random(#graffitiList)]
+
+    -- Получаем позицию граффити
+    local graffitiPosition = randomGraffiti.Position
+    if randomGraffiti.Decal.Texture ~= "rbxassetid://16626318095" then
+      -- Телепортируем игрока к граффити
+
+      player.Character.HumanoidRootPart.CFrame = CFrame.new(graffitiPosition)
+      fireproximityprompt(randomGraffiti.Billboard.ProximityPrompt, 2, true)
+    else
+      player.Character.HumanoidRootPart.CFrame = CFrame.new(-959.004456, 35.8922272, 407.683228, -0.980147243, -1.33410571e-08, -0.198271021, -1.11783534e-08, 1, -1.20270993e-08, 0.198271021, -9.57198498e-09, -0.980147243)
+    end
+  end
+end
+
+player.Character.Humanoid.Health.Changed:Connect(function()
+  player.Character.HumanoidRootPart.CFrame = CFrame.new(-959.004456, 35.8922272, 407.683228, -0.980147243, -1.33410571e-08, -0.198271021, -1.11783534e-08, 1, -1.20270993e-08, 0.198271021, -9.57198498e-09, -0.980147243)
+  wait(5)
+end)
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
- 
+local toggle = false 
 local Window = Library.CreateLib("💩 Слово Пацана | By Tami4ka ☠", "GrapeTheme")
  
 local PlrTab = Window:NewTab("Main")
@@ -46,10 +101,16 @@ end)
 
 local OthersTab = Window:NewTab("Other")
 local OthersSection = OthersTab:NewSection("Other")
-local OthersSection = OthersTab:NewSection("❗ Чтобы фармилка работала нужно купить балончик и зайти в команду чайников ❗")
+
+local OthersSection = OthersTab:NewSection("❗ Чтобы фармилка работала нужно купить балончик ❗")
 OthersSection:NewToggle("🤑 Фармилка Денег 🤑", "Телепортирует к графитти и закрашивает", s, function()
-    print(s)
+  if toggle == false then
+    toggle = true
+  elseif toggle == true then
+    toggle = false
+  end
 end)
+local OthersSection = OthersTab:NewSection("❗ И зайти в команду чайников ❗")
 
 OthersSection:NewButton("📱 Растяжение экрана 📱", "Растягивает экран", function()
    getgenv().Resolution = {
@@ -100,3 +161,10 @@ end)
 
 local CreatorTab = Window:NewTab("Credits")
 local CreatorSection = CreatorTab:NewSection("Telegram: t.me/Tami4ka_TG")
+
+while wait() do
+  if toggle == true then
+    teleportToRandomGraffiti()
+    task.wait()
+  end
+end
