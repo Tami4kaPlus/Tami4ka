@@ -51,7 +51,7 @@ Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
 Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "V3: "..Player.Name
+Text.Text = "Name: "..Player.Name
 Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
@@ -257,7 +257,7 @@ Button.MouseButton1Click:Connect(function()
 				break
 			end
 		end
-		stupid:Stop()
+		notfunny:Stop()
 	end
 end)
 
