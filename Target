@@ -3,19 +3,6 @@ local Player = game:GetService("Players").LocalPlayer
 
 local plr = game:GetService("Players")
 
-local stupid = Instance.new('Animation')
-stupid.AnimationId = 'rbxassetid://148840371'
-hummy = game:GetService("Players").LocalPlayer.Character.Humanoid
-pcall(function()
-	hummy.Parent.Pants:Destroy()
-end)
-pcall(function()
-	hummy.Parent.Shirt:Destroy()
-end)
-local notfunny = hummy:LoadAnimation(stupid)
-notfunny:Play()
-notfunny:AdjustSpeed(5)
-
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local ScrollingFrame = Instance.new("ScrollingFrame")
@@ -271,10 +258,13 @@ while wait() do
 		repeat 
 			pcall(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+				local stupid = Instance.new('Animation')
+				stupid.AnimationId = 'rbxassetid://148840371'
+				local hummy = game:GetService("Players").LocalPlayer.Character.Humanoid
+				local notfunny = hummy:LoadAnimation(stupid)
 				notfunny:Play()
 				notfunny:AdjustSpeed(5)
 			end)
 		until Toggle == false or game.Players[Target] ~= nil
-		notfunny:Stop()
 	end
 end
