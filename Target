@@ -51,7 +51,7 @@ Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
 Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "V2: "..Player.Name
+Text.Text = "V3: "..Player.Name
 Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
@@ -250,11 +250,14 @@ Button.MouseButton1Click:Connect(function()
 		local notfunny = hummy:LoadAnimation(stupid)
 		notfunny:Play()
 		notfunny:AdjustSpeed(11)
-		while Toggle ~= true or game.Players[Target] ~= nil do		
-			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+		while game.Players[Target] ~= nil do		
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 1)
 			wait()
+			if Toggle == false then
+				break
+			end
 		end
-		stupid:Destroy()
+		stupid:Stop()
 	end
 end)
 
