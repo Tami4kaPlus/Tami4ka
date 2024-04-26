@@ -149,7 +149,7 @@ function Kavo:ToggleUI()
 	end
 end
 
-function Kavo.CreateLib(kavName, themeList)
+function Kavo.CreateLib(kavName, themeList, img)
 	if not themeList then
 		themeList = themes
 	end
@@ -278,10 +278,7 @@ function Kavo.CreateLib(kavName, themeList)
 	local q = Instance.new("ImageLabel")
 	q.Parent = frame
 	q.Size = UDim2.new(1,0,1,0)
-
-	function Icon:ChangeIconImage(img)
-		q.Image = img
-	end
+	q.Image = img
 
 	local i = Instance.new("UIStroke", q)
 	i.Thickness = 4
