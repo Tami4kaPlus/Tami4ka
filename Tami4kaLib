@@ -279,7 +279,7 @@ function Kavo.CreateLib(kavName, themeList)
 	q.Parent = frame
 	q.Size = UDim2.new(1,0,1,0)
 
-	function Kavo:ChangeIconImage(img)
+	function Icon:ChangeIconImage(img)
 		q.Image = img
 	end
 
