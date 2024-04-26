@@ -51,7 +51,7 @@ Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
 Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "V4: "..Player.Name
+Text.Text = "V5: "..Player.Name
 Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
@@ -246,18 +246,22 @@ Button.MouseButton1Click:Connect(function()
 	if Toggle == true then
 		if Target ~= Player.Name then
 			local stupid = Instance.new('Animation')
+			local damb = Instance.new('WeldConstraint')
+			damb.Part0 = game.Players[Target].Character.HumanoidRootPart
+			damb.Part1 = game.Players.LocalPlayer.Character.HumanoidRootPart
 			stupid.AnimationId = 'rbxassetid://148840371'
 			local hummy = game:GetService("Players").LocalPlayer.Character.Humanoid
 			local notfunny = hummy:LoadAnimation(stupid)
 			notfunny:Play()
-			notfunny:AdjustSpeed(11)
+			notfunny:AdjustSpeed(11)				
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 1)
 			while game.Players[Target] ~= nil do		
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 1)
 				wait()
 				if Toggle == false then
 					break
 				end
 			end
+			damb:Destroy()
 			notfunny:Stop()
 		end
 	end
