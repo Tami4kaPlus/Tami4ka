@@ -253,18 +253,19 @@ while wait() do
 	FrameStroke.Color = color
 	Text.TextColor3 = color
 	i.Color = color	
-	
+
 	if Toggle == true then
+		local stupid = Instance.new('Animation')
+		stupid.AnimationId = 'rbxassetid://148840371'
+		local hummy = game:GetService("Players").LocalPlayer.Character.Humanoid
+		local notfunny = hummy:LoadAnimation(stupid)
+		notfunny:Play()
+		notfunny:AdjustSpeed(10)
 		repeat 
 			pcall(function()
 				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
-				local stupid = Instance.new('Animation')
-				stupid.AnimationId = 'rbxassetid://148840371'
-				local hummy = game:GetService("Players").LocalPlayer.Character.Humanoid
-				local notfunny = hummy:LoadAnimation(stupid)
-				notfunny:Play()
-				notfunny:AdjustSpeed(5)
 			end)
 		until Toggle == false or game.Players[Target] ~= nil
+		stupid:Destroy()
 	end
 end
