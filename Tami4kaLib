@@ -279,6 +279,10 @@ function Kavo.CreateLib(kavName, themeList)
 	q.Parent = frame
 	q.Size = UDim2.new(1,0,1,0)
 
+	function Kavo:ChangeIconImage(img)
+		q.Image = img
+	end
+
 	local i = Instance.new("UIStroke", q)
 	i.Thickness = 4
 	i.Color = Color3.new(1,1,1)
@@ -411,10 +415,6 @@ function Kavo.CreateLib(kavName, themeList)
 			coverup.BackgroundColor3 = themeList.Header
 		end
 	end)()
-
-	function Kavo:ChangeIconImage(img)
-	q.Image = img
-	end
 
 	function Kavo:ChangeColor(prope,color)
 		if prope == "Background" then
