@@ -8,9 +8,7 @@ local CoreGui = game:GetService("StarterGui")
     })
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
-local Icon = Library.CreateLib:ChangeIconImage("rbxassetid://16132619292") 
-
-local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme")
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme","rbxassetid://16132619292")
  
 local PlrTab = Window:NewTab("Main")
 local PlrSection = PlrTab:NewSection("Main")
