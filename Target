@@ -51,7 +51,7 @@ Text.BorderSizePixel = 0
 Text.BackgroundTransparency = 1
 Text.TextScaled = true
 Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "V1: "..Player.Name
+Text.Text = "V2: "..Player.Name
 Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
@@ -119,12 +119,12 @@ ListScrolling.Name = "UIList"
 ListScrolling.Padding = UDim.new(0,5)
 ListScrolling.HorizontalAlignment = Enum.HorizontalAlignment.Center
 
-function click(button)
+function click(button, text1, text2)
 	TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
 	if Toggle == false then
-		Button.Text = "Disabled" Toggle = true
+		Button.Text = text1 Toggle = true
 	else
-		Button.Text = "Enabled" Toggle = false
+		Button.Text = text2 Toggle = false
 	end
 	wait()
 	TweenService:Create(button, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
@@ -241,7 +241,7 @@ local function onFocusLost(enterPressed)
 end
 
 Button.MouseButton1Click:Connect(function()
-	click(FrameButton)
+	click(FrameButton, "Disabled", "Enabled")
 	print(Toggle)
 	if Toggle == true then
 		local stupid = Instance.new('Animation')
@@ -250,11 +250,9 @@ Button.MouseButton1Click:Connect(function()
 		local notfunny = hummy:LoadAnimation(stupid)
 		notfunny:Play()
 		notfunny:AdjustSpeed(11)
-		while Toggle == false or game.Players[Target] ~= nil do		
-			pcall(function()
-				wait()
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
-			end)
+		while Toggle ~= true or game.Players[Target] ~= nil do		
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame + Vector3.new(0, 0, 0)
+			wait()
 		end
 		stupid:Destroy()
 	end
