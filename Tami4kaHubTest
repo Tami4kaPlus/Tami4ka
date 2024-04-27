@@ -72,7 +72,7 @@ loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explore
 end)
 
 OthersSection:NewButton("⬛ Test Hub ⬛", "test hub", function()
-loadstring(game:HttpGet('https://raw.githubusercontent.com/Avtor1zaTion/System-Broken-Custom/main/system%20broken.txt'))()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/RSO_Script_TP_Player'))()
 end)
 
 OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", function()
