@@ -71,7 +71,7 @@ OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
 end)
 
-OthersSection:NewButton("⬛ Test Hub ⬛", "Ghost Hub", function()
+OthersSection:NewButton("⬛ Test Hub ⬛", "test hub", function()
 loadstring(game:HttpGet('https://raw.githubusercontent.com/Avtor1zaTion/System-Broken-Custom/main/system%20broken.txt'))()
 end)
 
