@@ -101,7 +101,7 @@ BoxCorner.CornerRadius = UDim.new(0,5)
 FrameStroke.Parent = Frame
 FrameStroke.Thickness = 4
 
-ImageTarget.Parent = Frame 
+ImageTarget.Parent = frame 
 ImageTarget.Name = "Icon"
 ImageTarget.Size = UDim2.new(1,0,1,0)
 ImageTarget.BorderSizePixel = 0
