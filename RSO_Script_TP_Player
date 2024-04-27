@@ -2,6 +2,7 @@ local TweenService = game:GetService("TweenService")
 local Player = game:GetService("Players").LocalPlayer
 
 local ScreenGui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
 local Frame = Instance.new("Frame")
 local FrameCorner = Instance.new("UICorner")
 local ButtonCorner = Instance.new("UICorner")
@@ -33,8 +34,8 @@ Frame.BackgroundColor3 = Color3.new(0, 0, 0)
 TextX.Parent = Frame 
 TextX.Name = "Label"
 TextX.AnchorPoint = Vector2.new(0.5,0.5)
-TextX.Position = UDim2.new(0.65,0,0.1,0)
-TextX.Size = UDim2.new(0.8,0,0.2,0)
+TextX.Position = UDim2.new(0.5,0,0.1,0)
+TextX.Size = UDim2.new(0.9,0,0.2,0)
 TextX.BorderSizePixel = 0
 TextX.BackgroundTransparency = 1
 TextX.TextScaled = true
@@ -101,10 +102,8 @@ FrameStroke.Parent = Frame
 FrameStroke.Thickness = 4
 
 ImageTarget.Parent = Frame 
-ImageTarget.Name = "ImageTarget"
-ImageTarget.AnchorPoint = Vector2.new(0.5,0.5)
-ImageTarget.Position = UDim2.new(0.14,0,0.15,0)
-ImageTarget.Size = UDim2.new(0,80,0,80)
+ImageTarget.Name = "Icon"
+ImageTarget.Size = UDim2.new(1,0,1,0)
 ImageTarget.BorderSizePixel = 0
 ImageTarget.BackgroundTransparency = 0
 ImageTarget.BackgroundColor3 = Color3.new(0.627451, 0.627451, 0.627451)
@@ -112,6 +111,7 @@ ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.CharacterAppear
 
 ImageTargetCorner.Parent = ImageTarget
 ImageTargetCorner.CornerRadius = UDim.new(0,5)
+ImageTargetCorner.Color = Color3.new(1,1,1)
 
 local function findPlayer(playerName)
 	local players = game.Players:GetPlayers()
@@ -150,17 +150,6 @@ Button.MouseButton1Click:Connect(function()
 	wait()
 	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
 end)
-
-local frame = Instance.new("Frame")
-
-local q = Instance.new("ImageLabel")
-q.Parent = frame
-q.Size = UDim2.new(1,0,1,0)
-q.Image = "rbxassetid://17308800972"
-
-local i = Instance.new("UIStroke", q)
-i.Thickness = 4
-Instance.new("UICorner", q)
 
 frame.BackgroundTransparency = 0
 frame.Name = "OpenGui"
@@ -235,5 +224,4 @@ while wait() do
 	local color = Color3.fromHSV(hue,1,1) 
 	FrameStroke.Color = color
 	Text.TextColor3 = color
-	i.Color = color
 end
