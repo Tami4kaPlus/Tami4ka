@@ -110,7 +110,12 @@ ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.CharacterAppear
 
 ImageTargetCorner.Parent = ImageTarget
 ImageTargetCorner.CornerRadius = UDim.new(0,5)
-ImageTargetCorner.Color = Color3.new(0,0,0)
+
+frame.BackgroundTransparency = 0
+frame.Name = "OpenGui"
+frame.Active = true
+frame.Parent = ScreenGui
+frame.Size = UDim2.new(0, 65, 0, 65)
 
 local function findPlayer(playerName)
 	local players = game.Players:GetPlayers()
@@ -149,12 +154,6 @@ Button.MouseButton1Click:Connect(function()
 	wait()
 	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
 end)
-
-frame.BackgroundTransparency = 0
-frame.Name = "OpenGui"
-frame.Active = true
-frame.Parent = ScreenGui
-frame.Size = UDim2.new(0, 65, 0, 65)
 
 local UserInputService = game:GetService("UserInputService")
 
