@@ -1,7 +1,14 @@
+local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("SendNotification", {
+        Title = "Tami4kaHub",
+        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
+        Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+        Duration = 10,
+        Callback = AllowRunServiceBind,
+    })
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
- 
-local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme")
- 
+
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme","rbxassetid://16132619292")
  
 local PlrTab = Window:NewTab("Main")
 local PlrSection = PlrTab:NewSection("Main")
@@ -14,7 +21,11 @@ PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, funct
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
-PlrSection:NewButton("✔ Tp to click ✔", "Teleport", function()
+PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
+    game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
     mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
 tool.RequiresHandle = false
@@ -31,15 +42,15 @@ PlrSection:NewButton("💢 Telekinesis FE 💢", "Telekinesis (cars and other),"
     loadstring(game:HttpGet(('https://raw.githubusercontent.com/SAZXHUB/Control-update/main/README.md'),true))()
 end)
 
-PlrSection:NewButton("📴 Invisibility FE 📴", " Invisibility ", function()
+PlrSection:NewButton("📴 Invisibility FE 📴", "Невидимка", function()
     loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/Invisible%20Gui'))()
 end)
 
-PlrSection:NewButton("🧲 Fling All 🧲", "🧲Fling All🧲", function()
+PlrSection:NewButton("🧲 Fling All 🧲", "Подкидывает всех на карте ( Не всегда работает )", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
 
-PlrSection:NewButton("🌌 FullBrightness 🌌", "🌫Invisibility🌫", function()
+PlrSection:NewButton("🌌 FullBrightness 🌌", "Делает освищение ярким", function()
     local Light = game:GetService("Lighting")
  
 function dofullbright()
@@ -55,7 +66,7 @@ end)
 
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
- 
+
 OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
 end)
@@ -64,9 +75,9 @@ OthersSection:NewButton("👑 Infinite yield 👑", "👑Infinite yield👑", fu
     loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
 end)
 
-OthersSection:NewButton("📱 Растяг экрана 📱", "📱 Растяг экрана📱", function()
+OthersSection:NewButton("📱 Растяжение экрана 📱", "Растягивает экран", function()
    getgenv().Resolution = {
-    [".gg/scripters"] = 0.90
+    [".gg/scripters"] = 0.80
 }
 
 local Camera = workspace.CurrentCamera
@@ -106,13 +117,14 @@ OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
 end)
 
 OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon🔳", function()
-
-game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://14890616326"
+game.CoreGui.DeltaIcon.ImageButton.Image = "rbxassetid://16132619292"
 game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)  
 end)
 
-OthersSection:NewButton("💢 Change Codex Icon 💢", "💢Change Codex Icon💢", function()
+OthersSection:NewButton("💢 Codex Custom 💢", "by Tami4ka", function()
 local Codex = game.CoreGui.Codex.gui.navbar.floatingIcon
+Codex.Parent.Parent.DisplayOrder = 2147483646
+Codex.Parent.Parent.Parent.popups.DisplayOrder = 2147483647
 Codex.codexIcon2.Image = "rbxassetid://16132619292"
 Codex.UIPadding:Destroy()
 Codex.corner:Destroy()
@@ -121,19 +133,19 @@ Instance.new("UICorner", Codex.codexIcon2)
 Codex.Parent.main.title.Text = "Tami4ka Codex"
 end)
 
-OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "🌐Universall ShiftLock🌐", function()
+OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "Universall ShiftLock", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/gSrbeNsB'))();
 end)
 
-OthersSection:NewButton("🌈 Chat Rainbow 🌈", "🌈Chat Rainbow🌈", function()
+OthersSection:NewButton("🌈 Chat Rainbow 🌈", "🌈 Chat Rainbow 🌈", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/AE4UMXdt'),true))()
 end)
 
-OthersSection:NewButton("🌀 Flashback 🌀", "🌀Flashback🌀", function()
+OthersSection:NewButton("🌀 Flashback 🌀", "🌀 Flashback 🌀", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe./main/L"))()
 end)
 
-OthersSection:NewButton("⬛ Ghost Hub ⬛", "⬛Ghost Hub⬛", function()
+OthersSection:NewButton("⬛ Ghost Hub ⬛", "Ghost Hub", function()
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))()
 end)
@@ -172,16 +184,16 @@ OthersSection:NewButton("⏰ Stop Time ⏰", "⏰Stop Time⏰", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/djAd7g2W'))()
 end)
 
-OthersSection:NewButton("⬜ FE Fake WallHop V1 ⬜", "⬜FE Fake WallHop V1⬜", function()
+OthersSection:NewButton("⬜ FE Fake WallHop V1 ⬜", "FE Fake WallHop V1", function()
 
 loadstring(game:HttpGet("https://pastebin.com/raw/mZ1g6F6E"))()
 end)
 
-OthersSection:NewButton("🅰 FE Fake WallHop V2 🅰", "🅰FE Fake WallHop V2🅰", function()
+OthersSection:NewButton("⬛ FE Fake WallHop V2 ⬛", "FE Fake WallHop V2", function()
    loadstring(game:HttpGet("https://pastefy.app/Tqe0KlAP/raw", true))()
 end)
 
-OthersSection:NewButton("💢 FE Fake WallHop V2.5 💢", "FE Fake WallHop V2.5", function()
+OthersSection:NewButton("🟥 FE Fake WallHop V2.5 🟥", "FE Fake WallHop V2.5", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Wallhop_V2.5", true))()
 end)
 
@@ -235,7 +247,7 @@ OthersSection:NewButton("🟦 Universall ближний AimBot 🟦", "", functi
    loadstring(game:HttpGet("https://raw.githubusercontent.com/zephyr10101/PlayerLock/main/Script",true))()
 end)
 
-OthersSection:NewButton("💠Universall NameTag💠", "💠Universall WallHack💠", function()
+OthersSection:NewButton("💠 Universall NameTag 💠", "Показывает ники игроков сквозь стену", function()
    loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
 end)
 
@@ -246,7 +258,7 @@ OthersSection:NewButton("💫 Насыщенная графика 💫", "💫Н
    loadstring(game:HttpGet(('https://pastebin.com/raw/Qcdikwyj'),true))()
 end)
 
-OthersSection:NewButton("✨ RTX Pack ✨", "❤️‍🔥RTX❤️‍🔥", function()
+OthersSection:NewButton("✨ RTX Pack ✨", "✨ RTX Pack ✨", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/Bkf0BJb3'))()
 end)
 
@@ -254,11 +266,11 @@ OthersSection:NewButton("🌆 Evening RTX 🌆", "RTX", function()
    loadstring(game:HttpGet(('https://pastebin.com/raw/uqD7VqQU'),true))()
 end)
 
-OthersSection:NewButton("🟨 RTX Yellow 🟨", "🟨RTX Yellow🟨", function() 
+OthersSection:NewButton("🟨 RTX Yellow 🟨", "RTX", function() 
    loadstring(game:HttpGetAsync("https://pastebin.com/raw/R8Db9XZ3"))()
 end)
 
-OthersSection:NewButton("🟪 Pink RTX 🟪", "🟪Pink RTX🟪", function()
+OthersSection:NewButton("🟪 Pink RTX 🟪", "RTX", function()
    loadstring(game:HttpGet(('https://pastefy.app/cAySDj1Q/raw'),true))()
 end)
 
@@ -287,13 +299,11 @@ end)
 
 
 OthersSection:NewButton("📏 NO FE Baldi 📏", "📏NO FE Baldi📏", function()
-
-loadstring(game:HttpGet(('https://pastefy.app/GcSUxGF4/raw'),true))()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Baldi'),true))()
 end)
 
 
 OthersSection:NewButton("🔫 NO FE Suicide 🔫", "🔫NO FE Suicide🔫", function()
-
 loadstring(game:HttpGet(('https://pastebin.com/raw/eziEnqs2'),true))()
 end)
 
@@ -301,32 +311,33 @@ end)
 local OthersTab = Window:NewTab("For Games")
 local OthersSection = OthersTab:NewSection("For Games")
 
-OthersSection:NewButton("🏢 Brookhaven 🏢", "🏢Brookhaven🏢", function()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()   
+OthersSection:NewButton("🏢 Brookhaven 🏢", "🏢 Brookhaven 🏢", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()   
 end)
 
-OthersSection:NewButton("🚓 Prison Life 🚓", "🪝Prison Life🪝", function()
+OthersSection:NewButton("🚓 Prison Life 🚓", "🪝 Prison Life 🪝", function()
 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/ySixxNz/Prison-Life/Prison-Life/Prison%20Life%20-%20Six%20Hub"))() 
 end)
 
-OthersSection:NewButton("🐕 Pets Trading 🐕", "🐕Pets Trading🐕", function()
+OthersSection:NewButton("🐕 Pets Trading 🐕", "🐕 Pets Trading 🐕", function()
    loadstring(game:HttpGet('https://pastebin.com/raw/QfBaVwEL'))()
 end)
 
 
-OthersSection:NewButton("🗡 Murder Mystery 2 🗡", "🗡Murder Mystery 2🗡", function()
-
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Drifter0507/GUIS/main/MURDER%20MYSTERY%202", true))();
+OthersSection:NewButton("🗡 Murder Mystery 2 🗡", "🗡 Murder Mystery 2 🗡", function()
+   loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Drifter0507/GUIS/main/MURDER%20MYSTERY%202", true))();
 end)
 
-OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵Adopt Me🐵", function()
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
+OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵 Adopt Me 🐵", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
 end)
 
-local CreatorTab = Window:NewTab("ℹ️ Credits ℹ️")
+OthersSection:NewButton("🎱 Blade Ball | Only AutoParty 🎱", "🎱 Blade Ball 🎱", function()
+   loadstring(game:HttpGet("https://scriptblox.com/raw/UPD-Blade-Ball-op-autoparry-with-visualizer-8652"))()
+end)
+
+local CreatorTab = Window:NewTab("Credits")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
 local CreatorSection = CreatorTab:NewSection("CopyPaste Avtor1zaTion")
 local CreatorSection = CreatorTab:NewSection("Version 1.1")
