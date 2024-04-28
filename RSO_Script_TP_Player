@@ -39,7 +39,7 @@ TextX.BorderSizePixel = 0
 TextX.BackgroundTransparency = 1
 TextX.TextScaled = true
 TextX.TextColor3 = Color3.new(1, 1, 1)
-TextX.Text = "🥵 Teleport Player 🥵"
+TextX.Text = "🌐 Teleport Player 🌐"
 TextX.Font = Enum.Font.Gotham
 
 Text.Parent = Frame 
