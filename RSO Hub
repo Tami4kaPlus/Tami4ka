@@ -80,20 +80,10 @@ end)
 tool.Parent = game.Players.LocalPlayer.Backpack
 end)
 
--- Секция
-local Tab = Window:NewTab("functions")
+local OthersTab = Window:NewTab("Information")
+local OthersSection = OthersTab:NewSection("Owner - Sentry_Lord")
 
-
-
-
-
--- Секция
-local Tab = Window:NewTab("Info")
-Tab:NewSection("Owner - Sentry_lord", "owner info",
+OthersSection:NewButton("TG Channel (Click to Copy)", "Tg info",
 function()
-end)
-
-Tab:NewButton("TG Channel (Click to Copy)", "Tg info",
-function()
-
+setclipboard("t.me/RobloxScriptOrig")
 end)
