@@ -89,7 +89,7 @@ setclipboard("t.me/RobloxScriptOrig")
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "RSO Hub",
-        Text = "Ссылка скопирована в буфер отмены,
+        Text = "Ссылка скопирована в буфер отмены",
         Icon = "rbxassetid://17318818093",
         Duration = 5,
         Callback = AllowRunServiceBind,
