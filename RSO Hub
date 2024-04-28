@@ -66,6 +66,11 @@ function()
 loadstring(game:HttpGet(('https://pastefy.app/M0N30XXG/raw'),true))()
 end)
 
+PlrSection:NewButton("Obby Script", "Teleport player",
+function()
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/RSO_Script_TP_Player'),true))()
+end)
+
 PlrSection:NewButton("Tp Click", "Teleport",
 function()
 mouse = game.Players.LocalPlayer:GetMouse()
