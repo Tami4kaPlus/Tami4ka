@@ -1,0 +1,99 @@
+local CoreGui = game:GetService("StarterGui")
+    CoreGui:SetCore("SendNotification", {
+        Title = "RSO Hub",
+        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName,
+        Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+        Duration = 10,
+        Callback = AllowRunServiceBind,
+    })
+
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
+
+local Window = Library.CreateLib("RSO Hub", "DarkTheme","rbxassetid://17318818093")
+
+local PlrTab = Window:NewTab("Main")
+local PlrSection = PlrTab:NewSection("Main")
+
+PlrSection:NewSlider("Speed", "Set you speed", 150, 16, function(s)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlrSection:NewSlider("Jump Power", "Set you JumpPower", 250, 50, function(s)
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlrSection:NewSlider("Field Of View", "Set you FOV", 120, 70, function(s)
+  game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("FullBrightness", "Делает освищение ярким", function()
+  local Light = game:GetService("Lighting")
+
+  function dofullbright()
+    Light.Ambient = Color3.new(1, 1, 1)
+    Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+    Light.ColorShift_Top = Color3.new(1, 1, 1)
+  end
+
+  dofullbright()
+
+  Light.LightingChanged:Connect(dofullbright)
+end)
+
+PlrSection:NewButton("ESP", "Показывает где игроки", function()
+  while wait(0.5) do
+    for i, childrik in ipairs(workspace:GetDescendants()) do
+      if childrik:FindFirstChild("Humanoid") then
+        if not childrik:FindFirstChild("EspBox") then
+          if childrik ~= game.Players.LocalPlayer.Character then
+            local esp = Instance.new("BoxHandleAdornment",childrik)
+            esp.Adornee = childrik
+            esp.ZIndex = 0
+            esp.Size = Vector3.new(4, 5, 1)
+            esp.Transparency = 0.65
+            esp.Color3 = Color3.fromRGB(255,48,48)
+            esp.AlwaysOnTop = true
+            esp.Name = "EspBox"
+          end
+        end
+      end
+    end
+  end
+end)
+
+PlrSection:NewButton("Fly", "Allows you to fly",
+function()
+loadstring(game:HttpGet(('https://pastefy.app/M0N30XXG/raw'),true))()
+end)
+
+PlrSection:NewButton("Tp Click", "Teleport",
+function()
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+-- Секция
+local Tab = Window:NewTab("functions")
+
+
+
+
+
+-- Секция
+local Tab = Window:NewTab("Info")
+Tab:NewSection("Owner - Sentry_lord", "owner info",
+function()
+end)
+
+Tab:NewButton("TG Channel (Click to Copy)", "Tg info",
+function()
+
+end)
