@@ -5,21 +5,24 @@ local ScreenGui = Instance.new("ScreenGui")
 local frame = Instance.new("Frame")
 local Frame = Instance.new("Frame")
 local FrameCorner = Instance.new("UICorner")
-local ButtonCorner = Instance.new("UICorner")
 local FrameStroke = Instance.new("UIStroke")
-local Text = Instance.new("TextLabel")
 local TextX = Instance.new("TextLabel")
 local Box = Instance.new("TextBox")
 local BoxCorner = Instance.new("UICorner")
 local FrameButton = Instance.new("Frame")
 local Button = Instance.new("TextButton")
-local ImageTarget = Instance.new("ImageLabel")
-local ImageTargetCorner = Instance.new("UICorner")
+local ButtonCorner = Instance.new("UICorner")
+local FrameButtonD = Instance.new("Frame")
+local ButtonD = Instance.new("TextButton")
+local ButtonCornerD = Instance.new("UICorner")
+local FrameButtonF = Instance.new("Frame")
+local ButtonF = Instance.new("TextButton")
+local ButtonCornerF = Instance.new("UICorner")
 
 local Toggle = false
 local Open = false
 
-ScreenGui.Parent = game.CoreGui
+ScreenGui.Parent = Player.PlayerGui
 ScreenGui.Name = "TPlayerGUI"
 
 Frame.Parent = ScreenGui
@@ -34,25 +37,14 @@ TextX.Parent = Frame
 TextX.Name = "Label"
 TextX.AnchorPoint = Vector2.new(0.5,0.5)
 TextX.Position = UDim2.new(0.5,0,0.1,0)
-TextX.Size = UDim2.new(0.9,0,0.2,0)
+TextX.Size = UDim2.new(0.92,0,0.2,0)
 TextX.BorderSizePixel = 0
+TextX.LineHeight = 3
 TextX.BackgroundTransparency = 1
 TextX.TextScaled = true
 TextX.TextColor3 = Color3.new(1, 1, 1)
 TextX.Text = "💢 Copy NickName 💢"
 TextX.Font = Enum.Font.Gotham
-
-Text.Parent = Frame 
-Text.Name = "Text"
-Text.AnchorPoint = Vector2.new(0.5,0.5)
-Text.Position = UDim2.new(0.5,0,0.35,0)
-Text.Size = UDim2.new(0.9,0,0.15,0)
-Text.BorderSizePixel = 0
-Text.BackgroundTransparency = 1
-Text.TextScaled = true
-Text.TextColor3 = Color3.new(1, 1, 1)
-Text.Text = "by Tami4ka"
-Text.Font = Enum.Font.Gotham
 
 Box.Parent = Frame 
 Box.Name = "Box"
@@ -67,6 +59,52 @@ Box.TextScaled = true
 Box.TextColor3 = Color3.new(1, 1, 1)
 Box.Text = ""
 Box.Font = Enum.Font.Gotham
+
+FrameButtonD.Parent = Frame
+FrameButtonD.Name = "ButtonDisplay"
+FrameButtonD.BorderSizePixel = 0
+FrameButtonD.AnchorPoint = Vector2.new(0.5,0.5)
+FrameButtonD.Position = UDim2.new(0.25,0,0.3,0)
+FrameButtonD.Size = UDim2.new(0.4,0,0.2,0)
+FrameButtonD.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+
+ButtonD.Parent = FrameButtonD
+ButtonD.Name = "Button"
+ButtonD.AnchorPoint = Vector2.new(0.5,0.5)
+ButtonD.Position = UDim2.new(0.5,0,0.5,0)
+ButtonD.Size = UDim2.new(0.9,0,1,0)
+ButtonD.BorderSizePixel = 0
+ButtonD.BackgroundTransparency = 1
+ButtonD.TextScaled = true
+ButtonD.TextColor3 = Color3.new(1, 1, 1)
+ButtonD.Text = "Display"
+ButtonD.Font = Enum.Font.Gotham
+
+ButtonCornerD.Parent = FrameButtonD
+ButtonCornerD.CornerRadius = UDim.new(0,5)
+
+FrameButtonF.Parent = Frame
+FrameButtonF.Name = "ButtonFull"
+FrameButtonF.BorderSizePixel = 0
+FrameButtonF.AnchorPoint = Vector2.new(0.5,0.5)
+FrameButtonF.Position = UDim2.new(0.75,0,0.3,0)
+FrameButtonF.Size = UDim2.new(0.4,0,0.2,0)
+FrameButtonF.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+
+ButtonF.Parent = FrameButtonF
+ButtonF.Name = "Button"
+ButtonF.AnchorPoint = Vector2.new(0.5,0.5)
+ButtonF.Position = UDim2.new(0.5,0,0.5,0)
+ButtonF.Size = UDim2.new(0.9,0,1,0)
+ButtonF.BorderSizePixel = 0
+ButtonF.BackgroundTransparency = 1
+ButtonF.TextScaled = true
+ButtonF.TextColor3 = Color3.new(1, 1, 1)
+ButtonF.Text = "Full"
+ButtonF.Font = Enum.Font.Gotham
+
+ButtonCornerF.Parent = FrameButtonF
+ButtonCornerF.CornerRadius = UDim.new(0,5)
 
 FrameButton.Parent = Frame
 FrameButton.Name = "ButtonToggle"
@@ -100,56 +138,67 @@ BoxCorner.CornerRadius = UDim.new(0,5)
 FrameStroke.Parent = Frame
 FrameStroke.Thickness = 4
 
-ImageTarget.Parent = frame 
-ImageTarget.Name = "Icon"
-ImageTarget.Size = UDim2.new(1,0,1,0)
-ImageTarget.BorderSizePixel = 0
-ImageTarget.BackgroundTransparency = 0
-ImageTarget.BackgroundColor3 = Color3.new(0.627451, 0.627451, 0.627451)
-ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.CharacterAppearanceId.."&w=100&h=100"
-
-ImageTargetCorner.Parent = ImageTarget
-ImageTargetCorner.CornerRadius = UDim.new(0,5)
-
-frame.BackgroundTransparency = 0
+frame.BackgroundTransparency = 1
 frame.Name = "OpenGui"
 frame.Active = true
 frame.Parent = ScreenGui
 frame.Size = UDim2.new(0, 65, 0, 65)
 
+local q = Instance.new("ImageLabel")
+q.Parent = frame
+q.Size = UDim2.new(1,0,1,0)
+q.Image = "rbxassetid://17339884269"
+
+local i = Instance.new("UIStroke", q)
+i.Thickness = 4
+i.Color = Color3.new(1,1,1)
+Instance.new("UICorner", q)
+
+local metod = "Full"
+local playerName
+local Target
+
 local function findPlayer(playerName)
 	local players = game.Players:GetPlayers()
 
 	for _, player in pairs(players) do
-		if string.find(string.lower(player.Name), string.lower(playerName), 1, true) then
-			return player
+		if metod == "Full" then
+			if string.find(string.lower(player.Name), string.lower(playerName), 1, true) then
+				return player
+			end
+		elseif metod == "Display" then
+			if string.find(string.lower(player.DisplayName), string.lower(playerName), 1, true) then
+				return player
+			end
 		end
 	end
 
 	return nil
 end
 
-local playerName
-local Target
-
 local function onFocusLost(enterPressed)
 	if enterPressed then
 		playerName = Box.Text
 		local similarPlayer = findPlayer(playerName)
 		if similarPlayer then
-			Text.Text = "Name: " .. similarPlayer.Name
-			Target = similarPlayer.Name
-			ImageTarget.Image = "rbxthumb://type=AvatarHeadShot&id="..Player.Parent[Target].CharacterAppearanceId.."&w=100&h=100"
-      local CoreGui = game:GetService("StarterGui")
-      CoreGui:SetCore("SendNotification", {
-        Title = Target,
-        Text = "DisplayName: "..similarPlayer.DisplayName,
-        Icon = "rbxthumb://type=AvatarHeadShot&id="..Player.Parent[Target].CharacterAppearanceId.."&w=150&h=150",
-        Duration = 6,
-        Callback = AllowRunServiceBind,
-    })
+			Target = similarPlayer
+			local CoreGui = game:GetService("StarterGui")
+			CoreGui:SetCore("SendNotification", {
+				Title = Target.Name,
+				Text = "Display: "..similarPlayer.DisplayName,
+				Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players[Target.Name].CharacterAppearanceId.."&w=150&h=150",
+				Duration = 6,
+				Callback = AllowRunServiceBind,
+			})
 		else
-			Text.Text = "Name: Invaild"
+			local CoreGui = game:GetService("StarterGui")
+			CoreGui:SetCore("SendNotification", {
+				Title = "Никнейм не найден",
+				Text = "Если не нашли никнейм попробуйте снова",
+				Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+				Duration = 6,
+				Callback = AllowRunServiceBind,
+			})
 		end
 	end
 end
@@ -158,9 +207,21 @@ Box.FocusLost:Connect(onFocusLost)
 
 Button.MouseButton1Click:Connect(function()
 	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
-	setclipboard(Target)
+	if metod == "Display" then setclipboard(Target.DisplayName) elseif metod == "Full" then setclipboard(Target.Name) end
 	wait()
 	TweenService:Create(FrameButton, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+end)
+
+ButtonD.MouseButton1Click:Connect(function()
+	TweenService:Create(FrameButtonD, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
+	metod = "Display" wait()
+	TweenService:Create(FrameButtonD, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
+end)
+
+ButtonF.MouseButton1Click:Connect(function()
+	TweenService:Create(FrameButtonF, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(150, 150, 150)}):Play()
+	metod = "Full" wait()
+	TweenService:Create(FrameButtonF, TweenInfo.new(0.2), {BackgroundColor3 = Color3.fromRGB(50, 50, 50)}):Play()
 end)
 
 local input = game:GetService("UserInputService")
@@ -208,8 +269,8 @@ frame.TouchTap:Connect(function()
 	if Open == true then
 		Frame.Position = UDim2.new(0, frame.AbsolutePosition.X, 0, frame.AbsolutePosition.Y)
 		game.TweenService:Create(Frame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-		Size = UDim2.new(0,335,0,335),
-		Position = UDim2.new(0.5, 0, 0.5, 0)
+			Size = UDim2.new(0,335,0,335),
+			Position = UDim2.new(0.5, 0, 0.5, 0)
 		}):Play()
 		Open = false
 		wait()
@@ -230,5 +291,4 @@ while wait() do
 	local hue = tick() % 15 / 15
 	local color = Color3.fromHSV(hue,1,1) 
 	FrameStroke.Color = color
-	Text.TextColor3 = color
 end
