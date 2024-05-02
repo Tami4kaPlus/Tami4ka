@@ -16,7 +16,7 @@ Codex = game.CoreGui.CustomCodex
 
 local consoledel = Codex.gui.tabs.localScripts.tabButtons:WaitForChild("savedScripts"):Clone()
 
-consoledel.BackgroundColor3 = Color.FromRGB(58,58,74)
+consoledel.BackgroundColor3 = Color3.fromRGB(58,58,74)
 consoledel.Name = "consoleDelete"
 consoledel.Text = "Delete Console"
 consoledel.Parent = Codex.gui.tabs.localScripts.tabButtons
