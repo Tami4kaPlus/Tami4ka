@@ -1,0 +1,29 @@
+task.wait(1.5)
+if game.CoreGui.Codex then
+local Codex = game.CoreGui.Codex
+Codex.Name = "CustomCodex"
+Codex = game.CoreGui.CustomCodex.gui.navbar.floatingIcon
+Codex.Parent.Parent.DisplayOrder = 2147483646
+Codex.Parent.Parent.Parent.popups.DisplayOrder = 2147483647
+Codex.codexIcon2.Image = "rbxassetid://16132619292"
+Codex.UIPadding:Destroy()
+Codex.corner:Destroy()
+Instance.new("UICorner", Codex)
+Instance.new("UICorner", Codex.codexIcon2)
+Codex.Parent.main.title.Text = "Tami4ka Codex"
+
+Codex = game.CoreGui.CustomCodex
+
+local consoledel = Codex.gui.tabs.localScripts.tabButtons:WaitForChild("savedScripts"):Clone()
+
+consoledel.BackgroundColor3 = Color.FromRGB(58,58,74)
+consoledel.Name = "consoleDelete"
+consoledel.Text = "Delete Console"
+consoledel.Parent = Codex.gui.tabs.localScripts.tabButtons
+
+consoledel.MouseButton1Click:Connect(function()
+Codex.gui.tabs.console:Destroy()
+consoledel:Destroy()
+Codex.gui.navbar.main.container.console:Destroy()
+end)
+end
