@@ -331,7 +331,7 @@ end)
 
 
 OthersSection:NewButton("🗡 Murder Mystery 2 🗡", "🗡 Murder Mystery 2 🗡", function()
-   loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Drifter0507/GUIS/main/MURDER%20MYSTERY%202", true))();
+   loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/mm2", true))();
 end)
 
 OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵 Adopt Me 🐵", function()
