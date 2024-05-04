@@ -9,6 +9,8 @@ local CoreGui = game:GetService("StarterGui")
 setclipboard("t.me./tami4ka_tg")
 
 local togAutoRotate = false
+local togPlatformStand = false
+local togSit = false
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
@@ -34,12 +36,32 @@ PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function
 end)
 
 PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
-    if togAutoRotate == false then
-        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
-        togAutoRotate = true
-    else
+    if togAutoRotate == false then        
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
         togAutoRotate = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+        togAutoRotate = true
+    end
+end)
+
+PlrSection:NewButton("🚪 Platform Stand 🚪", "PlatformStand Player", function()
+    if togPlatformStand == false then        
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        togPlatformStand = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+        togPlatformStand = true
+    end
+end)
+
+PlrSection:NewButton("🪑 Sit 🪑", "Sit Player", function()
+    if togSit == false then        
+        game.Players.LocalPlayer.Character.Humanoid.Sit = false
+        togSit = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        togSit = true
     end
 end)
 
