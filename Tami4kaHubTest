@@ -38,30 +38,30 @@ end)
 PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
     if togAutoRotate == false then        
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
-        togAutoRotate = false
+        togAutoRotate = true
     else
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
-        togAutoRotate = true
+        togAutoRotate = false
     end
 end)
 
 PlrSection:NewButton("🚪 Platform Stand 🚪", "PlatformStand Player", function()
     if togPlatformStand == false then        
         game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-        togPlatformStand = false
+        togPlatformStand = true
     else
         game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
-        togPlatformStand = true
+        togPlatformStand = false
     end
 end)
 
 PlrSection:NewButton("🪑 Sit 🪑", "Sit Player", function()
     if togSit == false then        
         game.Players.LocalPlayer.Character.Humanoid.Sit = false
-        togSit = false
+        togSit = true
     else
         game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        togSit = true
+        togSit = false
     end
 end)
 
