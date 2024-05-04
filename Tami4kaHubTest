@@ -10,7 +10,6 @@ setclipboard("t.me./tami4ka_tg")
 
 local togAutoRotate = false
 local togPlatformStand = false
-local togSit = false
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
@@ -36,33 +35,27 @@ PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function
 end)
 
 PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
-    if togAutoRotate == false then        
-        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
-        togAutoRotate = true
-    else
+    if togAutoRotate == true then        
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
         togAutoRotate = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
+        togAutoRotate = true
     end
 end)
 
 PlrSection:NewButton("🚪 Platform Stand 🚪", "PlatformStand Player", function()
-    if togPlatformStand == false then        
-        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-        togPlatformStand = true
-    else
+    if togPlatformStand == true then        
         game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
         togPlatformStand = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        togPlatformStand = true
     end
 end)
 
 PlrSection:NewButton("🪑 Sit 🪑", "Sit Player", function()
-    if togSit == false then        
-        game.Players.LocalPlayer.Character.Humanoid.Sit = false
-        togSit = true
-    else
-        game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        togSit = false
-    end
+    game.Players.LocalPlayer.Character.Humanoid.Sit = true
 end)
 
 PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
@@ -384,4 +377,4 @@ end)
 local CreatorTab = Window:NewTab("Credits")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
 local CreatorSection = CreatorTab:NewSection("CopyPaste Avtor1zaTion")
-local CreatorSection = CreatorTab:NewSection("Version 1.1")
+local CreatorSection = CreatorTab:NewSection("Version 1.2")
