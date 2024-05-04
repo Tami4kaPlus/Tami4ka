@@ -1,7 +1,7 @@
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Tami4kaHub",
-        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | TG Channel: t.me/tami4ka_tg",
+        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
