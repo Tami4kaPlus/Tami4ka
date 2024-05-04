@@ -7,6 +7,9 @@ local CoreGui = game:GetService("StarterGui")
         Callback = AllowRunServiceBind,
     })
 setclipboard("t.me./tami4ka_tg")
+
+local togAutoRotate = false
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme","rbxassetid://16132619292")
@@ -22,8 +25,22 @@ PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, funct
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
+PlrSection:NewSlider("⚙ Hip Height ⚙", "Set you HipHeight", 75, 0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
 PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
     game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
+    if togAutoRotate == false then
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+        togAutoRotate = true
+    else
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
+        togAutoRotate = false
+    end
 end)
 
 PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
