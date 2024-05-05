@@ -100,11 +100,11 @@ end)
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
 
-OthersSection:NewTextBox("⬛ Teleport Place ⬛", "Enter place id", s, function()
-    wait(0.1)
+OthersSection:NewTextBox("⬛ Teleport Place ⬛", "Enter place id", id, function()
+    local PlaceID = id
     game:GetService("TeleportService"):SetTeleportGui(TeleportingUI)
     TeleportService = game:GetService("TeleportService")
-    TeleportService:Teleport(s, game.Players.LocalPlayer, game.PlaceId)
+    TeleportService:Teleport(PlaceID, game.Players.LocalPlayer, game.PlaceId)
 end)
 
 OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
