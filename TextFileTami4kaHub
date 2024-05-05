@@ -1,11 +1,27 @@
+if game.Players.LocalPlayer.Name ~= "Tami4kaPlus" then
+    setclipboard("t.me./tami4ka_tg")
+    local CoreGui = game:GetService("StarterGui")
+        CoreGui:SetCore("SendNotification", {
+            Title = "Tami4kaHub",
+            Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
+            Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+            Duration = 10,
+            Callback = AllowRunServiceBind,
+        })
+end
+
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
-        Title = "Tami4kaHub",
-        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
+        Title = "Добро пожаловать 🐶",
+        Text = "Версия: 1.2.0",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
     })
+
+local togAutoRotate = false
+local togPlatformStand = false
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme","rbxassetid://16132619292")
@@ -21,10 +37,37 @@ PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, funct
     game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
+PlrSection:NewSlider("⚙ Hip Height ⚙", "Set you HipHeight", 75, 0, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
 PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
     game.Workspace.CurrentCamera.FieldOfView = s
 end)
 
+PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
+    if togAutoRotate == true then        
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
+        togAutoRotate = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
+        togAutoRotate = true
+    end
+end)
+
+PlrSection:NewButton("🚪 Platform Stand 🚪", "PlatformStand Player", function()
+    if togPlatformStand == true then        
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
+        togPlatformStand = false
+    else
+        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+        togPlatformStand = true
+    end
+end)
+
+PlrSection:NewButton("🪑 Sit 🪑", "Sit Player", function()
+    game.Players.LocalPlayer.Character.Humanoid.Sit = true
+end)
 PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
     mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
@@ -122,15 +165,7 @@ game.CoreGui.DeltaIcon.ImageButton.UIStroke.Color = Color3.fromRGB(0, 0, 0)
 end)
 
 OthersSection:NewButton("💢 Codex Custom 💢", "by Tami4ka", function()
-local Codex = game.CoreGui.Codex.gui.navbar.floatingIcon
-Codex.Parent.Parent.DisplayOrder = 2147483646
-Codex.Parent.Parent.Parent.popups.DisplayOrder = 2147483647
-Codex.codexIcon2.Image = "rbxassetid://16132619292"
-Codex.UIPadding:Destroy()
-Codex.corner:Destroy()
-Instance.new("UICorner", Codex)
-Instance.new("UICorner", Codex.codexIcon2)
-Codex.Parent.main.title.Text = "Tami4ka Codex"
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/CodexCustom'))()
 end)
 
 OthersSection:NewButton("🌀 Universall ShiftLock 🌀", "Universall ShiftLock", function()
@@ -224,7 +259,6 @@ OthersSection:NewButton("🌠 Ping + FPS 🌠", "🌠Ping+FPS🌠", function()
 end)
 
 OthersSection:NewButton("🈶 Universall Delta Translate 🈶", "🈶Universall Delta Translate🈶", function()
-
 loadstring(game:HttpGet("https://pastebin.com/raw/b8yf9ik7"))()
 end)
 
@@ -338,4 +372,4 @@ end)
 local CreatorTab = Window:NewTab("Credits")
 local CreatorSection = CreatorTab:NewSection("Credits to Tami4ka")
 local CreatorSection = CreatorTab:NewSection("CopyPaste Avtor1zaTion")
-local CreatorSection = CreatorTab:NewSection("Version 1.1")
+local CreatorSection = CreatorTab:NewSection("Version 1.2")
