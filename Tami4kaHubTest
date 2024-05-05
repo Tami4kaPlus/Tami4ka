@@ -101,6 +101,7 @@ local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
 
 OthersSection:NewTextBox("⬛ Teleport Place ⬛", "Enter place id", s, function()
+    wait(0.1)
     game:GetService("TeleportService"):SetTeleportGui(TeleportingUI)
     TeleportService = game:GetService("TeleportService")
     TeleportService:Teleport(s, game.Players.LocalPlayer, game.PlaceId)
