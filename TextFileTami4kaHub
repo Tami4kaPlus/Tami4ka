@@ -361,6 +361,14 @@ OthersSection:NewButton("🗡 Murder Mystery 2 🗡", "🗡 Murder Mystery 2 �
    loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/mm2", true))();
 end)
 
+OthersSection:NewButton("🚪 DOORS 🚪", "Doors", function()
+   loadstring(game:HttpGet("https://pst.innomi.net/paste/dw8uteaxwdb4ga9kyuf9hcga/raw"))()
+end)
+
+OthersSection:NewButton("🍎 Blox Fruits 🍎", "Blox Fruits", function()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
+end)
+
 OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵 Adopt Me 🐵", function()
    loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
 end)
