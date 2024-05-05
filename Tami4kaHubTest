@@ -1,12 +1,24 @@
+if game.Players.LocalPlayer.Name ~= "Tami4kaPlus" then
+    setclipboard("t.me./tami4ka_tg")
+    local CoreGui = game:GetService("StarterGui")
+        CoreGui:SetCore("SendNotification", {
+            Title = "Tami4kaHub",
+            Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
+            Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+            Duration = 10,
+            Callback = AllowRunServiceBind,
+        })
+end
+
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
-        Title = "Tami4kaHub",
-        Text = "Добро пожаловать "..game.Players.LocalPlayer.DisplayName.." | t.me/tami4ka_tg",
+        Title = "Добро пожаловать 🐶",
+        Text = "Версия: 1.2.0",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
     })
-setclipboard("t.me./tami4ka_tg")
+
 
 local togAutoRotate = false
 local togPlatformStand = false
