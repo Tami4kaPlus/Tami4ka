@@ -13,7 +13,7 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.01",
+        Text = "Версия: 1.3.02",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
@@ -173,6 +173,10 @@ end)
 
 OthersSection:NewButton("🔁 Spin Player 🔁", "SpinPlayer", function()
    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/SpinPlayer'),true))()
+end)
+
+OthersSection:NewButton("🪪 Server Finder 🪪", "Server Finder", function()
+    loadstring(game:HttpGet("https://www.scriptblox.com/raw/Server-Browser_80", true))()
 end)
 
 OthersSection:NewButton("🔳 Change Delta Icon 🔳", "🔳Change Delta Icon🔳", function()
