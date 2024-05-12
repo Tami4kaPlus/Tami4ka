@@ -13,7 +13,7 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.02",
+        Text = "Версия: 1.3.03",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
@@ -93,12 +93,12 @@ PlrSection:NewButton("🧲 Fling All 🧲", "Подкидывает всех н�
     loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
 
-PlrSection:NewButton("✅ AntiFling ON ✅", "AntiFling On", function()
+PlrSection:NewButton("✅ Anti Fling ON ✅", "AntiFling On", function()
     _G.AntiFlingToggled = true
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
 end)
 
-PlrSection:NewButton("❌ AntiFling OFF ❌", "AntiFling Off", function()
+PlrSection:NewButton("❌ Anti Fling OFF ❌", "AntiFling Off", function()
     _G.AntiFlingToggled = false
 	loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
 end)
@@ -120,13 +120,13 @@ end)
 local OthersTab = Window:NewTab("Universall")
 local OthersSection = OthersTab:NewSection("Universall")
 
-OthersSection:NewButton("🍀 Rejoin 🍀", "Rejoin", function()
+OthersSection:NewButton("🍀 Rejoin 🍀", "Rejoin Server", function()
 local ts = game:GetService("TeleportService")
 local p = game:GetService("Players").LocalPlayer
 ts:TeleportToPlaceInstance(game.PlaceId, game.JobId, p) 
 end)
 
-OthersSection:NewButton("📁 Dex V2 📁", "Explorer", function()
+OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
 end)
 
@@ -150,7 +150,8 @@ end
 getgenv().gg_scripters = "Aori0001"
 end)
 
-OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
+OthersSection:NewButton("🐇 Universall BunnyHop 🐇", "🐇Universall BunnyHop🐇", function() 
+loadstring(game:HttpGetAsync("https://pastebin.com/raw/TfLPRpue"))()
 end)
 
 OthersSection:NewButton("🧊 System Broken V2 🧊", "🧊System broken🧊", function()
