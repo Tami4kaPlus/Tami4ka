@@ -13,7 +13,7 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.4",
+        Text = "Версия: 1.3.5",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
@@ -542,8 +542,13 @@ OthersSection:NewButton("🚪 DOORS 🚪", "Doors", function()
    loadstring(game:HttpGet("https://pst.innomi.net/paste/dw8uteaxwdb4ga9kyuf9hcga/raw"))()
 end)
 
-OthersSection:NewButton("🍎 Blox Fruits 🍎", "Blox Fruits", function()
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/FOXTROXHACKS/Roblox-Scripts/main/Adopt-Me/Adopt-Me-Auto-Race.lua"))()
+OthersSection:NewButton("🦴 A Dusty Trip | Easy version 🦴", "Best Script", function()
+	autoExecuteScript = false
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/ThacG/DustyTripThac/main/dustytripthac"))()
+end)
+
+OthersSection:NewButton("🎩 A Dusty Trip | Normal version 🎩", "Good Script", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/artemy133563/Utilities/main/ADustyTrip",true))()
 end)
 
 OthersSection:NewButton("🐵 Adopt Me 🐵", "🐵 Adopt Me 🐵", function()
