@@ -13,14 +13,11 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.5",
+        Text = "Версия: 1.3.6",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
     })
-
-local togAutoRotate = false
-local togPlatformStand = false
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
 
@@ -45,29 +42,30 @@ PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function
     game.Workspace.CurrentCamera.FieldOfView = s
 end)
 
-PlrSection:NewButton("🔁 Auto Rotate 🔁", "AutoRotate Player", function()
-    if togAutoRotate == true then        
+PlrSection:NewToggle("🔁 Auto Rotate 🔁", "AutoRotate Player", function(s)
+    if s then        
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = true
-        togAutoRotate = false
     else
         game.Players.LocalPlayer.Character.Humanoid.AutoRotate = false
-        togAutoRotate = true
     end
 end)
 
-PlrSection:NewButton("🚪 Platform Stand 🚪", "PlatformStand Player", function()
-    if togPlatformStand == true then        
+PlrSection:NewToggle("🚪 Platform Stand 🚪", "PlatformStand Player", function(s)
+    if s then        
         game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true
-        togPlatformStand = false
     else
         game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-        togPlatformStand = true
     end
 end)
 
-PlrSection:NewButton("🪑 Sit 🪑", "Sit Player", function()
+PlrSection:NewToggle("🪑 Sit 🪑", "Sit Player", function(s)
+	if s then
     game.Players.LocalPlayer.Character.Humanoid.Sit = true
+	else
+		game.Players.LocalPlayer.Character.Humanoid.Sit = false
+	end
 end)
+
 PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
     mouse = game.Players.LocalPlayer:GetMouse()
 tool = Instance.new("Tool")
@@ -93,14 +91,14 @@ PlrSection:NewButton("🧲 Fling All 🧲", "Подкидывает всех н�
     loadstring(game:HttpGet("https://pastebin.com/raw/zqyDSUWX"))()
 end)
 
-PlrSection:NewButton("✅ Anti Fling ON ✅", "AntiFling On", function()
+PlrSection:NewToggle("👤 Anti Fling 👤", "AntiFling On", function(s)
+	if s then
     _G.AntiFlingToggled = true
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
-end)
-
-PlrSection:NewButton("❌ Anti Fling OFF ❌", "AntiFling Off", function()
-    _G.AntiFlingToggled = false
-	loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
+	else
+		_G.AntiFlingToggled = false
+		loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
+	end
 end)
 
 PlrSection:NewButton("🌌 FullBrightness 🌌", "Делает освищение ярким", function()
