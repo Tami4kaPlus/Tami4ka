@@ -13,7 +13,7 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.9",
+        Text = "Версия: 1.3.10",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
@@ -103,7 +103,7 @@ end)
 
 PlrSection:NewToggle("👤 Anti Fling 👤", "AntiFling", function(s)
 	if s then
-    _G.AntiFlingToggled = true
+		_G.AntiFlingToggled = true
 		loadstring(game:HttpGet('https://raw.githubusercontent.com/H20CalibreYT/SystemBroken/main/AntiFling'))()
 	else
 		_G.AntiFlingToggled = false
