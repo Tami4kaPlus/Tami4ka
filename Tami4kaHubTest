@@ -13,7 +13,7 @@ end
 local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.8",
+        Text = "Версия: 1.3.9",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 10,
         Callback = AllowRunServiceBind,
@@ -33,15 +33,23 @@ PlrSection:NewSlider("⚡ Speed ⚡", "Set you speed", 150, 16, function(s)
 end)
  
 PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, function(s)
-    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+  game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
 end)
 
 PlrSection:NewSlider("⚙ Hip Height ⚙", "Set you HipHeight", 75, 0, function(s)
-    game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+  game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
 end)
 
 PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
-    game.Workspace.CurrentCamera.FieldOfView = s
+  game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("👤 Save Coordinates 👤", "Save you Coordinates", function()
+  coordinates = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end)
+  
+PlrSection:NewButton("👁️ Teleport Coordinates 👁️", "Tp saved Coordinates", function ()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = coordinates
 end)
 
 PlrSection:NewToggle("🔁 Auto Rotate 🔁", "AutoRotate Player", function(s)
@@ -66,14 +74,6 @@ PlrSection:NewToggle("🪑 Sit 🪑", "Sit Player", function(s)
 	else
 		game.Players.LocalPlayer.Character.Humanoid.Sit = false
 	end
-end)
-
-PlrSection:NewButton("Save Coordinates", "Save you coordinates", function()
-  coordinates = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-end)
-  
-PlrSection:NewButton("TP Сoordinates", "Tp saved Сoordinates", function ()
-  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = coordinates
 end)
 
 PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
@@ -125,13 +125,26 @@ Light.LightingChanged:Connect(dofullbright)
 end)
 
 local OthersTab = Window:NewTab("Universall")
-local OthersSection = OthersTab:NewSection("Universall")
+
+local OthersSection = OthersTab:NewSection("Teleport Place")
 
 OthersSection:NewButton("⚙️ Rejoin ⚙️", "Rejoin Server", function()
-local ts = game:GetService("TeleportService")
-local p = game:GetService("Players").LocalPlayer
-ts:TeleportToPlaceInstance(game.PlaceId, game.JobId, p) 
+  local ts = game:GetService("TeleportService")
+  local p = game:GetService("Players").LocalPlayer
+  ts:TeleportToPlaceInstance(game.PlaceId, game.JobId, p) 
 end)
+
+OthersSection:NewButton("👤 Copy PlaceID 👤", "Copy PlaceID", function()
+  setclipboard(game.PlaceId)
+end)
+
+OthersSection:NewTextBox("🎩 Teleport PlaceID 🎩", "Teleport PlaceID", function(s)
+  game:GetService("TeleportService"):SetTeleportGui(TeleportingUI)
+  TeleportService = game:GetService("TeleportService")
+  TeleportService:Teleport(4575976957, game.Players.LocalPlayer, game.PlaceId) 
+end)
+
+local OthersSection = OthersTab:NewSection("Universall")
 
 OthersSection:NewButton("🎩 Dex V2 🎩", "Explorer", function()
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explorer-v2-6653"))()
