@@ -364,24 +364,11 @@ end
 
 OthersSection:NewButton("🧛 Vampire 🧛", "Vampire", function()
 	animate("http://www.roblox.com/asset/?id=1083445855","http://www.roblox.com/asset/?id=1083450166","http://www.roblox.com/asset/?id=1083473930","http://www.roblox.com/asset/?id=1083462077","http://www.roblox.com/asset/?id=1083455352","http://www.roblox.com/asset/?id=1083439238","http://www.roblox.com/asset/?id=1083443587")
-	--[[
-  game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1083445855"
-  game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1083450166"
-  game.Players.LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1083473930"
-  game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1083462077"
-  game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083455352"
-  game.Players.LocalPlayer.Character.Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
-  game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1083443587"--]]
 end)
 
 OthersSection:NewButton("🧟 Zombie 🧟", "Zombie", function()
-  game.Players.LocalPlayer.Character.Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616158929"
-  game.Players.LocalPlayer.Character.Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616160636"
-  game.Players.LocalPlayer.Character.Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
-  game.Players.LocalPlayer.Character.Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
-  game.Players.LocalPlayer.Character.Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616161997"
-  game.Players.LocalPlayer.Character.Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616156119"
-  game.Players.LocalPlayer.Character.Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616157476"
+	animate("http://www.roblox.com/asset/?id=616158929","http://www.roblox.com/asset/?id=616160636","http://www.roblox.com/asset/?id=616168032","http://www.roblox.com/asset/?id=616163682",
+	"http://www.roblox.com/asset/?id=616161997","http://www.roblox.com/asset/?id=616156119","http://www.roblox.com/asset/?id=616157476")
 end)
 
 OthersSection:NewButton("🦸 Hero 🦸", "Hero", function()
