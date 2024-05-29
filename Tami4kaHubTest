@@ -14,7 +14,7 @@ end
 local CoreGui = game:GetService("StarterGui")
    CoreGui:SetCore("SendNotification", {
        Title = "Добро пожаловать 🐶",
-       Text = "Версия: 1.3.39",
+       Text = "Версия: 1.3.55",
        Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
        Duration = 5,
        Callback = AllowRunServiceBind,
@@ -139,14 +139,68 @@ local function findPlayer(playerName)
 
   return nil
 end
-  
+
+local toggleFling = false
+local toggleStand = false
+local toggleView = false
+local toggleBenx = false
+
 local playerName
 local Target
 local DisplayTarget
 
-local labelTarget = TargetSection:NewLabel("Player: "..Player.Name)
+local function ToggleFling(bool)
+	task.spawn(function()
+		if bool then
+			local RVelocity = nil
+			repeat
+				pcall(function()
+					RVelocity = Player.Character.HumanoidRootPart.Velocity 
+					Player.Character.HumanoidRootPart.Velocity = Vector3.new(math.random(-150,150),-25000,math.random(-150,150))
+					RunService.RenderStepped:wait()
+					Player.Character.HumanoidRootPart.Velocity = RVelocity
+				end)
+				RunService.Heartbeat:wait()
+			until toggleFling == false
+		end
+	end)
+end
 
-TargetSection:NewButton("👆 Click Target👆","CLick player to select target", function()
+local function PlayAnim(id,time,speed)
+	pcall(function()
+		Player.Character.Animate.Disabled = false
+		local hum = Player.Character.Humanoid
+		local animtrack = hum:GetPlayingAnimationTracks()
+		for i,track in pairs(animtrack) do
+			track:Stop()
+		end
+		Player.Character.Animate.Disabled = true
+		local Anim = Instance.new("Animation")
+		Anim.AnimationId = "rbxassetid://"..id
+		local loadanim = hum:LoadAnimation(Anim)
+		loadanim:Play()
+		loadanim.TimePosition = time
+		loadanim:AdjustSpeed(speed)
+		loadanim.Stopped:Connect(function()
+			Player.Character.Animate.Disabled = false
+			for i, track in pairs (animtrack) do
+        		track:Stop()
+    		end
+		end)
+	end)
+end
+
+local function StopAnim()
+	Player.Character.Animate.Disabled = false
+    local animtrack = Player.Character.Humanoid:GetPlayingAnimationTracks()
+    for i, track in pairs (animtrack) do
+        track:Stop()
+    end
+end
+
+local labelTarget = TargetSection:NewLabel("FullName: "..Player.Name.." | DisplayName: "..Player.DisplayName)
+
+TargetSection:NewButton("👆 Click Target 👆","CLick player to select target", function()
    local GetTargetTool = Instance.new("Tool")
 	GetTargetTool.Name = "ClickTarget"
 	GetTargetTool.RequiresHandle = false
@@ -154,8 +208,8 @@ TargetSection:NewButton("👆 Click Target👆","CLick player to select target",
 	GetTargetTool.ToolTip = "Select Target"
 
 	local function ActivateTool()
-		local root = GetRoot(plr)
-		local hit = mouse.Target
+		local root = Player.Character.HumanoidRootPart
+		local hit = Player:GetMouse().Target
 		local person = nil
 		if hit and hit.Parent then
 			if hit.Parent:IsA("Model") then
@@ -164,18 +218,9 @@ TargetSection:NewButton("👆 Click Target👆","CLick player to select target",
 				person = game.Players:GetPlayerFromCharacter(hit.Parent.Parent)
 			end
 			if person then
-				local similarPlayer = findPlayer(playerName)
-            Target = similarPlayer.Name
-            DisplayTarget = similarPlayer.DisplayName
-            labelTarget:UpdateLabel("Player: "..Target)
-            local CoreGui = game:GetService("StarterGui")
-            CoreGui:SetCore("SendNotification", {
-                Title = similarPlayer.Name,
-                Text = "Name: "..similarPlayer.DisplayName,
-                Icon = "rbxthumb://type=AvatarHeadShot&id="..Player.Parent[Target].CharacterAppearanceId.."&w=100&h=100",
-                Duration = 5,
-                Callback = AllowRunServiceBind,
-            })
+            Target = person.Name
+            DisplayTarget = person.DisplayName
+            labelTarget:UpdateLabel("FullName: "..Target.." | DisplayName: "..DisplayTarget)
 			end
 		end
 	end
@@ -193,7 +238,7 @@ TargetSection:NewTextBox("🔍 Find Target 🔍", "Enter player to use esp", fun
       if similarPlayer.Name ~= Player.Name then
          Target = similarPlayer.Name
          DisplayTarget = similarPlayer.DisplayName
-         labelTarget:UpdateLabel("Player: "..Target)
+         labelTarget:UpdateLabel("FullName: "..Target.." | DisplayName: "..DisplayTarget)
          local CoreGui = game:GetService("StarterGui")
          CoreGui:SetCore("SendNotification", {
              Title = similarPlayer.Name,
@@ -228,6 +273,86 @@ end)
 TargetSection:NewButton("📒 Copy DisplayName 📒","Копирует дислей имя игрока", function()
    if Target ~= nil then 
       setclipboard(Target)
+   end
+end)
+
+TargetSection:NewButton("✔ Teleport Target ✔","Toggle to view player", function()
+   if Target ~= nil then
+      Player.Character.HumanoidRootPart.CFrame = Player.Parent[Target].Character.HumanoidRootPart.CFrame
+   end
+end)
+
+TargetSection:NewButton("👁️ View Target 👁️","Toggle to view player", function()
+   if toggleView == false then
+      if Target ~= nil then
+         toggleView = true
+         game.Workspace.CurrentCamera.CameraSubject = Player.Parent[Target].Character.Humanoid
+      end
+   else
+      toggleView = false
+      game.Workspace.CurrentCamera.CameraSubject = Player.Character.Humanoid
+   end
+end)
+
+TargetSection:NewButton("🧲 Fling Target 🧲","Toggle to fling player", function()
+   if toggleFling == false then
+      if Target ~= nil then
+         toggleFling = true
+         local OldPos = Player.Character.HumanoidRootPart.Position
+			ToggleFling(true)
+			repeat 
+            task.wait()
+				pcall(function()
+					Player.Character.HumanoidRootPart.CFrame = Player.Parent[Target].Character.HumanoidRootPart.CFrame
+				end)
+				task.wait()
+			until toggleFling == false
+			Player.Character.HumanoidRootPart.CFrame = OldPos
+		else
+			ToggleFling(false)
+      end
+   else
+      toggleFling = false
+   end
+end)
+
+TargetSection:NewButton("👤 Stand Target 👤","Toggle to stand player", function()
+   if toggleStand == false then
+      if Target ~= nil then
+         toggleStand = true
+         PlayAnim(13823324057,4,0)
+         repeat
+            pcall(function()
+               local root = Player.Parent[Target].Character.HumanoidRootPart
+               Player.Character.HumanoidRootPart.CFrame = root.CFrame * CFrame.new(-3,1,0)
+               Player.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+            end)
+            task.wait()
+         until toggleStand == false
+         StopAnim()
+      end
+   else
+      toggleStand = false
+   end
+end)
+
+TargetSection:NewButton("👙 Bang Target 👙","Toggle to bang player", function()
+   if toggleBenx == false then
+      if Target ~= nil then
+         toggleBenx = true
+         PlayAnim(5918726674,0,1)
+         repeat
+            pcall(function()
+               local root = Player.Parent[Target].Character.HumanoidRootPart
+               Player.Character.HumanoidRootPart.CFrame = root.CFrame * CFrame.new(0,0,1.1)
+               Player.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+            end)
+            task.wait()
+         until toggleBenx == false
+         StopAnim()
+      end
+   else
+      toggleBenx = false
    end
 end)
 
