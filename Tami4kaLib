@@ -318,9 +318,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 	tab.Position = UDim2.new(0.900999988, 0, 0.137999997, 0)
 	tab.Size = UDim2.new(0, 21, 0, 21)
 	tab.ZIndex = 2
-	tab.Image = "rbxassetid://3926305904"
-	tab.ImageRectOffset = Vector2.new(464.5, 4)
-	tab.ImageRectSize = Vector2.new(34, 34)
+	tab.Image = "rbxassetid://10137941941"
 	tab.MouseButton1Click:Connect(function()
 		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 			Size = UDim2.new(0,0,0,0),
@@ -341,9 +339,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 	close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
 	close.Size = UDim2.new(0, 21, 0, 21)
 	close.ZIndex = 2
-	close.Image = "rbxassetid://3926305904"
-	close.ImageRectOffset = Vector2.new(284, 4)
-	close.ImageRectSize = Vector2.new(24, 24)
+	close.Image = "rbxassetid://10137832201"
 	close.MouseButton1Click:Connect(function()
 		game.TweenService:Create(close, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut), {
 			ImageTransparency = 1
