@@ -319,7 +319,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 		frame.Visible = false
 	end)
 	
-	Kavo.DraggingEnabled(q, frame)
+	Kavo.DraggingEnabled(frame, q)
 	
 	tab.Name = "tab"
 	tab.Parent = MainHeader
