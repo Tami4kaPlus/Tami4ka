@@ -325,7 +325,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 	tab.Parent = MainHeader
 	tab.BackgroundTransparency = 1.000
 	tab.Position = UDim2.new(0.900999988, 0, 0.137999997, 0)
-	tab.Size = UDim2.new(0, 21, 0, 21)
+	tab.Size = UDim2.new(0, 27, 0, 27)
 	tab.ZIndex = 2
 	tab.Image = "rbxassetid://10137941941"
 	tab.MouseButton1Click:Connect(function()
@@ -346,7 +346,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 	close.Parent = MainHeader
 	close.BackgroundTransparency = 1.000
 	close.Position = UDim2.new(0.949999988, 0, 0.137999997, 0)
-	close.Size = UDim2.new(0, 21, 0, 21)
+	close.Size = UDim2.new(0, 27, 0, 27)
 	close.ZIndex = 2
 	close.Image = "rbxassetid://10137832201"
 	close.MouseButton1Click:Connect(function()
