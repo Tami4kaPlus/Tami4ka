@@ -13,7 +13,7 @@ else
  local CoreGui = game:GetService("StarterGui")
     CoreGui:SetCore("SendNotification", {
         Title = "Добро пожаловать 🐶",
-        Text = "Версия: 1.3.60",
+        Text = "Версия: 1.3.63",
         Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
         Duration = 5,
         Callback = AllowRunServiceBind,
@@ -849,7 +849,7 @@ CreatorSection:NewKeybind("Open/Close Gui KeyBind", "Keybind open/close", Enum.K
   print(key)
   pcall(function()
     local Name = "KavoUI_Plus_Config.json"
-    if not isfile("KavoUI_Plus_Config.json") then
+    if isfile("KavoUI_Plus_Config.json") then
       writefile(Name, '{"KeyBind" = "Enum.KeyCode."'..key'}') 
     end
   end)
