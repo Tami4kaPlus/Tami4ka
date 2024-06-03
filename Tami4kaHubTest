@@ -1,4 +1,3 @@
-
 if game.Players.LocalPlayer.Name ~= "Tami4kaPlus" then
    setclipboard("t.me./tami4ka_tg")
    local CoreGui = game:GetService("StarterGui")
@@ -9,18 +8,18 @@ if game.Players.LocalPlayer.Name ~= "Tami4kaPlus" then
            Duration = 5,
            Callback = AllowRunServiceBind,
        })
+
+else
+	local CoreGui = game:GetService("StarterGui")
+	   CoreGui:SetCore("SendNotification", {
+	       Title = "Добро пожаловать 🐶",
+	       Text = "Версия: 1.3.59",
+	       Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
+	       Duration = 5,
+	       Callback = AllowRunServiceBind,
+	   })
 end
-
-local CoreGui = game:GetService("StarterGui")
-   CoreGui:SetCore("SendNotification", {
-       Title = "Добро пожаловать 🐶",
-       Text = "Версия: 1.3.59",
-       Icon = "rbxthumb://type=AvatarHeadShot&id="..game.Players.LocalPlayer.CharacterAppearanceId.."&w=150&h=150",
-       Duration = 5,
-       Callback = AllowRunServiceBind,
-   })
-
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/Tami4kaLib"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/TestLib"))()
 
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme","rbxassetid://17601879017")
 
