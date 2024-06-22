@@ -265,9 +265,9 @@ function Kavo.CreateLib(kavName, themeList, img)
 	title.TextXAlignment = Enum.TextXAlignment.Left
 
 	local frame = Instance.new("Frame")
-    local q = Instance.new("ImageButton")
-    local i = Instance.new("UIStroke", q)
-    Instance.new("UICorner", q)
+    	local q = Instance.new("ImageButton")
+    	local i = Instance.new("UIStroke", q)
+    	Instance.new("UICorner", q)
 
 	frame.BackgroundTransparency = 1
 	frame.Name = "OpenGui"
@@ -305,21 +305,22 @@ function Kavo.CreateLib(kavName, themeList, img)
 		tab.Size = UDim2.new(0, 21, 0, 21)
 		tab.ZIndex = 2
 		tab.Image = "rbxassetid://10137941941"
+		tab.MouseButton1Click:Connect(function()
+			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Size = UDim2.new(0,0,0,0),
+			}):Play()
+			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Position = UDim2.new(0, Main.AbsolutePosition.X, 0, Main.AbsolutePosition.Y)
+			}):Play()
+			--wait(0.2)
+			frame.Visible = true
+			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Size = UDim2.new(0,60,0,60),
+			}):Play()
+		end)
+	else
+		tab:Destroy()
 	end
-
-	tab.MouseButton1Click:Connect(function()
-		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,0,0,0),
-		}):Play()
-		game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Position = UDim2.new(0, Main.AbsolutePosition.X, 0, Main.AbsolutePosition.Y)
-		}):Play()
-		--wait(0.2)
-		frame.Visible = true
-		game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,60,0,60),
-		}):Play()
-	end)
 
 	close.Name = "close"
 	close.Parent = MainHeader
