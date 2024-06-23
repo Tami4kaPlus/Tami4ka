@@ -1,0 +1,94 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/TestLib"))()
+
+local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme", "rbxassetid://17601879017")
+
+local coordinates
+
+local PlrTab = Window:NewTab("Main")
+local PlrSection = PlrTab:NewSection("Main")
+
+PlrSection:NewSlider("⚡ Speed ⚡", "Set you speed", 150, 16, function(s)
+  game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlrSection:NewSlider("🔝 Jump Power 🔝", "Set you JumpPower", 250, 50, function(s)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+
+PlrSection:NewSlider("⚙ Hip Height ⚙", "Set you HipHeight", 75, 0, function(s)
+game.Players.LocalPlayer.Character.Humanoid.HipHeight = s
+end)
+
+PlrSection:NewSlider("👀 Field Of View 👀", "Set you FOV", 120, 70, function(s)
+game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("👤 Save Coordinates 👤", "Save you Coordinates", function()
+coordinates = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end)
+
+PlrSection:NewButton("👁️ Teleport Coordinates 👁️", "Tp saved Coordinates", function ()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = coordinates
+end)
+
+PlrSection:NewButton("✔ Teleport to click ✔", "Teleport", function()
+  mouse = game.Players.LocalPlayer:GetMouse()
+  tool = Instance.new("Tool")
+  tool.RequiresHandle = false
+  tool.Name = "Click Teleport"
+  tool.Activated:connect(function()
+  local pos = mouse.Hit+Vector3.new(0,2.5,0)
+  pos = CFrame.new(pos.X,pos.Y,pos.Z)
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+  end)
+  tool.Parent = game.Players.LocalPlayer.Backpack
+end)
+
+PlrSection:NewButton("🌌 FullBrightness 🌌", "Делает освищение ярким", function()
+  local Light = game:GetService("Lighting")
+  function dofullbright()
+    Light.Ambient = Color3.new(1, 1, 1)
+    Light.ColorShift_Bottom = Color3.new(1, 1, 1)
+    Light.ColorShift_Top = Color3.new(1, 1, 1)
+  end
+  dofullbright()
+  Light.LightingChanged:Connect(dofullbright)
+end)
+
+PlrSection:NewToggle("🎯 Hitbox Expander 🎯", "Hitbox Expander", function(toggle)
+ if toggle then
+    _G.Hitbox = true
+     dayn = game:GetService("RunService").RenderStepped:Connect(function()
+      _G.HeadSize = 15
+      for i,v in next, game:GetService('Players'):GetPlayers() do
+        if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+        pcall(function()
+          v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+          v.Character.HumanoidRootPart.Transparency = 0.95
+          v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
+          v.Character.HumanoidRootPart.Material = "Neon"
+          v.Character.HumanoidRootPart.CanCollide = false
+        end)
+        end
+      end
+    end)
+    repeat task.wait() until _G.Hitbox == false
+    dayn:Disconnect()
+ else
+    _G.Hitbox = false
+ end
+end)
+
+PlrSection:NewToggle("📱 Растяжение экрана 📱", "Растягивает экран", function(toggle)
+ if toggle then
+    _G.ScreenGleep = true
+     screen = game:GetService("RunService").RenderStepped:Connect(function()
+    local Camera = workspace.CurrentCamera
+         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.85, 0, 0, 0, 1)
+    end)
+    repeat task.wait() until _G.ScreenGleep == false
+    screen:Disconnect()
+ else
+    _G.ScreenGleep = false
+ end
+end)
