@@ -3,6 +3,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4
 local Window = Library.CreateLib("🍇 Tami4ka Hub 🥝", "GrapeTheme", "rbxassetid://17601879017")
 
 local coordinates
+_G.HeadSize = 15
 
 local PlrTab = Window:NewTab("Main")
 local PlrSection = PlrTab:NewSection("Main")
@@ -55,16 +56,19 @@ PlrSection:NewButton("🌌 FullBrightness 🌌", "Делает освищени�
   Light.LightingChanged:Connect(dofullbright)
 end)
 
-PlrSection:NewToggle("🎯 Hitbox Expander 🎯", "Hitbox Expander", function(toggle)
+PlrSection:NewSlider("⏹️ Hitbox Scale ⏹️", "Set you speed", 50, 0, function(s)
+  _G.HeadSize = s
+end)
+
+PlrSection:NewToggle("🎯 Expander [ HumanoidRootPart ] 🎯", "Hitbox Expander", function(toggle)
  if toggle then
     _G.Hitbox = true
      dayn = game:GetService("RunService").RenderStepped:Connect(function()
-      _G.HeadSize = 15
       for i,v in next, game:GetService('Players'):GetPlayers() do
         if v.Name ~= game:GetService('Players').LocalPlayer.Name then
         pcall(function()
           v.Character.HumanoidRootPart.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
-          v.Character.HumanoidRootPart.Transparency = 0.95
+          v.Character.HumanoidRootPart.Transparency = 0.7
           v.Character.HumanoidRootPart.BrickColor = BrickColor.new("Really black")
           v.Character.HumanoidRootPart.Material = "Neon"
           v.Character.HumanoidRootPart.CanCollide = false
@@ -79,12 +83,56 @@ PlrSection:NewToggle("🎯 Hitbox Expander 🎯", "Hitbox Expander", function(to
  end
 end)
 
-PlrSection:NewToggle("📱 Растяжение экрана [0.55] 📱", "Растягивает экран", function(toggle)
+PlrSection:NewToggle("🎯 Expander [ Torso R6 ] 🎯", "Hitbox Expander", function(toggle)
+ if toggle then
+    _G.HitboxT = true
+     dayn = game:GetService("RunService").RenderStepped:Connect(function()
+      for i,v in next, game:GetService('Players'):GetPlayers() do
+        if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+        pcall(function()
+          v.Character.Torso.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+          v.Character.Torso.Transparency = 0.7
+          v.Character.Torso.BrickColor = BrickColor.new("Really black")
+          v.Character.Torso.Material = "Neon"
+        end)
+        end
+      end
+    end)
+    repeat task.wait() until _G.Hitbox == false
+    dayn:Disconnect()
+ else
+    _G.HitboxT = false
+ end
+end)
+
+PlrSection:NewToggle("🎯 Expander [ UpperTorso R15 ] 🎯", "Hitbox Expander", function(toggle)
+ if toggle then
+    _G.HitboxT = true
+     dayn = game:GetService("RunService").RenderStepped:Connect(function()
+      for i,v in next, game:GetService('Players'):GetPlayers() do
+        if v.Name ~= game:GetService('Players').LocalPlayer.Name then
+        pcall(function()
+          v.Character.UpperTorso.Size = Vector3.new(_G.HeadSize,_G.HeadSize,_G.HeadSize)
+          v.Character.UpperTorso.Transparency = 0.7
+          v.Character.UpperTorso.BrickColor = BrickColor.new("Really black")
+          v.Character.UpperTorso.Material = "Neon"
+        end)
+        end
+      end
+    end)
+    repeat task.wait() until _G.Hitbox == false
+    dayn:Disconnect()
+ else
+    _G.HitboxT = false
+ end
+end)
+
+PlrSection:NewToggle("📱 Растяжение экрана [0.85] 📱", "Растягивает экран", function(toggle)
  if toggle then
     _G.ScreenGleep = true
      screen = game:GetService("RunService").RenderStepped:Connect(function()
     local Camera = workspace.CurrentCamera
-         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.55, 0, 0, 0, 1)
+         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.85, 0, 0, 0, 1)
     end)
     repeat task.wait() until _G.ScreenGleep == false
     screen:Disconnect()
@@ -107,12 +155,12 @@ PlrSection:NewToggle("📱 Растяжение экрана [0.7] 📱", "Ра�
  end
 end)
 
-PlrSection:NewToggle("📱 Растяжение экрана [0.85] 📱", "Растягивает экран", function(toggle)
+PlrSection:NewToggle("📱 Растяжение экрана [0.55] 📱", "Растягивает экран", function(toggle)
  if toggle then
     _G.ScreenGleep = true
      screen = game:GetService("RunService").RenderStepped:Connect(function()
     local Camera = workspace.CurrentCamera
-         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.85, 0, 0, 0, 1)
+         Camera.CFrame = Camera.CFrame * CFrame.new(0, 0, 0, 1, 0, 0, 0, 0.55, 0, 0, 0, 1)
     end)
     repeat task.wait() until _G.ScreenGleep == false
     screen:Disconnect()
