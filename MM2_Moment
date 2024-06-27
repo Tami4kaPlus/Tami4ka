@@ -94,6 +94,7 @@ PlrSection:NewToggle("🎯 Expander [ Torso R6 ] 🎯", "Hitbox Expander", funct
           v.Character.Torso.Transparency = 0.7
           v.Character.Torso.BrickColor = BrickColor.new("Really black")
           v.Character.Torso.Material = "Neon"
+          v.Character.Torso.CanCollide = false
         end)
         end
       end
@@ -116,6 +117,7 @@ PlrSection:NewToggle("🎯 Expander [ UpperTorso R15 ] 🎯", "Hitbox Expander",
           v.Character.UpperTorso.Transparency = 0.7
           v.Character.UpperTorso.BrickColor = BrickColor.new("Really black")
           v.Character.UpperTorso.Material = "Neon"
+          v.Character.UpperTorso.CanCollide = false
         end)
         end
       end
