@@ -460,7 +460,7 @@ loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Dex-Explore
 end)
 
 OthersSection:NewButton("📱 Simple Spy [Mobile] 📱", "Dev Items", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/harisprofanny/d/main/Protected.lua%20(22).txt"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/exxtremestuffs/SimpleSpySource/master/SimpleSpy.lua"))()
 end)
 
 OthersSection:NewButton("💻 Remote Spy V2 💻", "Dev Items", function()
