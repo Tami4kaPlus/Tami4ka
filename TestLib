@@ -288,7 +288,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 	
 		i.Thickness = 4
 		i.Color = Color3.new(1,1,1)
-		print("TestLib v1.0")
+		print("TestLib v1.1")
 		q.TouchTap:Connect(function()
 			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Size = UDim2.new(0, 525, 0, 318),
@@ -296,6 +296,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 			}):Play()
 			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Size = UDim2.new(0,0,0,0),
+				Position = UDim2.new(0.5, 0, 0.5, 0)
 			}):Play()
 			wait(0.1)
 			frame.Visible = false
