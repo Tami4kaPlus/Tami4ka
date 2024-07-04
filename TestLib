@@ -126,6 +126,10 @@ local SettingsT = {}
 
 local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100))
 
+function Kavo:DestroyUI()
+	game.CoreGui[LibName]:Destroy()
+end
+
 function Kavo:ToggleUI()
 	local Main = game.CoreGui[LibName].Main
         if game.CoreGui[LibName].Main.Size == UDim2.new(0, 525, 0, 318) then
@@ -288,7 +292,7 @@ function Kavo.CreateLib(kavName, themeList, img)
 		q.MouseButton1Click:Connect(function()
 			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Size = UDim2.new(0, 525, 0, 318),
-				Position = UDim2.new(0, frame.AbsolutePosition.X, 0, frame.AbsolutePosition.Y)
+				Position = UDim2.new(0, 0.5, 0, 0.5)
 			}):Play()
 			--wait()
 			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
@@ -308,15 +312,14 @@ function Kavo.CreateLib(kavName, themeList, img)
 		tab.ZIndex = 2
 		tab.Image = "rbxassetid://10137941941"
 		tab.MouseButton1Click:Connect(function()
-			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			game.TweenService:Create(Main, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Size = UDim2.new(0,0,0,0),
 			}):Play()
-			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			game.TweenService:Create(frame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Position = UDim2.new(0, Main.AbsolutePosition.X, 0, Main.AbsolutePosition.Y)
 			}):Play()
-			--wait(0.2)
 			frame.Visible = true
-			game.TweenService:Create(frame, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+			game.TweenService:Create(frame, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 				Size = UDim2.new(0,60,0,60),
 			}):Play()
 		end)
