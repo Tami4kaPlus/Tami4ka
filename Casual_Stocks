@@ -1,0 +1,111 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/TestLib"))()
+
+local Window = Library.CreateLib("Casual Stocks", "Midnight", "rbxassetid://17601879017")
+
+local coordinates
+local toggleWSPeeD = false
+local r = false
+
+local PlrTab = Window:NewTab("Main")
+local PlrSection = PlrTab:NewSection("Main")
+
+PlrSection:NewSlider("Speed", "Set you speed", 30, 16, function(s)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+PlrSection:NewSlider("Field Of View", "Set you FOV", 120, 70, function(s)
+    game.Workspace.CurrentCamera.FieldOfView = s
+end)
+
+PlrSection:NewButton("Save Coordinates", "Save you Coordinates", function()
+    coordinates = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+end)
+
+PlrSection:NewButton("Teleport Coordinates", "Tp saved Coordinates", function ()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = coordinates
+    local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    tween:Play()
+end)
+
+local PlrTab = Window:NewTab("Teleport")
+local PlrSection = PlrTab:NewSection("Teleports")
+
+PlrSection:NewButton("Teleport PointJob", "Enjoy", function()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = workspace.World.Debris.PointJob.Position
+    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    tween:Play()
+    tween.Completed:Connect(function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    end)
+end)
+
+PlrSection:NewButton("Teleport FinishJob", "Enjoy", function()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = workspace.World.Debris.FinishJob.Position
+    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    tween:Play()
+    tween.Completed:Connect(function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    end)
+end)
+
+PlrSection:NewButton("Teleport Seller", "Enjoy", function()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = Vector3.new(19.3718, 165.516, -34.6243)
+    local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    tween:Play()
+    tween.Completed:Connect(function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    end)
+end)
+
+local PlrTab = Window:NewTab("Auto-Farm")
+local PlrSection = PlrTab:NewSection("Auto-Farm")
+
+function tpfpp()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = workspace.World.Debris.FinishJob.Position
+    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+    tween:Play()
+    tween.Completed:Connect(function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+        wait(60)
+        if r == true then
+            tpfp()
+        end
+    end)
+end
+
+function tpfp()
+    local player = game.Players.LocalPlayer
+    local teleportPosition = workspace.World.Debris.PointJob.Position
+    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+    tween:Play()
+    tween.Completed:Connect(function()
+        if r == true then
+            tpfpp()
+        end
+    end)
+end
+
+PlrSection:NewToggle("Job Farm", "Enjoy", function(farm)
+    if farm then
+        r = true
+        tpfp()
+    else
+        r = false
+    end
+end)
