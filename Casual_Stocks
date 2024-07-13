@@ -1,111 +1,962 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Tami4kaPlus/Tami4ka/main/TestLib"))()
+--SportMaster table
+local Sport_cloth_PriceTable = {
+    ["Красная Футболка 'Demix'"] = 1000 ,
+    ["Белая Футболка 'Puma'"] = 1500,
+    ["Чёрные Джоггеры 'Puma'"] = 1400,
+    ["Оранжевая Тренажёрная Куртка 'Nike'"] = 5780,
+    ["Чёрная Тренажёрная Куртка 'Nike'"] = 5780,
+    ["Бежевая Тренажёрная Куртка 'Nike'"] =5580,
+    ["Серая Худи 'Rebook'"] = 2900,
+    ["Чёрная Куртка 'Rebook'"] = 3500,
+    ["Чёрные Спортивные Штаны 'Puma'"] = 1400,
+    ["Спортивные Штаны 'Nike'"] = 1200,
+    ["Серые Спортивные Брюки"] = 1300,
+    ["Спортивные Штаны 'Polo'"] =1200,
+    ["Чёрные Спортивные Штаны 'Adidas'"] = 2580,
+    ["Чёрная Спортивная Джинсовка 'Puma'"] = 2280,
+    ["Чёрная Футболка 'Puma'"] = 1500
 
-local Window = Library.CreateLib("Casual Stocks", "Midnight", "rbxassetid://17601879017")
+} 
 
-local coordinates
-local toggleWSPeeD = false
-local r = false
+local Sport_cloth_NameTable = {
+    "Красная Футболка 'Demix'",
+    "Белая Футболка 'Puma'",
+    "Чёрные Джоггеры 'Puma'",
+    "Оранжевая Тренажёрная Куртка 'Nike'",
+    "Чёрная Тренажёрная Куртка 'Nike'",
+    "Бежевая Тренажёрная Куртка 'Nike'",
+    "Серая Худи 'Rebook'",
+    "Чёрная Куртка 'Rebook'",
+    "Чёрные Спортивные Штаны 'Puma'",
+    "Спортивные Штаны 'Nike'",
+    "Серые Спортивные Брюки",
+    "Спортивные Штаны 'Polo'",
+    "Чёрные Спортивные Штаны 'Adidas'",
+    "Чёрная Спортивная Джинсовка 'Puma'",
+    "Чёрная Футболка 'Puma'"
+}
 
-local PlrTab = Window:NewTab("Main")
-local PlrSection = PlrTab:NewSection("Main")
+-------------SportMaster END-------------------
 
-PlrSection:NewSlider("Speed", "Set you speed", 30, 16, function(s)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
-end)
+--Adidas table
+local Adidas_cloth_PriceTable = {
+    -- Min price
+    ["Серые Спортивные Штаны 'Adidas'"] = 4100,
+    ["Чёрные Треники 'Adidas'"] = 4100,
+    ["Оранжевые Спортивные Штаны 'Adidas'"] = 4000,
+    ["Серая Футболка Logo 'Adidas'"] = 2450,
+    ["Лаймовая Кофта White 'Adidas'"] = 8870,
+    ["Красная Спортивка White 'Adidas'"] = 8950,
+    ["Белая Футболка Pinstripe 'Adidas'"] = 2185,
+    ["Синяя Футболка Logo 'Adidas'"] = 3000,
+    ["Тёмно Синяя Кофта 'Adidas'"] = 2660,
+    ["Белая Футболка Tricolor Germany 'Adidas'"] = 10735,
+    ["Черное Худи 'Adidas'"] = 5950,
+    ["Белое Поло 'Adidas'"] = 4050,
+    ["Серая Спортивка White 'Adidas'"] = 25100,
+    ["Белый Свитер Black 'Adidas'"] = 4500
+} 
 
-PlrSection:NewSlider("Field Of View", "Set you FOV", 120, 70, function(s)
-    game.Workspace.CurrentCamera.FieldOfView = s
-end)
+local Adidas_cloth_NameTable = {
+    "Чёрные Треники 'Adidas'",
+    "Оранжевые Спортивные Штаны 'Adidas'",
+    "Серая Футболка Logo 'Adidas'",
+    "Лаймовая Кофта White 'Adidas'",
+    "Красная Спортивка White 'Adidas'",
+    "Белая Футболка Pinstripe 'Adidas'",
+    "Синяя Футболка Logo 'Adidas'",
+    "Тёмно Синяя Кофта 'Adidas'",
+    "Белая Футболка Tricolor Germany 'Adidas'",
+    "Черное Худи 'Adidas'",
+    "Белое Поло 'Adidas'",
+    "Серая Спортивка White 'Adidas'",
+    "Белый Свитер Black 'Adidas'"
 
-PlrSection:NewButton("Save Coordinates", "Save you Coordinates", function()
-    coordinates = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-end)
+}
 
-PlrSection:NewButton("Teleport Coordinates", "Tp saved Coordinates", function ()
+--Adidas table END----------------------------
+
+--Bape table
+local Bape_cloth_PriceTable = {
+    ["Фиолетовый Зип-Худи 'BAPE'"]= 40000,
+    ["Белая Футболка 'BAPE STA'"]= 10000,
+    ["Красная Футболка 'BAPE'"] =10000,
+    ["Чёрные Джинсы 'BAPE STA'"]=35000,
+    ["Тёмные Джинсы 'BAPE STA'"]=35000,
+    ["Бежевый Зип-Худи 'BAPE'"]=46000,
+    ["Бежевая Зип-Худи 'BAPE'"]=46000,
+    ["Рюкзак 'BAPE'"]=99000,
+    ["Черная Зип-Худи Baby-Milo"]=50000,
+    ["Черный Зип-Худи 'BAPE'"]=45000,
+    ["Бежевая Зип-Худи 'BAPE STA'"]=45000,
+    ["Серый Зип-Худи 'BAPE'"]=53000,
+    ["Чёрные Джинсы 'BAPE STA'"]=35000,
+    ["Джинсы 'BAPE'"]=35000,
+    ["Чёрный Джинсы 'BAPE STA'"]=35000,
+    ["Черный Зип-Худи 'BAPE x Baby Milo'"]=52000,
+    ["Черный Свитер 'BAPE STA'"]=43000,
+    ["Синий Зип-Худи 'BAPE STA'"]=23500,
+    ["Серый Зип-Худи 'BAPE STA'"]=21000
+
+} 
+
+local Bape_cloth_NameTable = {
+    "Фиолетовый Зип-Худи 'BAPE'",
+    "Белая Футболка 'BAPE STA'",
+    "Красная Футболка 'BAPE'",
+    "Чёрные Джинсы 'BAPE STA'",
+    "Бежевый Зип-Худи 'BAPE'",
+    "Бежевая Зип-Худи 'BAPE'",
+    "Рюкзак 'BAPE'",
+    "Черная Зип-Худи Baby-Milo",
+    "Черный Зип-Худи 'BAPE'",
+    "Бежевая Зип-Худи 'BAPE STA'",
+    "Серый Зип-Худи 'BAPE'",
+    "Чёрные Джинсы 'BAPE STA'",
+    "Джинсы 'BAPE'",
+    "Тёмные Джинсы 'BAPE STA'",
+    "Чёрный Джинсы 'BAPE STA'",
+    "Черный Зип-Худи 'BAPE x Baby Milo'",
+    "Черный Свитер 'BAPE STA'",
+    "Синий Зип-Худи 'BAPE STA'",
+    "Серый Зип-Худи 'BAPE STA'"
+
+}
+
+--Bape table END----------------------------
+
+--Chrome Hearts table
+local ChromeHearts_cloth_PriceTable = {
+    -- Min price
+    ["Джинсы 'Levis X Chrome Hearts'"] = 725000,
+    ["Бежевая Кофта Cemetery Cross Tire Tracks 'Chrome Hearts'"] = 160000,
+    ["Brown Худи Horse Shoe 'Chrome Hearts'"] = 135000,
+    ["Чёрная Худи Multi Color Cross 'Chrome Hearts'"] = 170000,
+    ["Голубые Джинсы 'Chrome Hearts'"] = 240000,
+    ["Чёрное  Худи 'Chrome Hearts'"] = 160000,
+    ["Джинсы CROSS PINK 'Chrome Hearts'"] = 240000,
+    ["Джинсы CROSS RED 'Chrome Hearts'"] = 440000,
+    ["Джинсы CROSS GREEN 'Chrome Hearts'"] = 240000,
+    ["Белая кофта Plus Cross 'Chrome Hearts'"] = 77000,
+    ["Белый Лонгслив Las Vegas 'Chrome Hearts'"] = 77000,
+    ["Чёрная футболка Hong Kong 'Chrome Hearts'"] = 52000,
+    ["Чёрный свитшот Chomper 'Matty Boy X Chrome Hearts'"] = 77000,
+    ["Чёрная футболка America 'Chrome Hearts'"] = 45000,
+    ["Лаймовые Джинсы NYFW 'Chrome Hearts'"] = 3400000,
+    ["Штаны Multiple 'Chrome Hearts'"] = 96000,
+    ["Чёрный свитшот Horse Shoe 'Chrome Hearts'"] = 131000,
+    ["Кожанные Джинсы 'Matty Boy X Chrome Hearts'"] = 725000,
+    ["Штаны 'Chrome Hearts X CARHARTT'"] = 2200000,
+    ["Худи 'Chrome Hearts' Cemetery"] = 160000,
+    ["Кожанная Куртка Cross RED 'Chrome Hearts'"] = 444000,
+    ["Чёрная Куртка 'Matty Boy X Chrome Hearts'"] = 616000,
+    ["Цитрусовый Лонгслив Record 'Matty Boy X Chrome Hearts'"] = 12000,
+    ["Красный Лонгслив Chomper 'Matty Boy X Chrome Hearts'"] = 82000,
+    ["Коричневая Худи Horse Shoe 'Chrome Hearts'"] = 150000,
+    ["Чёрная Худи 'Chrome Hearts'"] = 150000
+} 
+
+local ChromeHearts_cloth_NameTable = {
+    "Джинсы 'Levis X Chrome Hearts'",
+    "Бежевая Кофта Cemetery Cross Tire Tracks 'Chrome Hearts'",
+    "Чёрная Худи Multi Color Cross 'Chrome Hearts'",
+    "Голубые Джинсы 'Chrome Hearts'",
+    "Чёрное  Худи 'Chrome Hearts'",
+    "Джинсы CROSS PINK 'Chrome Hearts'",
+    "Джинсы CROSS RED 'Chrome Hearts'",
+    "Джинсы CROSS GREEN 'Chrome Hearts'",
+    "Белая кофта Plus Cross 'Chrome Hearts'",
+    "Белый Лонгслив Las Vegas 'Chrome Hearts'",
+    "Чёрная футболка Hong Kong 'Chrome Hearts'",
+    "Чёрный свитшот Chomper 'Matty Boy X Chrome Hearts'",
+    "Чёрная футболка America 'Chrome Hearts'",
+    "Штаны Multiple 'Chrome Hearts'",
+    "Чёрный свитшот Horse Shoe 'Chrome Hearts'",
+    "Кожанные Джинсы 'Matty Boy X Chrome Hearts'",
+    "Штаны 'Chrome Hearts X CARHARTT'",
+    "Худи 'Chrome Hearts' Cemetery",
+    "Кожанная Куртка Cross RED 'Chrome Hearts'",
+    "Чёрная Куртка 'Matty Boy X Chrome Hearts'",
+    "Цитрусовый Лонгслив Record 'Matty Boy X Chrome Hearts'",
+    "Красный Лонгслив Chomper 'Matty Boy X Chrome Hearts'",
+    "Коричневая Худи Horse Shoe 'Chrome Hearts'",
+    "Чёрная Худи 'Chrome Hearts'"
+
+}
+
+--Chrome Hearts table END----------------------------
+
+--Vetements table
+local Vetements_cloth_PriceTable = {
+    -- Min price
+    ["Белая футболка stop being rich 'Vetements'"] = 61000,
+    ["Синяя Куртка Global Mind 'Vetements'"] = 84000,
+    ["Черное Худи Private Bay 'Vetements'"] = 84000,
+    ["Черное Худи RAMMSTEIN 'Vetements'"] = 53000,
+    ["Рубашка Marilyn Manson 'Vetements'"] = 85000,
+    ["Синий Лонгслив Made in Europe 'Vetements'"] = 84000,
+    ["Фиолетовая Худи Only Vetements 'Vetements'"] = 78000,
+    ["Серое Худи Hug Me 'Vetements'"] = 100000,
+    ["Розовые Пижамные Штаны Pink Checkered 'Vetements'"] = 140000,
+    ["Белые Штаны SS19 Distressed 'Vetements'"] = 82000,
+    ["Серые Штаны 'Vetements'"] = 139700,
+    ["Черные Штаны Gothic Mega Flared 'Vetements'"] = 219000,
+    ["Бежевые Штаны Made on Earth 'Vetements'"] = 34000,
+    ["Джинсы Winter 2018 Logo Embroidered 'Vetements'"] = 79000,
+    ["Камуфляжные Штаны Camo Stikers 'Vetements'"] = 138000,
+    ["Красные Штаны Fan Deconstucted 'Vetements'"] = 143000,
+    ["Оранжевые  Пижамные  Штаны Gray & Orange Check 'Vetements'"] = 158000,
+    ["Пижамные Штаны Spider Man 'Vetements'"] = 71000,
+    ["Розовое Худи I got Lucky 'Vetements'"] = 61000,
+    ["Черное Зип Худи Bro 'Embroidery'"] = 81000,
+    ["Черное Худи Ecstasy 'Vetements'"] = 96000,
+    ["Черная футболка think while its still legal 'Vetements'"] = 56000
+
+} 
+
+local Vetements_cloth_NameTable = {
+    "Белая футболка stop being rich 'Vetements'",
+    "Футболка Stop Being Rich 'Vetements'",
+    "Синяя Куртка Global Mind 'Vetements'",
+    "Черное Худи Private Bay 'Vetements'",
+    "Черное Худи RAMMSTEIN 'Vetements'",
+    "Рубашка Marilyn Manson 'Vetements'",
+    "Синий Лонгслив Made in Europe 'Vetements'",
+    "Фиолетовая Худи Only Vetements 'Vetements'",
+    "Серое Худи Hug Me 'Vetements'",
+    "Розовые Пижамные Штаны Pink Checkered 'Vetements'",
+    "Белые Штаны SS19 Distressed 'Vetements'",
+    "Серые Штаны 'Vetements'",
+    "Черные Штаны Gothic Mega Flared 'Vetements'",
+    "Бежевые Штаны Made on Earth 'Vetements'",
+    "Джинсы Winter 2018 Logo Embroidered 'Vetements'",
+    "Камуфляжные Штаны Camo Stikers 'Vetements'",
+    "Красные Штаны Fan Deconstucted 'Vetements'",
+    "Оранжевые  Пижамные  Штаны Gray & Orange Check 'Vetements'",
+    "Пижамные Штаны Spider Man 'Vetements'",
+    "Розовое Худи I got Lucky 'Vetements'",
+    "Черное Зип Худи Bro 'Embroidery'",
+    "Черное Худи Ecstasy 'Vetements'",
+    "Черная Футболка Think While Its Still Legal 'Vetements'"
+
+}
+
+--Vetements table END----------------------------
+
+--Zara Table----------------------------
+
+local Zara_cloth_PriceTable = {
+    ["Синий Пиджак 'ZARA'"]=10880,
+    ["Синяя Куртка 'ZARA'"]=3880,
+    ["Чёрная Джинсовка 'ZARA'"]=4780,
+    ["Синий Свитер 'ZARA'"]=3780,
+    ["Серые Штаны 'ZARA'"]=3080,
+    ["Чёрные Порванные Джинсы 'ZARA'"]=3080,
+    ["Порванные Джинсы 'ZARA'"]=3080,
+    ["Серая Zip-Hoodie 'ZARA'"]=3980,
+    ["Белые рваные джинсы 'ZARA'"]=3180,
+    ["Штаны Side Cheker 'ZARA'"]=3380 
+}
+
+local Zara_cloth_NameTable = {
+    "Синий Пиджак 'ZARA'",
+    "Синяя Куртка 'ZARA'",
+    "Чёрная Джинсовка 'ZARA'",
+    "Синий Свитер 'ZARA'",
+    "Серые Штаны 'ZARA'",
+    "Чёрные Порванные Джинсы 'ZARA'",
+    "Порванные Джинсы 'ZARA'",
+    "Серая Zip-Hoodie 'ZARA'",
+    "Белые рваные джинсы 'ZARA'",
+    "Штаны Side Cheker 'ZARA'" 
+
+}
+
+--Zara Table End----------------------------
+
+------Stone Island table ---
+local StoneIsland_cloth_PriceTable = {
+    ["Фиолетовый Свитер 'Stone Island'"] = 25000,
+    ["Болотная Куртка 'Stone Island'"] = 75000,
+    ["Чёрная Куртка 'Stone Island'"] = 80000,
+    ["Свитшот С Жилетом 'Carhartt X Stone Island'"] = 35000,
+    ["Болотный Свитшот 'Stone Island'"] = 23000,
+    ["Чёрная Джинсовка 'Stone Island'"] = 31000,
+    ["Бежевая Рубашка 'Stone Island'"] = 15000,
+    ["Красный Свитшот 'Stone Island'"] = 20000,
+    ["Серый Свитер 'Stone Island'"] = 25000,
+    ["Черные Джоггеры 'Stone Island'"] = 25000,
+    ["Синие Джинсы 'Stone Island'"] = 25000,
+    ["Тёмные Штаны 'Stone Island'"] = 25000,
+    ["Серые Джинсы 'Stone Island'"] = 25000
+}
+
+local StoneIsland_cloth_NameTable = {
+    "Фиолетовый Свитер 'Stone Island'",
+    "Болотная Куртка 'Stone Island'",
+    "Чёрная Куртка 'Stone Island'",
+    "Свитшот С Жилетом 'Carhartt X Stone Island'",
+    "Болотный Свитшот 'Stone Island'",
+    "Чёрная Джинсовка 'Stone Island'",
+    "Бежевая Рубашка 'Stone Island'",
+    "Красный Свитшот 'Stone Island'",
+    "Серый Свитер 'Stone Island'",
+    "Черные Джоггеры 'Stone Island'",
+    "Синие Джинсы 'Stone Island'",
+    "Тёмные Штаны 'Stone Island'",
+    "Серые Джинсы 'Stone Island'"
+}
+
+------Stone Island table Enda ---
+
+------Balenciaga ---
+
+local Balenciaga_cloth_PriceTable = {
+    ["Красная Куртка 'Balenciaga'"] = 170000,
+    ["Брюки 'Balenciaga'"] = 28000,
+    ["Чёрный Свитер 'Balenciaga'"] = 22000,
+    ["Красный Свитер 'Balenciaga'"] = 22000,
+    ["Зелёный Свитер 'Balenciaga'"] = 22000,
+    ["Потрёпанные Штаны 'Balenciaga'"] = 25000,
+    ["Тёмные Джинсы 'Balenciaga'"] = 35000,
+
+}
+
+local Balenciaga_cloth_NameTable = {
+    "Красная Куртка 'Balenciaga'",
+    "Брюки 'Balenciaga'",
+    "Чёрный Свитер 'Balenciaga'",
+    "Красный Свитер 'Balenciaga'",
+    "Зелёный Свитер 'Balenciaga'",
+    "Потрёпанные Штаны 'Balenciaga'",
+    "Тёмные Джинсы 'Balenciaga'"
+}
+
+------Balenciaga End ---
+
+local LouisVuitton_cloth_PriceTable = {
+    ["Тёмные Деловые Брюки 'Louis Vuitton'"]=138000,
+    ["Рюкзак 'Louis Vuitton'"]=250000,
+    ["Белая Джинсовка Varsity 'Louis Vuitton'"]=620000,
+    ["Синий Свитер Intarsia Logo 'Louis Vuitton'"]=100000
+}
+
+local LouisVuitton_cloth_NameTable = {
+    "Тёмные Деловые Брюки 'Louis Vuitton'",
+    "Рюкзак 'Louis Vuitton'",
+    "Белая Джинсовка Varsity 'Louis Vuitton'",
+    "Синий Свитер Intarsia Logo 'Louis Vuitton'"
+}
+
+local Gucci_cloth_PriceTable = {
+    ["Розовая Рубашка  Love Letter 'Gucci'"]=50000,
+    ["Бежевый свитер Lamb 'Gucci'"]=84000,
+    ["Бежевая футболка Logo 'Gucci'"]=24000,
+    ["Красная Худи Snake Print 'Gucci'"]=70000,
+    ["Синий Спортивный Костюм 'Gucci'"]=143000,
+    ["Синяя Рубашка 'Gucci'"]=108000,
+    ["Куртка Tiger Print 'Gucci'"]=110000,
+    ["Монограммная Футболка Ghost 'Gucci'"]=29000,
+    ["Монограммная Джинсовка Ghost 'Gucci'"]=142000,
+    ["Чёрное Худи Future 'Gucci'"]=42000,
+    ["Чёрное Худи Logo 'Gucci'"]=117000,
+    ["Синяя Кожаная Куртка 'Gucci'"]=140000,
+    ["Синяя Джинсовка 'Gucci'"]=127000,
+    ["Черные Джинсы 'Snake Gucci'"]=92000,
+    ["Фиолетовая Джинсовка Варсити 'Gucci x OffWhite'"]=380000
+}
+
+local Gucci_cloth_NameTable = {
+    "Розовая Рубашка  Love Letter 'Gucci'",
+    "Бежевый свитер Lamb 'Gucci'",
+    "Бежевая футболка Logo 'Gucci'",
+    "Красная Худи Snake Print 'Gucci'",
+    "Синий Спортивный Костюм 'Gucci'",
+    "Синяя Рубашка 'Gucci'",
+    "Куртка Tiger Print 'Gucci'",
+    "Монограммная Футболка Ghost 'Gucci'",
+    "Монограммная Джинсовка Ghost 'Gucci'",
+    "Чёрное Худи Future 'Gucci'",
+    "Чёрное Худи Logo 'Gucci'",
+    "Синяя Кожаная Куртка 'Gucci'",
+    "Синяя Джинсовка 'Gucci'",
+    "Черные Джинсы 'Snake Gucci'",
+    "Фиолетовая Джинсовка Варсити 'Gucci x OffWhite'"
+}
+
+local MonclerPriceTable = {
+    ["Пуховик Gary Quilted 'Moncler'"] = 100000,
+    ["Штаны Genius 'Moncler'"] = 51000,
+    ["Свитер Navy Logo Sweater  'Moncler'"] = 110000,
+    ["Розовый Желет Ouse 'Moncler'"] = 80000
+}
+
+local MonclerNameTable = {
+    "Пуховик Gary Quilted 'Moncler'",
+    "Штаны Genius 'Moncler'",
+    "Свитер Navy Logo Sweater  'Moncler'",
+    "Розовый Желет Ouse 'Moncler'"
+}
+
+local TNFPriceTable = {
+    ["Пуховик Retro Nuptse 1996 'The North Face'"] = 21000,
+    ["Зелёный Пуховик Vintage 'The North Face'"] = 20000,
+    ["Пуховик Retro Camo 'The North Face'"] = 17000,
+    ["КБ Пуховик 'The North Face X Supreme'"] = 65000,
+    ["Свитшот Logo 'The North Face'"] = 1500,
+    ["Пуховик INTERNATIONAL COLLECTION 'The North Face'"] = 28000,
+    ["Ветровка Varsity 'The North Face X Supreme'"] = 23000,
+    ["Пуховик Nuptse 'The North Face'"] = 20000,
+    ["Пуховик Red Box 'The North Face'"] = 2000,
+    ["Пуховик Summit 'The North Face'"] = 18000,
+    ["Куртка Mountain 'The North Face'"] = 63000,
+    ["Рубашка Поло Beshtor 'The North Face'"] = 3000,
+    ["Пуховик Nuptse Retro 'The North Face'"] = 20000,
+    ["Пуховик Tropical Camo 'The North Face'"] = 25000,
+    ["Пуховик Marble Light 'The North Face'"] = 22000,
+    ["Куртка Triple Skull 'The North Face'"] = 50000,
+    ["Пуховик Bubble 'The North Face X Supreme'"] = 53000,
+    ["Пуховик Printed Dryvent 'The North Face'"] = 34000
+}
+
+local TNFNameTable = {
+    "Пуховик Retro Nuptse 1996 'The North Face'",
+    "Зелёный Пуховик Vintage 'The North Face'",
+    "Пуховик Retro Camo 'The North Face'",
+    "КБ Пуховик 'The North Face X Supreme'",
+    "Свитшот Logo 'The North Face'",
+    "Пуховик INTERNATIONAL COLLECTION 'The North Face'",
+    "Ветровка Varsity 'The North Face X Supreme'",
+    "Пуховик Nuptse 'The North Face'",
+    "Пуховик Red Box 'The North Face'",
+    "Пуховик Summit 'The North Face'",
+    "Куртка Mountain 'The North Face'",
+    "Рубашка Поло Beshtor 'The North Face'",
+    "Пуховик Nuptse Retro 'The North Face'",
+    "Пуховик Tropical Camo 'The North Face'",
+    "Пуховик Marble Light 'The North Face'",
+    "Куртка Triple Skull 'The North Face'",
+    "Пуховик Bubble 'The North Face X Supreme'",
+    "Пуховик Printed Dryvent 'The North Face'"
+}
+
+local lp = game:GetService("Players").LocalPlayer
+
+local camera = workspace.CurrentCamera
+local RunService = game:GetService("RunService")
+
+function animate(idle1, idle2, walk, run, jump, climb, fall)
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).idle.Animation1.AnimationId = idle1
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).idle.Animation2.AnimationId = idle2
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).walk.WalkAnim.AnimationId = walk
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).run.RunAnim.AnimationId = run
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).jump.JumpAnim.AnimationId = jump
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).climb.ClimbAnim.AnimationId = climb
+    game.Players.LocalPlayer.Character:WaitForChild("Animate", math.huge).fall.FallAnim.AnimationId = fall
+end
+
+animate("http://www.roblox.com/asset/?id=1083445855","http://www.roblox.com/asset/?id=1083450166","http://www.roblox.com/asset/?id=742640026","http://www.roblox.com/asset/?id=742638842","http://www.roblox.com/asset/?id=742637942","http://www.roblox.com/asset/?id=742636889","http://www.roblox.com/asset/?id=742637151")
+
+-- Auto-Sell requires
+local getPlayerData = game:GetService("ReplicatedStorage"):FindFirstChild("GameNetwork"):FindFirstChild("ServerNetwork"):FindFirstChild("GetPlayerData");
+local sellClothing = game:GetService("ReplicatedStorage"):FindFirstChild("GameNetwork"):FindFirstChild("ServerNetwork"):FindFirstChild("SellClothing");
+
+local itemsSold = 0;
+local sellDelay = 5;
+
+---
+local ClothTable = {}
+--- TOGGLES
+_G.Auto_Sell = false
+--Esp Stores
+_G.Esp = false
+
+_G.Sport_Master = false
+_G.Adidas = false
+_G.Bape = false
+_G.Chrome_Hearts = false
+_G.Vetements = false
+_G.Zara = false
+_G.StoneIsland =false
+_G.Balenciaga = false
+_G.LouisV = false
+_G.Gucci = false
+_G.TNF = false
+
+function getchar()
+	local character = lp.Character
+	if character then
+		return character
+	end
+end
+
+function DrawEsp(cloth)
+    local Draw = Instance.new("BoxHandleAdornment")
+	Draw.Parent = cloth
+	Draw.Adornee = cloth
+    Draw.Color3 = Color3.fromRGB(255, 0, 255)
+    Draw.AlwaysOnTop = true
+    Draw.ZIndex = 0
+    Draw.Transparency = 0.3
+    Draw.Size = Vector3.new(1,2,0.2)
+end
+
+
+function Cloth(PriceTable,NameTable)
+
+    for i, v in pairs(game:GetService("Workspace").World.Debris.Stores:GetDescendants()) do
+        if v:FindFirstChildOfClass("ProximityPrompt") and v:FindFirstChild("Clothing") and v:FindFirstChildOfClass("ProximityPrompt").HoldDuration == 1 then
+            local ClothPrice = string.gsub(v.ProximityPrompt.ActionText,"%D+","")
+            local ClothName = v.ProximityPrompt.ObjectText
+            local ClothEsp = v.Clothing
+
+            if v.ProximityPrompt.ActionText == "Повесить" and ClothEsp:FindFirstChild("BoxHandleAdornment") then
+                ClothEsp.BoxHandleAdornment:Remove()
+            end
+         
+            if ClothPrice ~= nil and ClothName ~= nil and ClothEsp ~= nil then
+                if v.ProximityPrompt.ActionText ~= "Повесить" and ClothEsp:FindFirstChild("BoxHandleAdornment") == nil and table.find(NameTable,ClothName) and tonumber(ClothPrice) <= PriceTable[ClothName] then
+                    DrawEsp(ClothEsp)
+                end
+          
+            end
+    
+
+        end
+    end
+end
+
+function AutoSell()
+
+    if itemsSold >= 10 then
+        task.wait(5)
+        itemsSold = 0
+    end
+    
+    local playerData = getPlayerData:InvokeServer()
+    
+    for name,data in pairs(playerData) do
+        if name ~= "Inventory" or type(data) ~= "table" then
+            continue
+        end
+        
+        for _,itemData in pairs(data) do
+            local itemName = itemData["ItemName"]
+            local itemHash = itemData["ItemHash"]
+            local itemPrice = itemData["Price"]
+
+            if itemName == nil or itemHash == nil or itemPrice == nil then
+                continue
+            end
+            sellClothing:InvokeServer(itemHash);
+            itemsSold += 1
+            
+        end
+    end
+
+    
+
+end
+
+function AutoJob()
     local player = game.Players.LocalPlayer
-    local teleportPosition = coordinates
-    local tweenInfo = TweenInfo.new(5, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-
-    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    tween:Play()
-end)
-
-local PlrTab = Window:NewTab("Teleport")
-local PlrSection = PlrTab:NewSection("Teleports")
-
-PlrSection:NewButton("Teleport PointJob", "Enjoy", function()
-    local player = game.Players.LocalPlayer
-    local teleportPosition = workspace.World.Debris.PointJob.Position
-    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-    tween:Play()
-    tween.Completed:Connect(function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-    end)
-end)
-
-PlrSection:NewButton("Teleport FinishJob", "Enjoy", function()
-    local player = game.Players.LocalPlayer
-    local teleportPosition = workspace.World.Debris.FinishJob.Position
-    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-    tween:Play()
-    tween.Completed:Connect(function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-    end)
-end)
-
-PlrSection:NewButton("Teleport Seller", "Enjoy", function()
-    local player = game.Players.LocalPlayer
-    local teleportPosition = Vector3.new(19.3718, 165.516, -34.6243)
+    local teleportPosition = Vector3.new(100, 180, 308)
     local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
     local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-    tween:Play()
-    tween.Completed:Connect(function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-    end)
-end)
 
-local PlrTab = Window:NewTab("Auto-Farm")
-local PlrSection = PlrTab:NewSection("Auto-Farm")
-
-function tpfpp()
-    local player = game.Players.LocalPlayer
-    local teleportPosition = workspace.World.Debris.FinishJob.Position
-    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
     tween:Play()
+
     tween.Completed:Connect(function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-        wait(60)
-        if r == true then
-            tpfp()
+        player.Character:WaitForChild("Humanoid"):MoveTo(workspace.World.Debris.PointJob.Position)
+        task.wait(2)
+        for i = 1, 5 do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.World.Debris.FinishJob.CFrame
+            wait(0.1)
         end
     end)
 end
 
-function tpfp()
-    local player = game.Players.LocalPlayer
-    local teleportPosition = workspace.World.Debris.PointJob.Position
-    local tweenInfo = TweenInfo.new(7, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
-    local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
-    tween:Play()
-    tween.Completed:Connect(function()
-        if r == true then
-            tpfpp()
-        end
-    end)
+
+local temp14888 = game.ReplicatedStorage.Content.Sounds.Paper:Clone()
+temp14888.Parent = workspace.World.Map.Sound
+temp14888.Volume = 7.5
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+temp14888:Play()
+
+local Window = OrionLib:MakeWindow({Name = "Casual-Stock",IntroText = "Casual Stock", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
+
+local temp1488 = game.ReplicatedStorage.Content.Sounds.MoneyCounter:Clone()
+temp1488.Parent = workspace.World.Map.Sound
+temp1488.Volume = 7.5
+temp1488:Play()
+
+function Notify(name,content,time)
+
+    OrionLib:MakeNotification({
+        Name = name,
+        Content = content,
+        Image = "rbxassetid://4483345998",
+        Time = time
+    })
 end
 
-PlrSection:NewToggle("Job Farm", "Enjoy", function(farm)
-    if farm then
-        r = true
-        tpfp()
-    else
-        r = false
-    end
-end)
+Notify("Enjoy to use script","Thanks! =)",5)
+
+local Misc = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Job = Window:MakeTab({
+	Name = "Auto-Job",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Esp = Window:MakeTab({
+	Name = "Cloth-Esp",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Info = Window:MakeTab({
+	Name = "Information",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Misc:AddSlider({
+	Name = "Auto-Sell Delay",
+	Min = 1,
+	Max = 5,
+	Default = 5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	Callback = function(Value)
+		sellDelay = Value
+	end    
+})
+
+Misc:AddToggle({
+	Name = "Auto-Sell Clothes",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Auto_Sell = true
+			while _G.Auto_Sell do
+                AutoSell()
+                task.wait(sellDelay)
+            end         
+		else
+			_G.Auto_Sell = false
+		end 
+	end    
+})
+
+Misc:AddBind({
+	Name = "Auto-Buy",
+	Default = Enum.KeyCode.F,
+	Callback = function()
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, "E" , false , game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "One" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "E" , false , game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, "E" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "Two" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "E" , false , game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, "E" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "Three" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "E" , false , game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, "E" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "Four" , false , game)
+        wait(0.01)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true, "E" , false , game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false, "E" , false , game)
+	end    
+})
+
+Misc:AddButton({
+	Name = "Server Hop!",
+	Callback = function()
+        Notify("Server Hop!","Teleporting...",5)
+        local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+
+        module:Teleport(game.PlaceId)
+  	end    
+})
+
+Job:AddToggle({
+	Name = "Auto-Job",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Auto_Job = true
+			while _G.Auto_Job do
+                AutoJob()
+                task.wait(60)
+            end         
+		else
+			_G.Auto_Job = false
+		end 
+	end    
+})
+
+Job:AddButton({
+	Name = "Point Job",
+	Callback = function()
+        local player = game.Players.LocalPlayer
+        local teleportPosition = workspace.World.Debris.PointJob.Position
+        local tweenInfo = TweenInfo.new(10, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut)
+
+        local tween = game:GetService("TweenService"):Create(player.Character:WaitForChild("HumanoidRootPart"), tweenInfo, {CFrame = CFrame.new(teleportPosition)})
+        tween:Play()
+	end    
+})
+
+Job:AddButton({
+	Name = "Finish Job",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.World.Debris.FinishJob.CFrame
+	end    
+})
+
+Esp:AddLabel("Warning! not full payback the script is made on analytics")
+
+Esp:AddToggle({
+	Name = "Dropped Clothes",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.DroppedClothes = true
+			while _G.DroppedClothes do
+                wait(1)
+                for i, temp1 in workspace.World.Debris:GetChildren() do
+                    if temp1:IsA("Model") then
+                        for i, temp2 in temp1:GetChildren() do
+                            if temp2:FindFirstChild("ProximityPrompt") then
+                                if temp1:FindFirstChild("BoxHandleAdornment") then
+                                else
+                                    local Draw = Instance.new("BoxHandleAdornment")
+                                    Draw.Parent = temp1
+                                    Draw.Adornee = temp1
+                                    Draw.Color3 = Color3.fromRGB(155, 0, 155)
+                                    Draw.AlwaysOnTop = true
+                                    Draw.ZIndex = 0
+                                    Draw.Transparency = 0.3
+                                    Draw.Size = Vector3.new(3.7, 0.2, 2.5)
+                                end
+                            end
+                        end
+                    end
+                end
+            end         
+		else
+			_G.DroppedClothes = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Esp",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Esp = true
+			while _G.Esp do
+                if _G.Sport_Master then
+                    Cloth(Sport_cloth_PriceTable,Sport_cloth_NameTable)
+                end
+                if _G.Adidas then
+                    Cloth(Adidas_cloth_PriceTable,Adidas_cloth_NameTable)
+                end
+                if _G.Bape then
+                    Cloth(Bape_cloth_PriceTable,Bape_cloth_NameTable)
+                end
+                if _G.Chrome_Hearts then
+                    Cloth(ChromeHearts_cloth_PriceTable,ChromeHearts_cloth_NameTable)
+                end
+                if _G.Vetements then
+                    Cloth(Vetements_cloth_PriceTable,Vetements_cloth_NameTable)
+                end
+                if _G.Zara then
+                    Cloth(Zara_cloth_PriceTable,Zara_cloth_NameTable)
+                end
+
+                if _G.StoneIsland then
+                    Cloth(StoneIsland_cloth_PriceTable,StoneIsland_cloth_NameTable)
+                end
+
+                if _G.LouisV then
+                    Cloth(LouisVuitton_cloth_PriceTable,LouisVuitton_cloth_NameTable)
+                end
+
+                if _G.Gucci then
+                    Cloth(Gucci_cloth_PriceTable,Gucci_cloth_NameTable)
+                end
+                if _G.Balenciaga then
+                    Cloth(Balenciaga_cloth_PriceTable,Balenciaga_cloth_NameTable)
+                end
+                if _G.TNF then
+                    Cloth(TNFPriceTable, TNFNameTable)
+                end
+
+
+                task.wait(3)
+            end         
+		else
+			_G.Esp = false
+		end 
+	end    
+})
+
+Esp:AddLabel("Stores")
+
+Esp:AddToggle({
+	Name = "Sport-Master",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Sport_Master = true 
+		else
+			_G.Sport_Master = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Adidas",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Adidas = true 
+		else
+			_G.Adidas = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Bape",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Bape = true 
+		else
+			_G.Bape = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Chrome-Hearts",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Chrome_Hearts = true 
+		else
+			_G.Chrome_Hearts = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Vetements",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Vetements = true 
+		else
+			_G.Vetements = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Zara",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Zara = true 
+		else
+			_G.Zara = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Stone-Island",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.StoneIsland= true 
+		else
+			_G.StoneIsland = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Balenciaga",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Balenciaga = true 
+		else
+			_G.Balenciaga = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "Louis-Vitton",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.LouisV = true 
+		else
+			_G.LouisV = false
+		end 
+	end    
+})
+Esp:AddToggle({
+	Name = "Gucci",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.Gucci = true 
+		else
+			_G.Gucci = false
+		end 
+	end    
+})
+
+Esp:AddToggle({
+	Name = "The North Face",
+	Default = false,
+	Callback = function(value)
+        if value then 
+			_G.TNF = true
+		else
+			_G.TNF = false
+		end 
+	end    
+})
+
+Info:AddLabel("Join to discord server!")
+
+Info:AddButton({
+	Name = "Copy invite!",
+	Callback = function()
+        setclipboard("https://discord.gg/K6cNNkknQn")
+        Notify("Succes Copied!!","Thanks",5)
+  	end    
+})
+
