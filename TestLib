@@ -131,18 +131,20 @@ function Kavo:DestroyUI()
 end
 
 function Kavo:ToggleUI()
-	local Main = game.CoreGui[LibName].Main
-        if game.CoreGui[LibName].Main.Size == UDim2.new(0, 525, 0, 318) then
-		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,0,0,0),
-			Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
-		}):Play()
-        else
-		game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-			Size = UDim2.new(0,525,0,318),
-			Position = UDim2.new(0.5, 0, 0.5, 0)
-		}):Play()
-        end
+	pcall(function()
+		local Main = game.CoreGui[LibName].Main
+	        if game.CoreGui[LibName].Main.Size == UDim2.new(0, 525, 0, 318) then
+			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Size = UDim2.new(0,0,0,0),
+				Position = UDim2.new(0, Main.AbsolutePosition.X + (Main.AbsoluteSize.X / 2), 0, Main.AbsolutePosition.Y + (Main.AbsoluteSize.Y / 2))
+			}):Play()
+	        else
+			game.TweenService:Create(Main, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+				Size = UDim2.new(0,525,0,318),
+				Position = UDim2.new(0.5, 0, 0.5, 0)
+			}):Play()
+	        end
+	end)
 end
 
 function Kavo.CreateLib(kavName, themeList, img)
