@@ -12055,11 +12055,10 @@ applySyntaxHighlighting()
 GXL["Button_18"].MouseButton1Click:Connect(function()
 	local yes, no = pcall(function()
     	loadstring(GXL["Source"]["Text"])()
+		if no then
+			print(no)
+		end
 	end)
-	if yes then
-	else
-		print(no)
-	end
 end)
 
 GXL["Button_19"].MouseButton1Click:Connect(function()
