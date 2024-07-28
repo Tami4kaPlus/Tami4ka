@@ -3553,6 +3553,22 @@ GXL["Source"]["BorderSizePixel"] = 0
 GXL["Source"]["Position"] = UDim2.new(0.000000, 58.000000, 0.000000, 5.000000)
 GXL["Source"]["Size"] = UDim2.new(1.073950, -44.000000, 1.020750, -5.000000)
 
+GXL["Syntax"]["Parent"] = GXL["Source"]
+GXL["Syntax"]["Name"] = 'Syntax'
+GXL["Syntax"]["FontFace"] = Font.new("rbxasset://fonts/families/Inconsolata.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+GXL["Syntax"]["FontSize"] = Enum.FontSize.Size18
+GXL["Syntax"]["RichText"] = true
+GXL["Syntax"]["Text"] = '\n<font color="rgb(249,36,114)">local</font> StealGUI = <font color="rgb(95,209,250)">loadstring</font>(<font color="rgb(95,209,250)">game</font><font color="rgb(248,245,139)">:HttpGet("https://scriptblox.com/raw/Universal-Script-GuiStealer-12751", true)</font>)()\n<font color="rgb(116,122,101)">-- You may use this variable to steal guis!\n</font><font color="rgb(116,122,101)">--[[\n Example: writefile(\'gui.lua\', StealGUI(game.Players.LocalPlayer.PlayerGui.GUINAME))\n]]</font>\n\nsetclipboard(StealGUI(<font color="rgb(95,209,250)">game</font>.CoreGui.A_HydrogenKr))'
+GXL["Syntax"]["TextColor3"] = Color3.fromRGB(239, 239, 239)
+GXL["Syntax"]["TextSize"] = 16
+GXL["Syntax"]["TextStrokeColor3"] = Color3.fromRGB(40, 40, 40)
+GXL["Syntax"]["TextStrokeTransparency"] = 0.10000000149011612
+GXL["Syntax"]["TextXAlignment"] = Enum.TextXAlignment.Left
+GXL["Syntax"]["TextYAlignment"] = Enum.TextYAlignment.Top
+GXL["Syntax"]["BackgroundTransparency"] = 1
+GXL["Syntax"]["Position"] = UDim2.new(0.000000, 0.000000, 0.000000, -16.000000)
+GXL["Syntax"]["Size"] = UDim2.new(1.000000, 4.000000, 1.000000, 16.000000)
+
 GXL["LineHighlight"]["Parent"] = GXL["Source"]
 GXL["LineHighlight"]["Name"] = 'LineHighlight'
 GXL["LineHighlight"]["AnchorPoint"] = Vector2.new(0.000000, 0.500000)
@@ -8096,6 +8112,8 @@ GXL["Copy_12"]["Position"] = UDim2.new(0.000000, 32.000000, 0.825000, 0.000000)
 GXL["Copy_12"]["Size"] = UDim2.new(0.000000, 22.000000, 0.000000, 22.000000)
 GXL["Copy_12"]["ZIndex"] = 999999999
 
+-- MinimizedIcon
+
 GXL["UICorner_169"]["Parent"] = GXL["Copy_12"]
 GXL["UICorner_169"]["Name"] = 'UICorner'
 GXL["UICorner_169"]["CornerRadius"] = UDim.new(0.000000, 4.000000)
@@ -11538,15 +11556,14 @@ GXL["Button_98"]["Size"] = UDim2.new(0.000000, 373.000000, 0.000000, 39.000000)
 GXL["MinimizedIcon"]["Parent"] = GXL["A_HydrogenKr"]
 GXL["MinimizedIcon"]["Name"] = 'MinimizedIcon'
 GXL["MinimizedIcon"]["Image"] = 'rbxassetid://17698658864'
-GXL["MinimizedIcon"]["ImageTransparency"] = 1
+GXL["MinimizedIcon"]["ImageTransparency"] = 0
 GXL["MinimizedIcon"]["AnchorPoint"] = Vector2.new(0.500000, 0.000000)
 GXL["MinimizedIcon"]["BackgroundColor3"] = Color3.fromRGB(27, 28, 32)
 GXL["MinimizedIcon"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 GXL["MinimizedIcon"]["BorderSizePixel"] = 0
-GXL["MinimizedIcon"]["Position"] = UDim2.new(0.500000, 0.000000, 0.025000, 0.000000)
+GXL["MinimizedIcon"]["Position"] = UDim2.new(0.500000, 0.000000, -0.325000, 0.000000)
 GXL["MinimizedIcon"]["Size"] = UDim2.new(0.000000, 45.000000, 0.000000, 45.000000)
-GXL["MinimizedIcon"]["Visible"] = false
-GXL["MinimizedIcon"]["ZIndex"] = 1000000000
+GXL["MinimizedIcon"]["ZIndex"] = 99
 
 GXL["GlowingIcon"]["Parent"] = GXL["MinimizedIcon"]
 GXL["GlowingIcon"]["Name"] = 'GlowingIcon'
@@ -11557,6 +11574,7 @@ GXL["GlowingIcon"]["BackgroundTransparency"] = 1
 GXL["GlowingIcon"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
 GXL["GlowingIcon"]["BorderSizePixel"] = 0
 GXL["GlowingIcon"]["Size"] = UDim2.new(1.000000, 0.000000, 1.000000, 0.000000)
+GXL["GlowingIcon"]["ZIndex"] = 999
 
 GXL["UICorner_269"]["Parent"] = GXL["MinimizedIcon"]
 GXL["UICorner_269"]["Name"] = 'UICorner'
@@ -11898,8 +11916,24 @@ end
 
 DraggingEnabled(GXL["Topbar_2"], GXL["Main"])
 
+GXL["MinimizedIcon"].MouseButton1Click:Connect(function()
+	GXL["Main"]["Position"] = UDim2.new(0.500000, 0.000000, -0.325000, 0.000000)
+    local tweenInfo1 = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+    local tween1 = game:GetService("TweenService"):Create(GXL["MinimizedIcon"], tweenInfo1, {Position = UDim2.new(0.500000, 0.000000, -0.325000, 0.000000)})
+    tween1:Play()
+	local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(GXL["Main"], tweenInfo, {Position = UDim2.new(0.500000, 0.000000, 0.500000, 0.000000)})
+    tween:Play()
+end)
+
 GXL["CloseButton_5"].MouseButton1Click:Connect(function()
-    GXL["A_HydrogenKr"]:Destroy()
+	GXL["MinimizedIcon"]["Position"] = UDim2.new(0.500000, 0.000000, -0.325000, 0.000000)
+	local tweenInfo = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+    local tween = TweenService:Create(GXL["Main"], tweenInfo, {Position = UDim2.new(0.500000, 0.000000, -0.325000, 0.000000)})
+    tween:Play()
+    local tweenInfo1 = TweenInfo.new(1.5, Enum.EasingStyle.Elastic, Enum.EasingDirection.Out)
+    local tween1 = game:GetService("TweenService"):Create(GXL["MinimizedIcon"], tweenInfo1, {Position = UDim2.new(0.500000, 0.000000, 0.025000, 0.000000)})
+    tween1:Play()
 end)
 
 GXL["Button_8"].MouseButton1Click:Connect(function()
@@ -11988,7 +12022,6 @@ GXL["CloseButton_2"].MouseButton1Click:Connect(function()
 end)
 
 local editor = GXL["Source"]
---editor = текст бокс
 
 local keywords = {
     {words = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}, color = Color3.fromRGB(255, 0, 0)},
@@ -12003,7 +12036,6 @@ local function applySyntaxHighlighting()
 
     for _, keywordGroup in pairs(keywords) do
         for _, word in ipairs(keywordGroup.words) do
-            -- Изменяем слово для использования в gsub с использованием %s
             local escapedWord = word:gsub("([%%%^%$%(%)%.%[%]%*%+%-%?])", "%%%1")
             local pattern = "(%f[%w]" .. escapedWord .. "%f[%W])"
             highlightedText = highlightedText:gsub(pattern, function(match)
@@ -12011,8 +12043,7 @@ local function applySyntaxHighlighting()
             end)
         end
     end
-     -- highlightLabel
-     print(highlightedText)
+    GXL["Syntax"]["Text"] = '\n'..highlightedText
 end
 
 editor:GetPropertyChangedSignal("Text"):Connect(applySyntaxHighlighting)
@@ -12102,22 +12133,20 @@ end)
 if not isfolder("Hydrogen") then
     makefolder("Hydrogen")
     makefolder("Hydrogen/Saved")
-    print("Folder created")
 end
 
 local LogService = game:GetService("LogService")
 
 local function onMessageOut(message, messageType)
 	local GUI = {
-        ["ConsoleOutput"] = Instance.new("TextButton"),
-        ["TextLabel"] = Instance.new("TextLabel")
+        ["ConsoleOutput"] = Instance.new("TextLabel")
     }
     GUI["ConsoleOutput"]["Parent"] = GXL["Console"]
     GUI["ConsoleOutput"]["Name"] = 'ConsoleOutput'
     GUI["ConsoleOutput"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
     GUI["ConsoleOutput"]["FontSize"] = Enum.FontSize.Size14
     GUI["ConsoleOutput"]["RichText"] = true
-    GUI["ConsoleOutput"]["Text"] = '<font color=\'rgb(255, 255, 255)\'> <font color=\'rgb(57, 61, 116)\'>[Hydrogen] </font>[Output] : </font>'
+    GUI["ConsoleOutput"]["Text"] = '<font color=\'rgb(255, 255, 255)\'> <font color=\'rgb(57, 61, 116)\'>[Hydrogen] </font>[Output] : </font>'..message
     GUI["ConsoleOutput"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
     GUI["ConsoleOutput"]["TextSize"] = 14
     GUI["ConsoleOutput"]["TextXAlignment"] = Enum.TextXAlignment.Left
@@ -12127,20 +12156,6 @@ local function onMessageOut(message, messageType)
     GUI["ConsoleOutput"]["BorderSizePixel"] = 0
     GUI["ConsoleOutput"]["Size"] = UDim2.new(0.000000, 171.000000, 0.000000, 13.000000)
 
-    GUI["TextLabel"]["Parent"] = GUI["ConsoleOutput"]
-    GUI["TextLabel"]["Name"] = 'TextLabel'
-    GUI["TextLabel"]["FontFace"] = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-    GUI["TextLabel"]["FontSize"] = Enum.FontSize.Size14
-    GUI["TextLabel"]["Text"] = '                                                           '..message
-    GUI["TextLabel"]["TextColor3"] = Color3.fromRGB(255, 255, 255)
-    GUI["TextLabel"]["TextSize"] = 14
-    GUI["TextLabel"]["TextXAlignment"] = Enum.TextXAlignment.Left
-    GUI["TextLabel"]["TextYAlignment"] = Enum.TextYAlignment.Top
-    GUI["TextLabel"]["BackgroundColor3"] = Color3.fromRGB(255, 255, 255)
-    GUI["TextLabel"]["BackgroundTransparency"] = 1
-    GUI["TextLabel"]["BorderColor3"] = Color3.fromRGB(0, 0, 0)
-    GUI["TextLabel"]["BorderSizePixel"] = 0
-    GUI["TextLabel"]["Size"] = UDim2.new(0.000000, 171.000000, 0.000000, 8.000000)
 end
 
 LogService.MessageOut:Connect(onMessageOut)
