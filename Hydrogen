@@ -12053,7 +12053,12 @@ editor:GetPropertyChangedSignal("Text"):Connect(applySyntaxHighlighting)
 applySyntaxHighlighting()
 
 GXL["Button_18"].MouseButton1Click:Connect(function()
-    loadstring(GXL["Source"]["Text"])()
+	local yes, no = pcall(function()
+    	loadstring(GXL["Source"]["Text"])()
+	end)
+	if no then
+		print("Hydrogen Error: "..no)
+	end
 end)
 
 GXL["Button_19"].MouseButton1Click:Connect(function()
