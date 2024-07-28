@@ -12056,8 +12056,9 @@ GXL["Button_18"].MouseButton1Click:Connect(function()
 	local yes, no = pcall(function()
     	loadstring(GXL["Source"]["Text"])()
 	end)
-	if no then
-		print("Hydrogen Error: "..no)
+	if yes then
+	else
+		print(no)
 	end
 end)
 
