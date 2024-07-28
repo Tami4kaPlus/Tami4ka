@@ -11987,6 +11987,38 @@ GXL["CloseButton_2"].MouseButton1Click:Connect(function()
     GXL["ClearWindow"]["Visible"] = false
 end)
 
+--editor = текст бокс
+--Кусок кода красуса zet
+local keywords = {
+    {words = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}, color = Color3.fromRGB(255, 0, 0)},
+    {words = {"getrawmetatable", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16"}, color = Color3.fromRGB(0, 255, 0)},
+    {words = {"FireServer", "fireServer"}, color = Color3.fromRGB(0, 0, 255)},
+    {words = {"=", ".", "(", ")", "[", "]", "{", "}", ":", "-", "*", "/", "+", "%", ";", "~"}, color = Color3.fromRGB(255, 255, 0)}
+}
+
+local function applySyntaxHighlighting()
+    local text = editor.Text
+    local highlightedText = text
+
+    for _, keywordGroup in pairs(keywords) do
+        for _, word in ipairs(keywordGroup.words) do
+            -- Изменяем слово для использования в gsub с использованием %s
+            local escapedWord = word:gsub("([%%%^%$%(%)%.%[%]%*%+%-%?])", "%%%1")
+            local pattern = "(%f[%w]" .. escapedWord .. "%f[%W])"
+            highlightedText = highlightedText:gsub(pattern, function(match)
+                return "<font color=\"rgb(" .. math.floor(keywordGroup.color.r * 255) .. "," .. math.floor(keywordGroup.color.g * 255) .. "," .. math.floor(keywordGroup.color.b * 255) .. ")\">" .. match .. "</font>"
+            end)
+        end
+    end
+
+    highlightLabel.Text = highlightedText
+end
+
+GXL["Source"]:GetPropertyChangedSignal("Text"):Connect(applySyntaxHighlighting)
+
+applySyntaxHighlighting()
+--Кусок кода красуса zet
+
 GXL["Button_18"].MouseButton1Click:Connect(function()
     loadstring(GXL["Source"]["Text"])()
 end)
