@@ -11987,6 +11987,7 @@ GXL["CloseButton_2"].MouseButton1Click:Connect(function()
     GXL["ClearWindow"]["Visible"] = false
 end)
 
+local editor = GXL["Source"]
 --editor = текст бокс
 --Кусок кода красуса zet
 local keywords = {
