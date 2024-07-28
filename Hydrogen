@@ -12011,8 +12011,8 @@ local function applySyntaxHighlighting()
             end)
         end
     end
-
-    highlightLabel.Text = highlightedText
+     -- highlightLabel
+     print(highlightedText)
 end
 
 editor:GetPropertyChangedSignal("Text"):Connect(applySyntaxHighlighting)
