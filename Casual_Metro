@@ -50,9 +50,7 @@ function Notify(name,content,time)
         Time = time
     })
 end
-
-print("D")
-
+print("1.0.0")
 Notify("Casual Metro","Version - 1.0 [NEW]", 5)
 
 local Misc = Window:MakeTab({
