@@ -51,6 +51,8 @@ function Notify(name,content,time)
     })
 end
 
+print("D")
+
 Notify("Casual Metro","Version - 1.0 [NEW]", 5)
 
 local Misc = Window:MakeTab({
@@ -75,8 +77,8 @@ if game:GetService("UserInputService").TouchEnabled then
     Misc:AddButton({
         Name = "Inventory Slot Changer",
         Callback = function()
-            setclipboard("t.me/tami4ka_tg")
-            Notify("Copied!","Thanks",5)
+            getgenv().slots = ( 11 )
+            loadstring(game:HttpGet([[https://raw.githubusercontent.com/rrixh/uwuware/main/Kustom/mobile5lots]],false))()
         end    
     })
 end
