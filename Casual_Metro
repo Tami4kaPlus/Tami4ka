@@ -50,7 +50,7 @@ function Notify(name,content,time)
         Time = time
     })
 end
-print("1.0.1")
+print("1.0.2")
 Notify("Casual Metro","Version - 1.0 [NEW]", 5)
 
 local Misc = Window:MakeTab({
@@ -75,7 +75,7 @@ if game:GetService("UserInputService").TouchEnabled then
     Misc:AddButton({
         Name = "Inventory Slot Changer",
         Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/rrixh/uwuware/refs/heads/main/Kustom/mobile5lots.LH"))()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/rrixh/uwuware/refs/heads/main/Kustom/mobile5lots"))()
         end    
     })
 end
