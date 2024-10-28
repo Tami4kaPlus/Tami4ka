@@ -64,7 +64,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.5", 5)
+Notify("Casual Metro","Version - 1.1.6", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -87,8 +87,8 @@ local Info = Window:MakeTab({
 Misc:AddButton({
 	Name = "Players Colliders",
 	Callback = function()
-		if _G.Tami4ka == false then
-			_G.Tami4ka = true
+		if _G.CODM2 == false then
+			_G.CODM2 = true
 			
 			for index, plr in Players:GetChildren() do
 				plr.CharacterAppearanceLoaded:Connect(function(Char)
