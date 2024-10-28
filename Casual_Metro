@@ -64,7 +64,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.1 [NEW ESP]", 5)
+Notify("Casual Metro","Version - 1.1.2", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -96,6 +96,21 @@ Misc:AddButton({
 					end
 				end
 			end
+		end
+		Notify("Successfully", 5)
+	end
+})
+
+Misc:AddButton({
+	Name = "Auto Jump Disable",
+	Callback = function()
+		local yes, no = pcall(function()
+			localPlayer.Character.Humanoid.AutoJumpEnabled = false
+		end)
+		if no then
+			Notify("Error: "..no , 5)
+		else
+			Notify("Disabled", 5)
 		end
 	end
 })
