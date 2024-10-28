@@ -2,19 +2,22 @@ local Players = game:GetService("Players")
 local localPlayer = Players.LocalPlayer
 
 function DrawEsp(esp, color)
-    local Highlight = Instance.new("Highlight")
-    if color == "epic" then
-        Highlight.FillColor = Color3.fromRGB(103, 0, 154)
-    elseif color == "mef" then
-        Highlight.FillColor = Color3.fromRGB(161, 0, 3)
-    elseif color == "lega" then
-        Highlight.FillColor = Color3.fromRGB(227, 227, 0)
-    elseif color == "ult" then 
-        Highlight.FillColor = Color3.fromRGB(255, 2, 255)
-    end
-    Highlight.OutlineTransparency = 0
-    Highlight.FillTransparency = 0.5
-    Highlight.Parent = esp.Parent
+	local Highlight = Instance.new("Fire")
+	if color == "epic" then
+		Highlight.Color = Color3.fromRGB(103, 0, 154)
+		Highlight.SecondaryColor = Color3.fromRGB(103, 0, 154)
+	elseif color == "mef" then
+		Highlight.Color = Color3.fromRGB(161, 0, 3)
+		Highlight.SecondaryColor = Color3.fromRGB(161, 0, 3)
+	elseif color == "lega" then
+		Highlight.Color = Color3.fromRGB(227, 227, 0)
+		Highlight.SecondaryColor = Color3.fromRGB(227, 227, 0)
+	elseif color == "ult" then 
+		Highlight.Color = Color3.fromRGB(255, 2, 255)
+		Highlight.SecondaryColor = Color3.fromRGB(255, 2, 255)
+	end
+	Highlight.Name = "Highlight"
+	Highlight.Parent = esp.Parent
 end
 
 _G.ESP_Epic = false
@@ -23,19 +26,19 @@ _G.ESP_Lega = false
 _G.ESP_Ult = false
 
 local EpicList = {
-    "13122216162",
-    "13779106850",
-    "13214898748",
-    "13399301724",
-    "13469431089",
-    "13118563657",
-    "13214910323",
-    "13122216162",
-    "13117322084",
-    "8509230323",
-    "7791541966",
-    "12849806373",
-    "13121694218"
+	"13122216162",
+	"13779106850",
+	"13214898748",
+	"13399301724",
+	"13469431089",
+	"13118563657",
+	"13214910323",
+	"13122216162",
+	"13117322084",
+	"8509230323",
+	"7791541966",
+	"12849806373",
+	"13121694218"
 }
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
@@ -43,15 +46,15 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Casual-Metro",IntroText = "Casual Metro", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
 
 function Notify(name,content,time)
-    OrionLib:MakeNotification({
-        Name = name,
-        Content = content,
-        Image = "rbxassetid://4483345998",
-        Time = time
-    })
+	OrionLib:MakeNotification({
+		Name = name,
+		Content = content,
+		Image = "rbxassetid://4483345998",
+		Time = time
+	})
 end
-print("1.0.2")
-Notify("Casual Metro","Version - 1.0 [NEW]", 5)
+print("1.0.3")
+Notify("Casual Metro","Version - 1.0 [FIX]", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -72,59 +75,59 @@ local Info = Window:MakeTab({
 })
 
 if game:GetService("UserInputService").TouchEnabled then
-    Misc:AddButton({
-        Name = "Inventory Slot Changer",
-        Callback = function()
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/rrixh/uwuware/refs/heads/main/Kustom/mobile5lots"))()
-        end    
-    })
+	Misc:AddButton({
+		Name = "Inventory Slot Changer",
+		Callback = function()
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/rrixh/uwuware/refs/heads/main/Kustom/mobile5lots"))()
+		end    
+	})
 end
 
 Esp:AddToggle({
 	Name = "Epic Clothing [List TEST]",
 	Default = false,
 	Callback = function(value)
-        if value then 
-            _G.ESP_Epic = true
-            while _G.ESP_Epic do
-                for i, v in workspace.Clothing:GetDescendants() do
-                    if v:IsA("Shirt") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            for index, obj in pairs(EpicList) do
-                                if obj.ShirtTemplate == "rbxassetid://"..obj then
-                                    DrawEsp(v, "epic")
-                                end
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    elseif v:IsA("Pants") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://14357291910" then
-                                DrawEsp(v, "epic")
-                            elseif v.PantsTemplate == "rbxassetid://13085933635" then
-                                DrawEsp(v, "epic")
-                            elseif v.PantsTemplate == "rbxassetid://12238831815" then
-                                DrawEsp(v, "epic")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    end
-                end
-                task.wait(1)
-            end
-        else
-            _G.ESP_Epic = false
-            for i, v in workspace.Clothing:GetDescendants() do
-                if v:IsA("Highlight") then
-                    v:Destroy()
-                end
-            end
+		if value then 
+			_G.ESP_Epic = true
+			while _G.ESP_Epic do
+				for i, v in workspace.Clothing:GetDescendants() do
+					if v:IsA("Shirt") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							for index, obj in pairs(EpicList) do
+								if obj.ShirtTemplate == "rbxassetid://"..obj then
+									DrawEsp(v, "epic")
+								end
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					elseif v:IsA("Pants") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://14357291910" then
+								DrawEsp(v, "epic")
+							elseif v.PantsTemplate == "rbxassetid://13085933635" then
+								DrawEsp(v, "epic")
+							elseif v.PantsTemplate == "rbxassetid://12238831815" then
+								DrawEsp(v, "epic")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					end
+				end
+				task.wait(1)
+			end
+		else
+			_G.ESP_Epic = false
+			for i, v in workspace.Clothing:GetDescendants() do
+				if v:IsA("Highlight") then
+					v:Destroy()
+				end
+			end
 		end 
 	end    
 })
@@ -133,147 +136,147 @@ Esp:AddToggle({
 	Name = "Mythical Clothing",
 	Default = false,
 	Callback = function(value)
-        if value then
-            _G.ESP_Mef = true
-            while _G.ESP_Mef do
-                for i, v in workspace.Clothing:GetDescendants() do
-                    if v:IsA("Shirt") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://10774950203" then
-                                DrawEsp(v, "mef")
-                            elseif v.ShirtTemplate == "rbxassetid://6406870851" then
-                                DrawEsp(v, "mef")
-                            elseif v.ShirtTemplate == "rbxassetid://14617460767" then
-                                DrawEsp(v, "mef")
-                            elseif v.ShirtTemplate == "rbxassetid://5219845970" then
-                                DrawEsp(v, "mef")
-                            elseif v.ShirtTemplate == "rbxassetid://9966500982" then
-                                DrawEsp(v, "mef")
-                            elseif v.ShirtTemplate == "rbxassetid://5081906790" then
-                                DrawEsp(v, "mef")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    elseif v:IsA("Pants") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://13132377494" then
-                                DrawEsp(v, "mef")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    end
-                end
-                task.wait(1)
-            end
-        else
-            _G.ESP_Mef = false
-            for i, v in workspace.Clothing:GetDescendants() do
-                if v:IsA("Highlight") then
-                    v:Destroy()
-                end
-            end
-        end
-    end
+		if value then
+			_G.ESP_Mef = true
+			while _G.ESP_Mef do
+				for i, v in workspace.Clothing:GetDescendants() do
+					if v:IsA("Shirt") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://10774950203" then
+								DrawEsp(v, "mef")
+							elseif v.ShirtTemplate == "rbxassetid://6406870851" then
+								DrawEsp(v, "mef")
+							elseif v.ShirtTemplate == "rbxassetid://14617460767" then
+								DrawEsp(v, "mef")
+							elseif v.ShirtTemplate == "rbxassetid://5219845970" then
+								DrawEsp(v, "mef")
+							elseif v.ShirtTemplate == "rbxassetid://9966500982" then
+								DrawEsp(v, "mef")
+							elseif v.ShirtTemplate == "rbxassetid://5081906790" then
+								DrawEsp(v, "mef")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					elseif v:IsA("Pants") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://13132377494" then
+								DrawEsp(v, "mef")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					end
+				end
+				task.wait(1)
+			end
+		else
+			_G.ESP_Mef = false
+			for i, v in workspace.Clothing:GetDescendants() do
+				if v:IsA("Highlight") then
+					v:Destroy()
+				end
+			end
+		end
+	end
 })
 
 Esp:AddToggle({
 	Name = "Legendary Clothing",
 	Default = false,
 	Callback = function(value)
-        if value then
-            _G.ESP_Lega = true
-            while _G.ESP_Lega do
-                for i, v in workspace.Clothing:GetDescendants() do
-                    if v:IsA("Shirt") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://13112278696" then
-                                DrawEsp(v, "lega")
-                            elseif v.ShirtTemplate == "rbxassetid://11399187381" then
-                                DrawEsp(v, "lega")
-                            elseif v.ShirtTemplate == "rbxassetid://13686174145" then
-                                DrawEsp(v, "lega")
-                            elseif v.ShirtTemplate == "rbxassetid://4977533353" then
-                                DrawEsp(v, "lega")
-                            elseif v.ShirtTemplate == "rbxassetid://8286855177" then
-                                DrawEsp(v, "lega")
-                            elseif v.ShirtTemplate == "rbxassetid://11235784172" then
-                                DrawEsp(v, "lega")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    end
-                end
-                task.wait(1)
-            end
-        else
-            _G.ESP_Lega = false
-            for i, v in workspace.Clothing:GetDescendants() do
-                if v:IsA("Highlight") then
-                    v:Destroy()
-                end
-            end
-        end
-    end
+		if value then
+			_G.ESP_Lega = true
+			while _G.ESP_Lega do
+				for i, v in workspace.Clothing:GetDescendants() do
+					if v:IsA("Shirt") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://13112278696" then
+								DrawEsp(v, "lega")
+							elseif v.ShirtTemplate == "rbxassetid://11399187381" then
+								DrawEsp(v, "lega")
+							elseif v.ShirtTemplate == "rbxassetid://13686174145" then
+								DrawEsp(v, "lega")
+							elseif v.ShirtTemplate == "rbxassetid://4977533353" then
+								DrawEsp(v, "lega")
+							elseif v.ShirtTemplate == "rbxassetid://8286855177" then
+								DrawEsp(v, "lega")
+							elseif v.ShirtTemplate == "rbxassetid://11235784172" then
+								DrawEsp(v, "lega")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					end
+				end
+				task.wait(1)
+			end
+		else
+			_G.ESP_Lega = false
+			for i, v in workspace.Clothing:GetDescendants() do
+				if v:IsA("Highlight") then
+					v:Destroy()
+				end
+			end
+		end
+	end
 })
 
 Esp:AddToggle({
 	Name = "Ultimate Clothing",
 	Default = false,
 	Callback = function(value)
-        if value then
-            _G.ESP_Ult = true
-            while _G.ESP_Ult do
-                for i, v in workspace.Clothing:GetDescendants() do
-                    if v:IsA("Shirt") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://15092420573" then
-                                DrawEsp(v, "ult")
-                            elseif v.ShirtTemplate == "rbxassetid://14160465716" then
-                                DrawEsp(v, "ult")
-                            elseif v.ShirtTemplate == "rbxassetid://13783114726" then
-                                DrawEsp(v, "ult")
-                            elseif v.ShirtTemplate == "rbxassetid://16310782401" then
-                                DrawEsp(v, "ult")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.ShirtTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    elseif v:IsA("Pants") then
-                        if not v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://15091951487" then
-                                DrawEsp(v, "ult")
-                            elseif v.PantsTemplate == "rbxassetid://13668016214" then
-                                DrawEsp(v, "ult")
-                            end
-                        elseif v.Parent:FindFirstChild("Highlight") then
-                            if v.PantsTemplate == "rbxassetid://1" then
-                                v.Parent.Highlight:Destroy()
-                            end
-                        end
-                    end
-                end
-                task.wait(1)
-            end
-        else
-            _G.ESP_Ult = false
-            for i, v in workspace.Clothing:GetDescendants() do
-                if v:IsA("Highlight") then
-                    v:Destroy()
-                end
-            end
-        end
-    end
+		if value then
+			_G.ESP_Ult = true
+			while _G.ESP_Ult do
+				for i, v in workspace.Clothing:GetDescendants() do
+					if v:IsA("Shirt") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://15092420573" then
+								DrawEsp(v, "ult")
+							elseif v.ShirtTemplate == "rbxassetid://14160465716" then
+								DrawEsp(v, "ult")
+							elseif v.ShirtTemplate == "rbxassetid://13783114726" then
+								DrawEsp(v, "ult")
+							elseif v.ShirtTemplate == "rbxassetid://16310782401" then
+								DrawEsp(v, "ult")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					elseif v:IsA("Pants") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://15091951487" then
+								DrawEsp(v, "ult")
+							elseif v.PantsTemplate == "rbxassetid://13668016214" then
+								DrawEsp(v, "ult")
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.PantsTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					end
+				end
+				task.wait(1)
+			end
+		else
+			_G.ESP_Ult = false
+			for i, v in workspace.Clothing:GetDescendants() do
+				if v:IsA("Highlight") then
+					v:Destroy()
+				end
+			end
+		end
+	end
 })
 
 Info:AddLabel("Credits to Tami4ka")
@@ -283,7 +286,7 @@ Info:AddLabel("Join to telegram channel!")
 Info:AddButton({
 	Name = "Copy Link!",
 	Callback = function()
-        setclipboard("t.me/tami4ka_tg")
-        Notify("Copied!","Thanks",5)
-  	end    
+		setclipboard("t.me/tami4ka_tg")
+		Notify("Copied!","Thanks",5)
+	end    
 })
