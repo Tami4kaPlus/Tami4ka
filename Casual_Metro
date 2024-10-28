@@ -85,47 +85,39 @@ local Info = Window:MakeTab({
 })
 
 Misc:AddButton({
-	Name = "Players Colliders",
+	Name = "Players Colliders [ONE CLICK]",
 	Callback = function()
-		if _G.CODM2 == false then
-			_G.CODM2 = true
-			
-			for index, plr in Players:GetChildren() do
-				plr.CharacterAppearanceLoaded:Connect(function(Char)
-					for num, part in Char:GetDescendants() do
-						if part:IsA("BasePart") then
-							part.CollisionGroup = "Strings"
-						end
+		for index, plr in Players:GetChildren() do
+			plr.CharacterAppearanceLoaded:Connect(function(Char)
+				for num, part in Char:GetDescendants() do
+					if part:IsA("BasePart") then
+						part.CollisionGroup = "Strings"
 					end
-					Char.DescendantAdded:Connect(function(instance)
-						if instance:IsA("BasePart") then
-							instance.CollisionGroup = "Strings"
-						end
-					end)
-				end)
-			end
-			
-			Players.PlayerAdded:Connect(function(plr)
-				plr.CharacterAppearanceLoaded:Connect(function(Char)
-					for num, part in Char:GetDescendants() do
-						if part:IsA("BasePart") then
-							part.CollisionGroup = "Strings"
-						end
+				end
+				Char.DescendantAdded:Connect(function(instance)
+					if instance:IsA("BasePart") then
+						instance.CollisionGroup = "Strings"
 					end
-					Char.DescendantAdded:Connect(function(instance)
-						if instance:IsA("BasePart") then
-							instance.CollisionGroup = "Strings"
-						end
-					end)
 				end)
 			end)
-			
-			Notify("Successfully")
-		else
-			Notify("Working")
 		end
 		
+		Players.PlayerAdded:Connect(function(plr)
+			plr.CharacterAppearanceLoaded:Connect(function(Char)
+				for num, part in Char:GetDescendants() do
+					if part:IsA("BasePart") then
+						part.CollisionGroup = "Strings"
+					end
+				end
+				Char.DescendantAdded:Connect(function(instance)
+					if instance:IsA("BasePart") then
+						instance.CollisionGroup = "Strings"
+					end
+				end)
+			end)
+		end)
 		
+		Notify("Successfully")
 	end
 })
 
