@@ -17,7 +17,7 @@ function DrawEsp(esp, color)
 		Highlight.SecondaryColor = Color3.fromRGB(255, 2, 255)
 	end
 	Highlight.Name = "Highlight"
-	Highlight.Parent = esp.Parent
+	Highlight.Parent = esp.Parent.Torso
 end
 
 _G.ESP_Epic = false
@@ -53,8 +53,8 @@ function Notify(name,content,time)
 		Time = time
 	})
 end
-print("1.0.3")
-Notify("Casual Metro","Version - 1.0 [FIX]", 5)
+
+Notify("Casual Metro","Version - 1.0.4 [FIX]", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
