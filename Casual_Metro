@@ -64,7 +64,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.2", 5)
+Notify("Casual Metro","Version - 1.1.3", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -91,13 +91,13 @@ Misc:AddButton({
 			if obj:IsA("Humanoid") then
 				local Char = obj.Parent
 				for num, part in Char:GetDescendants() do
-					if part:IsA("BasePart") then
-						part.CollisionGroup = "JOSTAR"
-					end
+					local yes, no = pcall(function()
+						part.CollisionGroup = "Strings"
+					end)
 				end
 			end
 		end
-		Notify("Successfully", 5)
+		Notify("Successfully")
 	end
 })
 
@@ -108,9 +108,9 @@ Misc:AddButton({
 			localPlayer.Character.Humanoid.AutoJumpEnabled = false
 		end)
 		if no then
-			Notify("Error: "..no , 5)
+			Notify("Error: "..no)
 		else
-			Notify("Disabled", 5)
+			Notify("Disabled")
 		end
 	end
 })
