@@ -64,7 +64,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.0.6 [FIX]", 5)
+Notify("Casual Metro","Version - 1.1.1 [NEW ESP]", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -84,8 +84,24 @@ local Info = Window:MakeTab({
 	PremiumOnly = false
 })
 
+Misc:AddButton({
+	Name = "Players Colliders",
+	Callback = function()
+		for index, obj in workspace:GetDescendants() do
+			if obj:IsA("Humanoid") then
+				local Char = obj.Parent
+				for num, part in Char:GetDescendants() do
+					if part:IsA("BasePart") then
+						part.CollisionGroup = "JOSTAR"
+					end
+				end
+			end
+		end
+	end
+})
+
 Esp:AddToggle({
-	Name = "Epic Clothing [List TEST]",
+	Name = "Epic Clothing",
 	Default = false,
 	Callback = function(value)
 		if value then 
@@ -125,7 +141,7 @@ Esp:AddToggle({
 		else
 			_G.ESP_Epic = false
 			for i, v in workspace.Clothing:GetDescendants() do
-				if v:IsA("Highlight") then
+				if v:IsA("BillboardGui") then
 					v:Destroy()
 				end
 			end
@@ -178,7 +194,7 @@ Esp:AddToggle({
 		else
 			_G.ESP_Mef = false
 			for i, v in workspace.Clothing:GetDescendants() do
-				if v:IsA("Highlight") then
+				if v:IsA("BillboardGui") then
 					v:Destroy()
 				end
 			end
@@ -221,7 +237,7 @@ Esp:AddToggle({
 		else
 			_G.ESP_Lega = false
 			for i, v in workspace.Clothing:GetDescendants() do
-				if v:IsA("Highlight") then
+				if v:IsA("BillboardGui") then
 					v:Destroy()
 				end
 			end
@@ -272,7 +288,7 @@ Esp:AddToggle({
 		else
 			_G.ESP_Ult = false
 			for i, v in workspace.Clothing:GetDescendants() do
-				if v:IsA("Highlight") then
+				if v:IsA("BillboardGui") then
 					v:Destroy()
 				end
 			end
