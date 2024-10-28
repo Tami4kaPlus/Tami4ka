@@ -2,22 +2,26 @@ local Players = game:GetService("Players")
 local localPlayer = Players.LocalPlayer
 
 function DrawEsp(esp, color)
-	local Highlight = Instance.new("Fire")
+	local ESP = Instance.new("BillboardGui")
+	local Highlight = Instance.new("Frame")
+
+	ESP.Size = UDim2.new(0.5, 0, 0.5, 0)
+	ESP.AlwaysOnTop = true
+	ESP.Name = "Highlight"
+	ESP.Parent = esp.Parent
+
+	Highlight.Size = UDim2.new(1, 0, 1, 0)
+	Highlight.Parent = ESP
+	
 	if color == "epic" then
-		Highlight.Color = Color3.fromRGB(103, 0, 154)
-		Highlight.SecondaryColor = Color3.fromRGB(103, 0, 154)
+		Highlight.BackgroundColor3 = Color3.fromRGB(103, 0, 154)
 	elseif color == "mef" then
-		Highlight.Color = Color3.fromRGB(161, 0, 3)
-		Highlight.SecondaryColor = Color3.fromRGB(161, 0, 3)
+		Highlight.BackgroundColor3 = Color3.fromRGB(161, 0, 3)
 	elseif color == "lega" then
-		Highlight.Color = Color3.fromRGB(227, 227, 0)
-		Highlight.SecondaryColor = Color3.fromRGB(227, 227, 0)
+		Highlight.BackgroundColor3 = Color3.fromRGB(227, 227, 0)
 	elseif color == "ult" then 
-		Highlight.Color = Color3.fromRGB(255, 2, 255)
-		Highlight.SecondaryColor = Color3.fromRGB(255, 2, 255)
+		Highlight.BackgroundColor3 = Color3.fromRGB(255, 2, 255)
 	end
-	Highlight.Name = "Highlight"
-	Highlight.Parent = esp.Parent.Torso
 end
 
 _G.ESP_Epic = false
@@ -54,7 +58,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.0.4 [FIX]", 5)
+Notify("Casual Metro","Version - 1.0.5 [FIX]", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
