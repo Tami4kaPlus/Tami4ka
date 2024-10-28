@@ -4,6 +4,7 @@ local localPlayer = Players.LocalPlayer
 function DrawEsp(esp, color)
 	local ESP = Instance.new("BillboardGui")
 	local Highlight = Instance.new("Frame")
+	local UI = Instance.new("UIStroke")
 
 	ESP.Size = UDim2.new(0.5, 0, 0.5, 0)
 	ESP.AlwaysOnTop = true
@@ -11,7 +12,12 @@ function DrawEsp(esp, color)
 	ESP.Parent = esp.Parent
 
 	Highlight.Size = UDim2.new(1, 0, 1, 0)
+	Highlight.Name = "Highlight"
 	Highlight.Parent = ESP
+	
+	UI.Thickness = 5
+	UI.Transparency = 0.5
+	UI.Parent = Highlight
 	
 	if color == "epic" then
 		Highlight.BackgroundColor3 = Color3.fromRGB(103, 0, 154)
@@ -58,7 +64,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.0.5 [FIX]", 5)
+Notify("Casual Metro","Version - 1.0.6 [FIX]", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -77,15 +83,6 @@ local Info = Window:MakeTab({
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-
-if game:GetService("UserInputService").TouchEnabled then
-	Misc:AddButton({
-		Name = "Inventory Slot Changer",
-		Callback = function()
-			loadstring(game:HttpGet("https://raw.githubusercontent.com/rrixh/uwuware/refs/heads/main/Kustom/mobile5lots"))()
-		end    
-	})
-end
 
 Esp:AddToggle({
 	Name = "Epic Clothing [List TEST]",
