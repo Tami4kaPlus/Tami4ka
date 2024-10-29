@@ -14,11 +14,12 @@ function DrawEsp(esp, color)
 	Highlight.Size = UDim2.new(1, 0, 1, 0)
 	Highlight.Name = "Highlight"
 	Highlight.Parent = ESP
-	
+
 	UI.Thickness = 5
+	UI.Color = Color3.new(0.25, 0.25, 0.25)
 	UI.Transparency = 0.5
 	UI.Parent = Highlight
-	
+
 	if color == "epic" then
 		Highlight.BackgroundColor3 = Color3.fromRGB(103, 0, 154)
 	elseif color == "mef" then
@@ -27,6 +28,8 @@ function DrawEsp(esp, color)
 		Highlight.BackgroundColor3 = Color3.fromRGB(227, 227, 0)
 	elseif color == "ult" then 
 		Highlight.BackgroundColor3 = Color3.fromRGB(255, 2, 255)
+	elseif color == "?" then
+		Highlight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	end
 end
 
@@ -34,6 +37,7 @@ _G.ESP_Epic = false
 _G.ESP_Mef = false
 _G.ESP_Lega = false
 _G.ESP_Ult = false
+_G.ESP_ALL = false
 
 local EpicList = {
 	"13122216162",
@@ -51,6 +55,16 @@ local EpicList = {
 	"13121694218"
 }
 
+local WhatBuyList = {}
+
+for index, obj in localPlayer.PlayerGui:GetChildren() do
+	if obj:IsA("ViewportFrame") then
+		if obj:FindFirstChild("Shirt") then
+			table.insert(WhatBuyList, tostring(obj.Shirt.Shirt.ShirtTemplate))
+		end
+	end
+end
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "Casual-Metro",IntroText = "Casual Metro", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
@@ -64,7 +78,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.6", 5)
+Notify("Casual Metro","Version - 1.1.0.1", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -101,7 +115,7 @@ Misc:AddButton({
 				end)
 			end)
 		end
-		
+
 		Players.PlayerAdded:Connect(function(plr)
 			plr.CharacterAppearanceLoaded:Connect(function(Char)
 				for num, part in Char:GetDescendants() do
@@ -116,7 +130,7 @@ Misc:AddButton({
 				end)
 			end)
 		end)
-		
+
 		Notify("Successfully")
 	end
 })
@@ -134,6 +148,42 @@ Misc:AddButton({
 		end
 	end
 })
+
+Esp:AddToggle({
+	Name = "All Clothing",
+	Default = false,
+	Callback = function(value)
+		if value then 
+			_G.ESP_ALL = true
+			while _G.ESP_ALL do
+				for i, v in workspace.Clothing:GetDescendants() do
+					if v:IsA("Shirt") then
+						if not v.Parent:FindFirstChild("Highlight") then
+							for index, obj in pairs(WhatBuyList) do
+								if obj.ShirtTemplate == "rbxassetid://"..obj then
+									DrawEsp(v, "epic")
+								end
+							end
+						elseif v.Parent:FindFirstChild("Highlight") then
+							if v.ShirtTemplate == "rbxassetid://1" then
+								v.Parent.Highlight:Destroy()
+							end
+						end
+					end
+				end
+				task.wait(1)
+			end
+		else
+			_G.ESP_ALL = false
+			for i, v in workspace.Clothing:GetDescendants() do
+				if v:IsA("BillboardGui") then
+					v:Destroy()
+				end
+			end
+		end 
+	end    
+})
+
 
 Esp:AddToggle({
 	Name = "Epic Clothing",
