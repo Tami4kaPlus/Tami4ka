@@ -57,7 +57,7 @@ local EpicList = {
 
 local WhatBuyList = {}
 
-for index, obj in localPlayer.PlayerGui:GetChildren() do
+for index, obj in localPlayer.MainHud.WhatBuy.Main:GetChildren() do
 	if obj:IsA("ViewportFrame") then
 		if obj:FindFirstChild("Shirt") then
 			table.insert(WhatBuyList, tostring(obj.Shirt.Shirt.ShirtTemplate))
@@ -78,7 +78,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.0.1", 5)
+Notify("Casual Metro","Version - 1.1.0.2", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -161,7 +161,7 @@ Esp:AddToggle({
 						if not v.Parent:FindFirstChild("Highlight") then
 							for index, obj in pairs(WhatBuyList) do
 								if obj.ShirtTemplate == "rbxassetid://"..obj then
-									DrawEsp(v, "epic")
+									DrawEsp(v, "?")
 								end
 							end
 						elseif v.Parent:FindFirstChild("Highlight") then
