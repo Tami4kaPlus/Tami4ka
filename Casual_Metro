@@ -70,6 +70,7 @@ for index, obj in localPlayer.PlayerGui.MainHud.WhatBuy.Main:GetChildren() do
 	if obj:IsA("ViewportFrame") then
 		if obj:FindFirstChild("Shirt") then
 			local num = extractID(obj.Shirt.Shirt.ShirtTemplate)
+			print(num)
 			table.insert(WhatBuyList, num)
 		end
 	end
