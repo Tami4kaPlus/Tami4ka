@@ -55,15 +55,17 @@ local EpicList = {
 	"13121694218"
 }
 
-local WhatBuyList = {}
+local WhatBuyList = ""
 
 for index, obj in localPlayer.PlayerGui.MainHud.WhatBuy.Main:GetChildren() do
 	if obj:IsA("ViewportFrame") then
 		if obj:FindFirstChild("Shirt") then
-			table.insert(WhatBuyList, tostring(obj.Shirt.Shirt.ShirtTemplate))
+			WhatBuyList = WhatBuyList..", "..tostring(obj.Shirt.Shirt.ShirtTemplate)
 		end
 	end
 end
+
+setclipboard(WhatBuyList)
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
@@ -78,7 +80,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.0.4", 5)
+Notify("Casual Metro","Version - 1.1.0.5", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
