@@ -29,8 +29,17 @@ function DrawEsp(esp, color)
 	elseif color == "ult" then 
 		Highlight.BackgroundColor3 = Color3.fromRGB(255, 2, 255)
 	elseif color == "?" then
-		Highlight.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Highlight.BackgroundColor3 = Color3.fromRGB(170, 255, 255)
 	end
+end
+
+local function extractID(url)
+	local equalSignIndex = string.find(url, "=")
+	if equalSignIndex == nil then
+		return nil
+	end
+	local assetID = string.sub(url, equalSignIndex + 1)
+	return assetID
 end
 
 _G.ESP_Epic = false
@@ -55,17 +64,16 @@ local EpicList = {
 	"13121694218"
 }
 
-local WhatBuyList = ""
+local WhatBuyList = {}
 
 for index, obj in localPlayer.PlayerGui.MainHud.WhatBuy.Main:GetChildren() do
 	if obj:IsA("ViewportFrame") then
 		if obj:FindFirstChild("Shirt") then
-			WhatBuyList = WhatBuyList..", "..tostring(obj.Shirt.Shirt.ShirtTemplate)
+			local num = extractID(obj.Shirt.Shirt.ShirtTemplate)
+			table.insert(WhatBuyList, num)
 		end
 	end
 end
-
-setclipboard(WhatBuyList)
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
@@ -80,7 +88,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.0.5", 5)
+Notify("Casual Metro","Version - 1.1.0.6", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
