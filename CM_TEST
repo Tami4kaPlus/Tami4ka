@@ -35,9 +35,6 @@ end
 
 local function extractID(url)
 	local equalSignIndex = string.find(url, "=")
-	if equalSignIndex == nil then
-		return nil
-	end
 	local assetID = string.sub(url, equalSignIndex + 1)
 	return assetID
 end
@@ -144,7 +141,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.1", 5)
+Notify("Casual Metro","Version - 1.1.2", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -226,7 +223,7 @@ Esp:AddToggle({
 					if v:IsA("Shirt") then
 						if not v.Parent:FindFirstChild("Highlight") then
 							for index, obj in pairs(WhatBuyList) do
-								if obj.ShirtTemplate == "rbxassetid://"..obj then
+								if extractID(v.ShirtTemplate) == obj then
 									DrawEsp(v, "?")
 								end
 							end
@@ -262,7 +259,7 @@ Esp:AddToggle({
 					if v:IsA("Shirt") then
 						if not v.Parent:FindFirstChild("Highlight") then
 							for index, obj in pairs(EpicList) do
-								if obj.ShirtTemplate == "rbxassetid://"..obj then
+								if extractID(v.ShirtTemplate) == obj then
 									DrawEsp(v, "epic")
 								end
 							end
