@@ -33,20 +33,10 @@ function DrawEsp(esp, color)
 	end
 end
 
-local function extractID(url)
-	local equalSignIndex = string.find(url, "=")
-	if equalSignIndex == nil then
-		return nil
-	end
-	local assetID = string.sub(url, equalSignIndex + 1)
-	return assetID
-end
-
 _G.ESP_Epic = false
 _G.ESP_Mef = false
 _G.ESP_Lega = false
 _G.ESP_Ult = false
-_G.ESP_ALL = false
 
 local EpicList = {
 	"13122216162",
@@ -64,18 +54,6 @@ local EpicList = {
 	"13121694218"
 }
 
-local WhatBuyList = {}
-
-for index, obj in localPlayer.PlayerGui.MainHud.WhatBuy.Main:GetChildren() do
-	if obj:IsA("ViewportFrame") then
-		if obj:FindFirstChild("Shirt") then
-			local num = extractID(obj.Shirt.Shirt.ShirtTemplate)
-			print(num)
-			table.insert(WhatBuyList, num)
-		end
-	end
-end
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 local Window = OrionLib:MakeWindow({Name = "Casual-Metro",IntroText = "Casual Metro", HidePremium = false, SaveConfig = false, ConfigFolder = "Orion"})
@@ -89,7 +67,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.0.6", 5)
+Notify("Casual Metro","Version - 1.1.1", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -160,41 +138,19 @@ Misc:AddButton({
 	end
 })
 
-Esp:AddToggle({
-	Name = "All Clothing",
-	Default = false,
-	Callback = function(value)
-		if value then 
-			_G.ESP_ALL = true
-			while _G.ESP_ALL do
-				for i, v in workspace.Clothing:GetDescendants() do
-					if v:IsA("Shirt") then
-						if not v.Parent:FindFirstChild("Highlight") then
-							for index, obj in pairs(WhatBuyList) do
-								if obj.ShirtTemplate == "rbxassetid://"..obj then
-									DrawEsp(v, "?")
-								end
-							end
-						elseif v.Parent:FindFirstChild("Highlight") then
-							if v.ShirtTemplate == "rbxassetid://1" then
-								v.Parent.Highlight:Destroy()
-							end
-						end
-					end
-				end
-				task.wait(1)
-			end
+Misc:AddButton({
+	Name = "Teleport Shop",
+	Callback = function()
+		local yes, no = pcall(function()
+			localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-85, 20, -135)
+		end)
+		if no then
+			Notify("Error: "..no)
 		else
-			_G.ESP_ALL = false
-			for i, v in workspace.Clothing:GetDescendants() do
-				if v:IsA("BillboardGui") then
-					v:Destroy()
-				end
-			end
-		end 
-	end    
+			Notify("Teleport")
+		end
+	end
 })
-
 
 Esp:AddToggle({
 	Name = "Epic Clothing",
@@ -267,6 +223,18 @@ Esp:AddToggle({
 								DrawEsp(v, "mef")
 							elseif v.ShirtTemplate == "rbxassetid://5081906790" then
 								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://11624442164" then
+								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://15373236991" then
+								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://169222867" then
+								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://14045339941" then
+								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://13118233790" then
+								DrawEsp(v, "mef")
+                            elseif v.ShirtTemplate == "rbxassetid://7713824524" then
+								DrawEsp(v, "mef")
 							end
 						elseif v.Parent:FindFirstChild("Highlight") then
 							if v.ShirtTemplate == "rbxassetid://1" then
@@ -320,6 +288,8 @@ Esp:AddToggle({
 								DrawEsp(v, "lega")
 							elseif v.ShirtTemplate == "rbxassetid://11235784172" then
 								DrawEsp(v, "lega")
+                            elseif v.ShirtTemplate == "rbxassetid://6492846709" then
+								DrawEsp(v, "lega")
 							end
 						elseif v.Parent:FindFirstChild("Highlight") then
 							if v.ShirtTemplate == "rbxassetid://1" then
@@ -358,6 +328,8 @@ Esp:AddToggle({
 							elseif v.ShirtTemplate == "rbxassetid://13783114726" then
 								DrawEsp(v, "ult")
 							elseif v.ShirtTemplate == "rbxassetid://16310782401" then
+								DrawEsp(v, "ult")
+                            elseif v.ShirtTemplate == "rbxassetid://15393383449" then
 								DrawEsp(v, "ult")
 							end
 						elseif v.Parent:FindFirstChild("Highlight") then
