@@ -67,7 +67,7 @@ function Notify(name,content,time)
 	})
 end
 
-Notify("Casual Metro","Version - 1.1.1", 5)
+Notify("Casual Metro","Version - 1.1.2", 5)
 
 local Misc = Window:MakeTab({
 	Name = "Main",
@@ -118,18 +118,11 @@ Misc:AddButton({
 Misc:AddButton({
 	Name = "Collect All LISTOK",
 	Callback = function()
-		local yes, no = pcall(function()
-			for index, obj in workspace:GetChildren() do
-			    if obj.Name == "LISTOK" then
-			         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = obj.Listok.CFrame
-			         task.wait(0.1)
-			    end
-			end
-		end)
-		if no then
-			Notify("Error: "..no)
-		else
-			Notify("Мяу")
+		for index, obj in workspace:GetChildren() do
+		if obj.Name == "LISTOK" then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = obj.Listok.CFrame
+		task.wait(0.1)
+		end
 		end
 	end
 })
