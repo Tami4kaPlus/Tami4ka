@@ -88,43 +88,6 @@ local Info = Window:MakeTab({
 })
 
 Misc:AddButton({
-	Name = "Players Colliders [ONE CLICK]",
-	Callback = function()
-		for index, plr in Players:GetChildren() do
-			plr.CharacterAppearanceLoaded:Connect(function(Char)
-				for num, part in Char:GetDescendants() do
-					if part:IsA("BasePart") then
-						part.CollisionGroup = "Strings"
-					end
-				end
-				Char.DescendantAdded:Connect(function(instance)
-					if instance:IsA("BasePart") then
-						instance.CollisionGroup = "Strings"
-					end
-				end)
-			end)
-		end
-
-		Players.PlayerAdded:Connect(function(plr)
-			plr.CharacterAppearanceLoaded:Connect(function(Char)
-				for num, part in Char:GetDescendants() do
-					if part:IsA("BasePart") then
-						part.CollisionGroup = "Strings"
-					end
-				end
-				Char.DescendantAdded:Connect(function(instance)
-					if instance:IsA("BasePart") then
-						instance.CollisionGroup = "Strings"
-					end
-				end)
-			end)
-		end)
-
-		Notify("Successfully")
-	end
-})
-
-Misc:AddButton({
 	Name = "Auto Jump Disable",
 	Callback = function()
 		local yes, no = pcall(function()
@@ -148,6 +111,25 @@ Misc:AddButton({
 			Notify("Error: "..no)
 		else
 			Notify("Teleport")
+		end
+	end
+})
+
+Misc:AddButton({
+	Name = "Collect All LISTOK",
+	Callback = function()
+		local yes, no = pcall(function()
+			for index, obj in workspace:GetChildren() do
+			    if obj.Name == "LISTOK" then
+			         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = obj.Listok.CFrame
+			         task.wait(0.1)
+			    end
+			end
+		end)
+		if no then
+			Notify("Error: "..no)
+		else
+			Notify("Мяу")
 		end
 	end
 })
