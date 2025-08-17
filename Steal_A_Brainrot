@@ -1,10 +1,13 @@
 local ProximityPromptService = game:GetService("ProximityPromptService")
+local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local InputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
 local StarterGui = game:GetService("StarterGui")
 local RunService = game:GetService("RunService")
 local Players = game:GetService("Players")
 
+local TimerYouBase = 0
 local YouPlot = nil
 local RagdollState = nil
 
@@ -17,6 +20,8 @@ local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 local BillboardGui = Instance.new("BillboardGui")
 local ImageLabel = Instance.new("ImageLabel")
 
+local ControlsModule = require(Player.PlayerScripts:WaitForChild("PlayerModule")):GetControls()
+
 if not _G.AutoSteal then
     task.spawn(function()
         pcall(function()
@@ -27,22 +32,23 @@ if not _G.AutoSteal then
 end
 
 BillboardGui.Parent = HumanoidRootPart
-BillboardGui.Size = UDim2.new(2, 0, 2, 0)
+BillboardGui.Size = UDim2.new(3, 0, 3, 0)
 BillboardGui.AlwaysOnTop = true
 
+ImageLabel.Image = "rbxassetid://129896837928756"
 ImageLabel.Parent = BillboardGui
 ImageLabel.Size = UDim2.new(1, 0, 1, 0)
-ImageLabel.BackgroundColor3 = Color3.new(0.5,0.5,0.9)
+ImageLabel.BackgroundTransparency = 1
 
 local Loaded = true
 local HighJump = false
 
+local AutoLockBase = true
+
 local Connections = {}
 local bEsp = {}
 
-local FriendList = {
-    
-}
+local FriendList = {}
 
 task.spawn(function()
     --[[
@@ -72,11 +78,16 @@ local function DrawEsp(char)
     local plr = Players:GetPlayerFromCharacter(char)
 
     if plr then 
+        local head = char:WaitForChild("Head", 10)
+
+        if head:FindFirstChild("BillboardGui") then return end
+
         local BillboardGui = Instance.new("BillboardGui")
         local TextLabel = Instance.new("TextLabel")
 
-        BillboardGui.Parent = char:WaitForChild("Head", 10)
-        BillboardGui.Size = UDim2.new(8, 0, 3, 0)
+        BillboardGui.StudsOffset = Vector3.new(0, 3.25, 0)
+        BillboardGui.Parent = head
+        BillboardGui.Size = UDim2.new(9, 0, 3.5, 0)
         BillboardGui.AlwaysOnTop = true
 
         TextLabel.Parent = BillboardGui
@@ -86,6 +97,7 @@ local function DrawEsp(char)
         TextLabel.TextStrokeTransparency = 0
         TextLabel.BackgroundTransparency = 1
         TextLabel.Text = plr.DisplayName
+        TextLabel.Font = Enum.Font.GothamBold
 
         bEsp[BillboardGui] = BillboardGui
     end
@@ -167,14 +179,15 @@ local function Notif(title, text, icon)
 end
 
 local function LoadTool()
-    for index, Tool in Player.Backpack:GetChildren() do
-        if Tool.Name == "Taser Gun" or Tool.Name == "Web Slinger" or Tool.Name == "Laser Cape" then
+    for index, Tool in Player.Backpack:GetChildren() do 
+        if Tool.Name == "Taser Gun" or Tool.Name == "Web Slinger" or Tool.Name == "Laser Cape" or Tool.Name == "Laser Gun" or Tool.Name == "Paintball Gun" then
             task.spawn(function()
-                local script = WaitForChildOfClass(Tool,"LocalScript",math.huge)
+                local Script = WaitForChildOfClass(Tool,"LocalScript",math.huge)
 
-                if script then 
-                    script:Destroy() 
-
+                if Script and not Script:HasTag("AutoAimChanger") then 
+                    Script:AddTag("AutoAimChanger")
+                    Script.Enabled = false
+                    
                     Connections["ToolAutoAim"] = Tool.Activated:Connect(function()
                         local Target, Distance = NearbyPlayer()
 
@@ -184,6 +197,10 @@ local function LoadTool()
                             RemoteToolWithVector(Target)
                         elseif Tool.Name == "Laser Cape" and Distance < 150 then
                             RemoteToolWithVector(Target)
+                        elseif Tool.Name == "Laser Gun" and Distance < 75 then
+                            RemoteToolWithVector(Target)
+                        elseif Tool.Name == "Paintball Gun" and Distance < 225 then
+                            RemoteToolWithVector(Target)
                         end
                     end)
                 end
@@ -191,6 +208,51 @@ local function LoadTool()
         end
     end
 end
+
+local function Unload()
+    for index, Script in CollectionService:GetTagged("AutoAimChanger") do
+        Script.Enabled = true
+        Script:RemoveTag("AutoAimChanger")
+    end
+
+    Notif("Script Unloaded", "Success")
+    Loaded = false
+
+    ImageLabel:Destroy()
+    BillboardGui:Destroy()
+
+    for index, esp in bEsp do
+        if esp then esp:Destroy() end
+        bEsp[index] = nil
+    end
+
+    for index, connect in Connections do
+        connect:Disconnect()
+        Connections[index] = nil
+    end
+
+    for i, v in game.Players:GetPlayers() do
+        for i, g in v.Character:GetDescendants() do
+            if g.Name == "BillboardGui" then
+                g:Destroy()
+            end
+        end
+    end
+end
+
+local function CombatCheck(Obj)
+    local Toggle = false
+
+    if string.find(Obj.Name:lower(), "slap") or string.find(Obj.Name:lower(), "sword") then
+        Toggle = true
+    elseif string.find(Obj.Name:lower(), "bat") then
+        Toggle = true
+    end
+
+    return Toggle
+end
+
+-- if setclipboard then setclipboard("https://funpay.com/users/6661617/ | Покупай лучший скрипт") end
 
 Connections["CharacterAdded"] = Player.CharacterAdded:Connect(function()
     Character = Player.Character
@@ -205,6 +267,63 @@ end)
 Connections["RunTime"] = RunService.RenderStepped:Connect(function()
     local CurrentCamera = workspace.CurrentCamera
     CurrentCamera.FieldOfView = 70
+    Player.PlayerGui.LeftBottom.LeftBottom.FriendBoost.Text = "Таймер: "..TimerYouBase.." | by Tami4ka"
+
+    if RagdollState == "manualM" then
+        HumanoidRootPart.Velocity = HumanoidRootPart.Velocity / 1.25
+
+        for index, obj in Character:GetDescendants() do
+            if obj:IsA("BallSocketConstraint") then
+                obj:Destroy()
+            elseif obj:IsA("Motor6D") then
+                obj.Enabled = true
+            end
+        end
+
+        workspace.CurrentCamera.CameraSubject = Humanoid
+        HumanoidRootPart.CanCollide = true
+    end
+
+    local SlapTool = Character:FindFirstChildOfClass("Tool")
+
+    if SlapTool and CombatCheck(SlapTool) then
+        local Target, Distance = NearbyPlayer()
+        
+        if Target and Distance < 15 then
+            if Distance < 6.5 then
+                SlapTool:Activate()
+            end
+        end
+    end
+    
+    local Target, Distance = NearbyPlayer()
+
+    if Target then
+        local humRootPart = Target.Character.HumanoidRootPart
+        local Tool = Character:FindFirstChildOfClass("Tool")
+
+        if Tool then
+            if Tool.Name == "Taser Gun" and Distance < 25 then
+                BillboardGui.Parent = humRootPart
+            elseif Tool.Name == "Web Slinger" and Distance < 25 then
+                BillboardGui.Parent = humRootPart
+            elseif Tool.Name == "Laser Cape" and Distance < 150 then
+                BillboardGui.Parent = humRootPart
+            elseif Tool.Name == "Laser Gun" and Distance < 75 then
+                BillboardGui.Parent = humRootPart
+            elseif Tool.Name == "Paintball Gun" and Distance < 225 then
+                BillboardGui.Parent = humRootPart
+            elseif CombatCheck(SlapTool) and Distance < 15 then
+                BillboardGui.Parent = humRootPart
+            else
+                if BillboardGui.Parent then BillboardGui.Parent = nil end
+            end
+        else
+            if BillboardGui.Parent then BillboardGui.Parent = nil end
+        end
+    else
+        if BillboardGui.Parent then BillboardGui.Parent = nil end
+    end
 end)
 
 Connections["Jump"] = InputService.JumpRequest:Connect(function()
@@ -220,36 +339,17 @@ Connections["Input"] = InputService.InputBegan:Connect(function(Input, IsType)
         HighJump = not HighJump
         if not HighJump then workspace.Gravity = 196.2 end
         Notif("Script Notif", "Статус HighJump: "..tostring(HighJump))
+    elseif Input.KeyCode == Enum.KeyCode.Q then
+        print(Humanoid:GetState())
+        HumanoidRootPart.Anchored = not HumanoidRootPart.Anchored
     elseif Input.KeyCode == Enum.KeyCode.PageUp then
-        Notif("Script Unloaded", "Success")
-        Loaded = false
-
-        ImageLabel:Destroy()
-        BillboardGui:Destroy()
-
-        for index, esp in bEsp do
-            if esp then esp:Destroy() end
-            bEsp[index] = nil
-        end
-
-        for index, connect in Connections do
-            connect:Disconnect()
-            Connections[index] = nil
-        end
-
-        for i, v in game.Players:GetPlayers() do
-            for i, g in v.Character:GetDescendants() do
-                if g.Name == "BillboardGui" then
-                    g:Destroy()
-                end
-            end
-        end
+        Unload()
     end 
 end)
 
 Connections["ProximityPrompt"] = ProximityPromptService.PromptShown:Connect(function(Prompt)
     if Prompt.ActionText == "Purchase" then
-        Prompt.HoldDuration = 0.12
+        Prompt.HoldDuration = 0.15
     end
 end)
 
@@ -268,46 +368,44 @@ Notif("Script Loaded", "Unload: PageUp, High Jump: LeftControl")
 
 while Loaded do
     local YourTimer = YouPlot.Purchases:GetChildren()[1].Main.BillboardGui.RemainingTime.Text
-    
-    if YourTimer == "10s" then
-        Notif("Script Notif", "Твоей базе через "..YourTimer.." секунд пиздак будет")
+    local Temp = string.gsub(YourTimer, '%D+', '')
+    local Timer = tonumber(Temp)
+
+    YouPlot.PlotSign.YourBase.AlwaysOnTop = true
+    YouPlot.PlotSign.YourBase.TextLabel.Text = "funpay.com/users/6661617\nПокупай лучший скрипт"
+
+    TweenService:Create(ImageLabel, TweenInfo.new(0.5), {Rotation = ImageLabel.Rotation + 180}):Play()
+
+    TimerYouBase = Timer
+
+    if Humanoid:GetState() == Enum.HumanoidStateType.Physics then
+        Humanoid:ChangeState(Enum.HumanoidStateType.GettingUp)
+        ControlsModule:Enable()
+    end
+
+    if Timer == 10 then
+        Notif("Script Notif", "Твоя база откроется через "..YourTimer.." секунд")
     end
 
     LoadTool()
 
     for index, plot in workspace.Plots:GetChildren() do
-        if not plot:FindFirstChild("Multiplier") then continue end
-        if not plot.Purchases:GetChildren()[1].Main:FindFirstChild("BillboardGui") then continue end
-        if not plot.Multiplier.Main:FindFirstChild("Amount") then continue end
-        local bGui = plot.Multiplier.Main
-        bGui.MaxDistance = 1000000
-        bGui.AlwaysOnTop = true
-        bGui.Amount.Text = plot.Purchases:GetChildren()[1].Main.BillboardGui:WaitForChild("RemainingTime", 2).Text
-        bGui.TextLabel.Text = "Timer:"
-        bGui.Size = UDim2.new(25, 0, 25, 0)
-    end
+        -- local yes, no = pcall(function()
+            if not plot:FindFirstChild("Purchases") then continue end
+            if not plot:FindFirstChild("Multiplier") then continue end
+            if not plot.Purchases:GetChildren()[1].Main:FindFirstChild("BillboardGui") then continue end
+            if not plot.Multiplier.Main:FindFirstChild("Amount") then continue end
+            local bGui = plot.Multiplier.Main
+            bGui.MaxDistance = 1000000
+            bGui.AlwaysOnTop = true
+            bGui.Amount.Text = plot.Purchases:GetChildren()[1].Main.BillboardGui:WaitForChild("RemainingTime", 2).Text
+            bGui.TextLabel.Text = "Timer:"
+            bGui.Size = UDim2.new(25, 0, 25, 0)
+        -- end)
 
-    local Target, Distance = NearbyPlayer()
-
-    if Target then
-        local humRootPart = Target.Character.HumanoidRootPart
-        local Tool = Character:FindFirstChildOfClass("Tool")
-
-        if Tool then
-            if Tool.Name == "Taser Gun" and Distance < 25 then
-                BillboardGui.Parent = humRootPart
-            elseif Tool.Name == "Web Slinger" and Distance < 25 then
-                BillboardGui.Parent = humRootPart
-            elseif Tool.Name == "Laser Cape" and Distance < 150 then
-                BillboardGui.Parent = humRootPart
-            else
-                if BillboardGui.Parent then BillboardGui.Parent = nil end
-            end
-        else
-            if BillboardGui.Parent then BillboardGui.Parent = nil end
-        end
-    else
-        if BillboardGui.Parent then BillboardGui.Parent = nil end
+        -- if not yes then
+        --     warn(no)
+        -- end
     end
 
     task.wait(0.5)
